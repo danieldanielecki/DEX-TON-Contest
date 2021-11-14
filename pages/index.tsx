@@ -38,9 +38,6 @@ const Home: NextPage = () => {
           <Link href="/liquidity-from-pool">
             <a className={styles.card}>Liquidity from Pool</a>
           </Link>
-          <Link href="/list-of-pools">
-            <a className={styles.card}>List of Pools</a>
-          </Link>
           <Link href="/pool-statistics">
             <a className={styles.card}>Pool Statistics</a>
           </Link>
