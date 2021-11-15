@@ -1,0 +1,23 @@
+@import "./main.scss";
+
+$min_width: 320px;
+$max_width: 2304px;
+$min_font: 1rem;
+$max_font: 2rem;
+
+html,
+body {
+  @include fluid-typography($min_width, $max_width, $min_font, $max_font);
+
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
