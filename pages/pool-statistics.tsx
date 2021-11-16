@@ -7,6 +7,7 @@ import { faCaretUp, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { useState, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Pool } from "../interfaces/pool";
+import { POOLS } from "../data/dummy-data";
 import type { NextPage } from "next";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -64,14 +65,6 @@ const PoolStatistics: NextPage = () => {
     ],
   });
   const [searchQuery, setSearchQuery] = useState("");
-
-  const pools: Pool[] = [
-    { id: 1, title: "Pool 1" },
-    { id: 2, title: "Pool 2" },
-    { id: 3, title: "Pool 3" },
-    { id: 4, title: "Pool 4" },
-    { id: 5, title: "Pool 5" },
-  ];
 
   function search(pools: Pool[]) {
     return pools.filter((pool: Pool) => {
@@ -146,9 +139,9 @@ const PoolStatistics: NextPage = () => {
               >
                 <div className={styles.pools_responsive_table_wrapper}>
                   <table className={styles.table}>
-                    {search(pools).length > 0 ? (
+                    {search(POOLS).length > 0 ? (
                       <Fragment>
-                        {search(pools).map((pool: Pool) => (
+                        {search(POOLS).map((pool: Pool) => (
                           <tr key={pool.id}>
                             <td className={styles.profile_info}>
                               <div className="d-flex align-items-center justify-content-start">
