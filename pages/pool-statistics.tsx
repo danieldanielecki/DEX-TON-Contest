@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { faCaretUp, faDollarSign } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { NextPage } from "next";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -62,6 +62,7 @@ const PoolStatistics: NextPage = () => {
       },
     ],
   });
+  const [searchQuery, setSearchQuery] = useState("");
 
   const pools = [
     { id: 1, title: "Pool 1" },
@@ -70,6 +71,15 @@ const PoolStatistics: NextPage = () => {
     { id: 4, title: "Pool 4" },
     { id: 5, title: "Pool 5" },
   ];
+
+  function search(pools: any) {
+    return pools.filter((pool: any) => {
+      return (
+        pool.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+        -1
+      );
+    });
+  }
 
   return (
     <div className={styles.container}>
@@ -111,6 +121,7 @@ const PoolStatistics: NextPage = () => {
                     className={styles.form_control}
                     id="poolSearch"
                     name="poolSearch"
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search Pool"
                     required
                     type="text"
@@ -134,59 +145,69 @@ const PoolStatistics: NextPage = () => {
               >
                 <div className={styles.pools_responsive_table_wrapper}>
                   <table className={styles.table}>
-                    {pools.map((pool) => (
-                      <tr key={pool.id}>
-                        <td className={styles.profile_info}>
-                          <div className="d-flex align-items-center justify-content-start">
-                            <div className={styles.wrapper}>
-                              <img
-                                alt={pool.title}
-                                src="/avatar_1.png"
-                                title={pool.title}
-                              />
-                            </div>
-                            <div className={styles.pool_name}>
-                              <p>{pool.title}</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className={styles.price_range}>
-                          <div className="d-flex align-items-center justify-content-center">
-                            <div className={styles.price}>
-                              <p>
-                                <FontAwesomeIcon icon={faDollarSign} />
-                                3.91
-                              </p>
-                              <p>
-                                <FontAwesomeIcon icon={faCaretUp} />
-                                +8.12
-                              </p>
-                            </div>
-                            <Chart
-                              height={dataSample.chart.height}
-                              options={dataSample.options}
-                              series={dataSample.series}
-                              type="area"
-                              width={dataSample.chart.width}
-                            />
-                          </div>
-                        </td>
-                        <td>
-                          <a
-                            href="trade.html"
-                            className={[styles.btn, "btn_primary"].join(" ")}
-                          >
-                            SELL
-                          </a>
-                          <a
-                            href="trade.html"
-                            className={[styles.btn, "btn_primary"].join(" ")}
-                          >
-                            BUY
-                          </a>
-                        </td>
-                      </tr>
-                    ))}
+                    {search(pools).length > 0 ? (
+                      <Fragment>
+                        {search(pools).map((pool: any) => (
+                          <tr key={pool.id}>
+                            <td className={styles.profile_info}>
+                              <div className="d-flex align-items-center justify-content-start">
+                                <div className={styles.wrapper}>
+                                  <img
+                                    alt={pool.title}
+                                    src="/avatar_1.png"
+                                    title={pool.title}
+                                  />
+                                </div>
+                                <div className={styles.pool_name}>
+                                  <p>{pool.title}</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td className={styles.price_range}>
+                              <div className="d-flex align-items-center justify-content-center">
+                                <div className={styles.price}>
+                                  <p>
+                                    <FontAwesomeIcon icon={faDollarSign} />
+                                    3.91
+                                  </p>
+                                  <p>
+                                    <FontAwesomeIcon icon={faCaretUp} />
+                                    +8.12
+                                  </p>
+                                </div>
+                                <Chart
+                                  height={dataSample.chart.height}
+                                  options={dataSample.options}
+                                  series={dataSample.series}
+                                  type="area"
+                                  width={dataSample.chart.width}
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <a
+                                href="trade.html"
+                                className={[styles.btn, "btn_primary"].join(
+                                  " "
+                                )}
+                              >
+                                SELL
+                              </a>
+                              <a
+                                href="trade.html"
+                                className={[styles.btn, "btn_primary"].join(
+                                  " "
+                                )}
+                              >
+                                BUY
+                              </a>
+                            </td>
+                          </tr>
+                        ))}
+                      </Fragment>
+                    ) : (
+                      <h4>No results for searched pools.</h4>
+                    )}
                   </table>
                 </div>
                 <div className={[styles.show_wrapper, "text-center"].join(" ")}>
