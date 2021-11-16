@@ -1,4 +1,4 @@
-import { Pool } from "../interfaces/pool";
+import { Pool } from "../../../interfaces/pool";
 
 export const POOLS: Pool[] = [
   { id: 1, title: "Pool 1" },
