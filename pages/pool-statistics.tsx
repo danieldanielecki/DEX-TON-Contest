@@ -73,8 +73,8 @@ const PoolStatistics: NextPage = () => {
     { id: 5, title: "Pool 5" },
   ];
 
-  function search(pools: any) {
-    return pools.filter((pool: any) => {
+  function search(pools: Pool[]) {
+    return pools.filter((pool: Pool) => {
       return (
         pool.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
         -1
@@ -148,7 +148,7 @@ const PoolStatistics: NextPage = () => {
                   <table className={styles.table}>
                     {search(pools).length > 0 ? (
                       <Fragment>
-                        {search(pools).map((pool: any) => (
+                        {search(pools).map((pool: Pool) => (
                           <tr key={pool.id}>
                             <td className={styles.profile_info}>
                               <div className="d-flex align-items-center justify-content-start">
