@@ -6,6 +6,7 @@ import Link from "next/link";
 import { faCaretUp, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { useState, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Pool } from "../interfaces/pool";
 import type { NextPage } from "next";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -64,7 +65,7 @@ const PoolStatistics: NextPage = () => {
   });
   const [searchQuery, setSearchQuery] = useState("");
 
-  const pools = [
+  const pools: Pool[] = [
     { id: 1, title: "Pool 1" },
     { id: 2, title: "Pool 2" },
     { id: 3, title: "Pool 3" },
