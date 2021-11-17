@@ -1,4 +1,3 @@
-
 import styles from "../styles/PoolStatistics.module.scss";
 import Head from "next/head";
 import Image from "next/image";
@@ -8,7 +7,6 @@ import { Pool } from "../interfaces/pool";
 import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
 import PoolTableItem from "../components/PoolTableItem";
-
 
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -41,9 +39,7 @@ const PoolStatistics: NextPage = () => {
               <a className={styles.card}>Home</a>
             </Link>
             <div className={styles.pools_tab_wrapper}>
-              <div
-                className={`S{styles.tab_btn_wrapper} text-center`}
-              >
+              <div className={`${styles.tab_btn_wrapper} text-center`}>
                 <button
                   className={`${styles.active} ${styles.btn} ${styles.tab_btnp}`}
                 >
@@ -69,7 +65,8 @@ const PoolStatistics: NextPage = () => {
                     type="text"
                   />
                   <button
-                    className={`${styles.btn} ${styles.btn_primary} d_flex align_items_center`}>
+                    className={`${styles.btn} ${styles.btn_primary} d_flex align_items_center`}
+                  >
                     <i className="fab fa-sistrix"></i>
                     Search
                   </button>
@@ -92,7 +89,7 @@ const PoolStatistics: NextPage = () => {
                     )}
                   </table>
                 </div>
-                <div className={`${styles.show_wrapper} text-center}`}>
+                <div className={`${styles.show_wrapper} text-center`}>
                   <a href="#">View More</a>
                 </div>
               </div>
