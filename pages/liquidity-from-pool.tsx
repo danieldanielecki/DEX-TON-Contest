@@ -10,14 +10,15 @@ import type { NextPage } from "next";
 
 const LiquidityFromPool: NextPage = () => {
   let tokenSet: Set<unknown> = new Set();
+  const tether = CURRENCIES.currencies[5];
   const [currencies, setCurrencies] = useState(CURRENCIES.currencies);
   const [currencyA, setCurrencyA] = useState(CURRENCIES.currencies[0]);
-  const [currencyB, setCurrencyB] = useState(CURRENCIES.currencies[1]);
+  const [currencyB, setCurrencyB] = useState(tether);
   const [currencyAval, setCurrencyAval] = useState(
     CURRENCIES.currencies[0].sellRate
   );
   const [currencyBval, setCurrencyBval] = useState(
-    CURRENCIES.currencies[1].sellRate
+      tether.sellRate
   );
 
   function onSelectCurrency(code: string) {
@@ -25,17 +26,17 @@ const LiquidityFromPool: NextPage = () => {
       (currency: any) => currency.code === code
     );
     setCurrencyA(currency[0]);
-    setCurrencyAval(currencyBval / currencyB.sellRate);
+    setCurrencyAval(currencyBval * currencyA.sellRate);
   }
 
   function onChangeHandler(e: ChangeEvent<HTMLInputElement>, currency: string) {
     if (currency === "A") {
       const newValueA: any | number = e.target.value; // Should be just number, dunno why TypeScript complains.
       setCurrencyAval(newValueA);
-      setCurrencyBval(newValueA * currencyB.sellRate);
+      setCurrencyBval(newValueA / currencyA.sellRate);
     } else if (currency === "B") {
       const newValueB: any | number = e.target.value; // Should be just number, dunno why TypeScript complains.
-      setCurrencyAval(newValueB / currencyB.sellRate);
+      setCurrencyAval(newValueB * currencyA.sellRate);
       setCurrencyBval(newValueB);
     }
   }
@@ -100,7 +101,6 @@ const LiquidityFromPool: NextPage = () => {
       </div>
       <div className="row">
         <div className="col-sm-12">
-          {/* TODO Raduan: When buying something from the liquidity pool all coins should refer to USDT, now it's not so much clear and when exchaning the same token to the same, e.g., BTC to BTC it calculates wrongly, fix this. */}
           <p>
             Exchange Rate {`${currencyA.sellRate} ${currencyA.code}`} ={" "}
             {`${currencyB.sellRate} ${currencyB.code}`}

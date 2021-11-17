@@ -14,22 +14,24 @@ const ExchangeToken: NextPage = () => {
   const [currencyA, setCurrencyA] = useState(CURRENCIES.currencies[0]);
   const [currencyB, setCurrencyB] = useState(CURRENCIES.currencies[1]);
   const [currencyAval, setCurrencyAval] = useState(
-    CURRENCIES.currencies[0].sellRate
+    1
   );
   const [currencyBval, setCurrencyBval] = useState(
-    CURRENCIES.currencies[1].sellRate
+    CURRENCIES.currencies[1].sellRate / CURRENCIES.currencies[0].sellRate
   );
 
   function onSelectCurrency(code: string, curr: string) {
-    const currency = currencies.filter(
+    const currency = currencies.find(
       (currency: any) => currency.code === code
-    );
+    )!;
     if (curr === "A") {
-      setCurrencyA(currency[0]);
-      setCurrencyAval(currencyBval / currencyB.sellRate);
-    } else if (curr === "B") {
-      setCurrencyB(currency[0]);
-      setCurrencyBval(currencyAval * currency[0].sellRate);
+      setCurrencyA(currency);
+      setCurrencyAval(1);
+      setCurrencyBval(1 * (currencyB.sellRate / currency.sellRate));
+    } else {
+      setCurrencyB(currency);
+      setCurrencyAval(1);
+      setCurrencyBval(1 * (currency.sellRate / currencyA.sellRate));
     }
   }
 
@@ -37,11 +39,11 @@ const ExchangeToken: NextPage = () => {
     if (currency === "A") {
       const newValueA: any | number = e.target.value; // Should be just number, dunno why TypeScript complains.
       setCurrencyAval(newValueA);
-      setCurrencyBval(newValueA * currencyB.sellRate);
-    } else if (currency === "B") {
+      setCurrencyBval(newValueA * (currencyB.sellRate / currencyA.sellRate));
+    } else {
       const newValueB: any | number = e.target.value; // Should be just number, dunno why TypeScript complains.
-      setCurrencyAval(newValueB / currencyB.sellRate);
       setCurrencyBval(newValueB);
+      setCurrencyAval(newValueB * (currencyA.sellRate / currencyB.sellRate));
     }
   }
 
@@ -116,11 +118,9 @@ const ExchangeToken: NextPage = () => {
       </div>
       <div className="row">
         <div className="col-sm-12">
-          {/* TODO Raduan: Make the exchanges between different coins. Currently, all are hardcoded and to refer to USDT, but this is not correct, for example when exchanging XRP to BTC; I'd like to see "Exchange Rate 1 XRP = XYZ BTC", and the same for other currencies. Now it looks like "Exchange Rate 0.91554703 XRP = 0.00001679 BTC", i.e., they all refer to USDT.  */}
-          {/* TODO Raduan (repeated from different file, too): When buying something from the liquidity pool all coins should refer to USDT, now it's not so much clear and when exchaning the same token to the same, e.g., BTC to BTC it calculates wrongly, fix this. */}
           <p>
-            Exchange Rate {`${currencyA.sellRate} ${currencyA.code}`} ={" "}
-            {`${currencyB.sellRate} ${currencyB.code}`}
+            Exchange Rate {`1 ${currencyA.code}`} ={" "}
+            {`${currencyB.sellRate/currencyA.sellRate} ${currencyB.code}`}
           </p>
         </div>
       </div>
