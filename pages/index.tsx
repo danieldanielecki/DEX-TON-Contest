@@ -30,16 +30,16 @@ const Home: NextPage = () => {
 
         <div>
           <Link href="/create-pool">
-            <a className={styles.card}>Create Pool</a>
+            <span className={styles.card}>Create Pool</span>
           </Link>
           <Link href="/exchange-token">
-            <a className={styles.card}>Exchange Token</a>
+            <span className={styles.card}>Exchange Token</span>
           </Link>
           <Link href="/liquidity-from-pool">
-            <a className={styles.card}>Liquidity from Pool</a>
+            <span className={styles.card}>Liquidity from Pool</span>
           </Link>
           <Link href="/pool-statistics">
-            <a className={styles.card}>Pool Statistics</a>
+            <span className={styles.card}>Pool Statistics</span>
           </Link>
         </div>
       </main>
