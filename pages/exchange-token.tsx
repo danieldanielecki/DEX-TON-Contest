@@ -8,6 +8,7 @@ import { Fragment } from "react";
 import type { NextPage } from "next";
 
 const ExchangeToken: NextPage = () => {
+    let tokenSet = new Set();
   return (
     <div className={styles.container}>
       <Head>
@@ -19,13 +20,24 @@ const ExchangeToken: NextPage = () => {
       <main className={styles.main}>
         {assetsManifest.length > 0 ? (
           <Fragment>
-            {assetsManifest.map((item) => (
-              // TODO Raduan: now this script returns "Encountered two children with the same key. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version." That is because, some of the cryptocurrencies coming from "cryptocurrency-icons" package have duplicated objects. Removing "key" would still be problematic, because: 1) that's a bad practice in general 2) the user on the page can see a blank image without the cryptocurrency symbol, in addition "Encountered two children with the same key" in the console pops up. Make an optimal solution to fix this bug.
+              {
+              assetsManifest.filter((value) => {
+                  if(tokenSet.has(value.symbol)){
+                    return false;
+                  } else {
+                    tokenSet.add(value.symbol);
+                    console.log(tokenSet);
+                    return true;
+                  }
+                }
+              ).map(
+                (item) => (
               <BaseIcon
                 key={item.symbol.toLowerCase()}
                 name={item.symbol.toLowerCase()}
               />
-            ))}
+            ))
+            }
           </Fragment>
         ) : (
           <h4>Problems with fetching cryptocurrencies, please try again.</h4>
