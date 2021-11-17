@@ -1,16 +1,12 @@
-import dynamic from "next/dynamic";
 import styles from "../styles/PoolStatistics.module.scss";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { faCaretUp, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { useState, Fragment } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Pool } from "../interfaces/pool";
-import { CHARTS } from "../config/data/pools/dummy-charts";
 import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import PoolTableItem from "../components/PoolTableItem";
 
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,25 +31,24 @@ const PoolStatistics: NextPage = () => {
       <main className={styles.main}>
         <div className="container-fluid">
           <div className="row">
-            <div className={[styles.pools_info, "text-center"].join(" ")}>
+            <div className={`${styles.pools_info} text-center`}>
               <h1 className={styles.name}>Pools</h1>
               <p>Trading</p>
             </div>
+            <Link href="/">
+              <a className={styles.card}>Home</a>
+            </Link>
             <div className={styles.pools_tab_wrapper}>
-              <div
-                className={[styles.tab_btn_wrapper, "text-center"].join(" ")}
-              >
+              <div className={`${styles.tab_btn_wrapper} text-center`}>
                 <button
-                  className={[styles.active, styles.btn, styles.tab_btnp].join(
-                    " "
-                  )}
+                  className={`${styles.active} ${styles.btn} ${styles.tab_btnp}`}
                 >
                   Best
                 </button>
-                <button className={[styles.btn, styles.tab_btnp].join(" ")}>
+                <button className={`${styles.btn} ${styles.tab_btnp}`}>
                   Worst
                 </button>
-                <button className={[styles.btn, styles.tab_btnp].join(" ")}>
+                <button className={`${styles.btn} ${styles.tab_btnp}`}>
                   Recent
                 </button>
               </div>
@@ -70,82 +65,23 @@ const PoolStatistics: NextPage = () => {
                     type="text"
                   />
                   <button
-                    className={[
-                      styles.btn,
-                      styles.btn_primary,
-                      "d_flex",
-                      "align_items_center",
-                    ].join(" ")}
-                    type="submit"
+                    className={`${styles.btn} ${styles.btn_primary} d_flex align_items_center`}
                   >
-                    <i className="fab fa-sistrix"></i> Search
+                    <i className="fab fa-sistrix"></i>
+                    Search
                   </button>
                 </form>
               </div>
               <div
                 id="best"
-                className={[styles.pool_search_tabs, styles.active].join(" ")}
+                className={`${styles.pool_search_tabs} ${styles.active}`}
               >
                 <div className={styles.pools_responsive_table_wrapper}>
                   <table className={styles.table}>
                     {search(POOLS).length > 0 ? (
                       <Fragment>
                         {search(POOLS).map((pool: Pool) => (
-                          <tr key={pool.id}>
-                            <td className={styles.profile_info}>
-                              <div className="d-flex align-items-center justify-content-start">
-                                <div className={styles.wrapper}>
-                                  <img
-                                    alt={pool.title}
-                                    src="/avatar_1.png"
-                                    title={pool.title}
-                                  />
-                                </div>
-                                <div className={styles.pool_name}>
-                                  <p>{pool.title}</p>
-                                </div>
-                              </div>
-                            </td>
-                            <td className={styles.price_range}>
-                              <div className="d-flex align-items-center justify-content-center">
-                                <div className={styles.price}>
-                                  <p>
-                                    <FontAwesomeIcon icon={faDollarSign} />
-                                    3.91
-                                  </p>
-                                  <p>
-                                    <FontAwesomeIcon icon={faCaretUp} />
-                                    +8.12
-                                  </p>
-                                </div>
-                                <Chart
-                                  height={CHARTS.chart.height}
-                                  options={CHARTS.options}
-                                  series={CHARTS.series}
-                                  type="area"
-                                  width={CHARTS.chart.width}
-                                />
-                              </div>
-                            </td>
-                            <td>
-                              <a
-                                href="trade.html"
-                                className={[styles.btn, "btn_primary"].join(
-                                  " "
-                                )}
-                              >
-                                SELL
-                              </a>
-                              <a
-                                href="trade.html"
-                                className={[styles.btn, "btn_primary"].join(
-                                  " "
-                                )}
-                              >
-                                BUY
-                              </a>
-                            </td>
-                          </tr>
+                          <PoolTableItem pool={pool} key={pool.id} />
                         ))}
                       </Fragment>
                     ) : (
@@ -153,16 +89,13 @@ const PoolStatistics: NextPage = () => {
                     )}
                   </table>
                 </div>
-                <div className={[styles.show_wrapper, "text-center"].join(" ")}>
+                <div className={`${styles.show_wrapper} text-center`}>
                   <a href="#">View More</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Link href="/">
-          <a className={styles.card}>Home</a>
-        </Link>
       </main>
 
       <footer className={styles.footer}>
