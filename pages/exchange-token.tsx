@@ -1,14 +1,49 @@
-import assetsManifest from "cryptocurrency-icons/manifest.json";
 import styles from "../styles/Home.module.scss";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import SelectCurrency from "../components/SelectCurrency";
+import { useState, ChangeEvent, Fragment } from "react";
 import { BaseIcon } from "../components/BaseIcon";
-import { Fragment } from "react";
+import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
 
 const ExchangeToken: NextPage = () => {
   let tokenSet: Set<unknown> = new Set();
+  const [currencies, setCurrencies] = useState(CURRENCIES.currencies);
+  const [currencyA, setCurrencyA] = useState(CURRENCIES.currencies[0]);
+  const [currencyB, setCurrencyB] = useState(CURRENCIES.currencies[1]);
+  const [currencyAval, setCurrencyAval] = useState(
+    CURRENCIES.currencies[0].sellRate
+  );
+  const [currencyBval, setCurrencyBval] = useState(
+    CURRENCIES.currencies[1].sellRate
+  );
+
+  function onSelectCurrency(code: string, curr: string) {
+    const currency = currencies.filter(
+      (currency: any) => currency.code === code
+    );
+    if (curr === "A") {
+      setCurrencyA(currency[0]);
+      setCurrencyAval(currencyBval / currencyB.sellRate);
+    } else if (curr === "B") {
+      setCurrencyB(currency[0]);
+      setCurrencyBval(currencyAval * currency[0].sellRate);
+    }
+  }
+
+  function onChangeHandler(e: ChangeEvent<HTMLInputElement>, currency: string) {
+    if (currency === "A") {
+      const newValueA: any | number = e.target.value; // Should be just number, dunno why TypeScript complains.
+      setCurrencyAval(newValueA);
+      setCurrencyBval(newValueA * currencyB.sellRate);
+    } else if (currency === "B") {
+      const newValueB: any | number = e.target.value; // Should be just number, dunno why TypeScript complains.
+      setCurrencyAval(newValueB / currencyB.sellRate);
+      setCurrencyBval(newValueB);
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -18,33 +53,79 @@ const ExchangeToken: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <SelectCurrency
+        currencies={currencies}
+        onSelectCurrency={(e) => {
+          onSelectCurrency(e, "A");
+        }}
+      />
+      {
+        <SelectCurrency
+          currencies={currencies}
+          onSelectCurrency={(e) => {
+            onSelectCurrency(e, "B");
+          }}
+        />
+      }
+      <div className="row">
+        <div className="col-sm-6">
+          <h3>{currencyA.name}</h3>
+          {/* !IMPORTANT: ton.svg is broken! */}
+          <BaseIcon
+            key={currencyA.code.toLowerCase()}
+            name={currencyA.code.toLowerCase()}
+          />
+          <div className="input-group">
+            <input
+              aria-describedby="currencyA"
+              className="form-control"
+              pattern="\d\.\d{2}"
+              type="number"
+              value={currencyAval}
+              onChange={(e) => {
+                onChangeHandler(e, "A");
+              }}
+            />
+            <span className="input-group-addon" id="currencyA">
+              {currencyA.code}
+            </span>
+          </div>
+        </div>
+        <div className="col-sm-6">
+          <BaseIcon
+            key={currencyB.code.toLowerCase()}
+            name={currencyB.code.toLowerCase()}
+          />
+          <h3>{currencyB.name}</h3>
+          <div className="input-group">
+            <input
+              aria-describedby="currencyB"
+              className="form-control"
+              onChange={(e) => {
+                onChangeHandler(e, "B");
+              }}
+              pattern="\d\.\d{2}"
+              type="number"
+              value={currencyBval}
+            />
+            <span className="input-group-addon" id="currencyB">
+              {currencyB.code}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-sm-12">
+          {/* TODO Raduan: Make the exchanges between different coins. Currently, all are hardcoded and to refer to USDT, but this is not correct, for example when exchanging XRP to BTC; I'd like to see "Exchange Rate 1 XRP = XYZ BTC", and the same for other currencies. Now it looks like "Exchange Rate 0.91554703 XRP = 0.00001679 BTC", i.e., they all refer to USDT.  */}
+          {/* TODO Raduan (repeated from different file, too): When buying something from the liquidity pool all coins should refer to USDT, now it's not so much clear and when exchaning the same token to the same, e.g., BTC to BTC it calculates wrongly, fix this. */}
+          <p>
+            Exchange Rate {`${currencyA.sellRate} ${currencyA.code}`} ={" "}
+            {`${currencyB.sellRate} ${currencyB.code}`}
+          </p>
+        </div>
+      </div>
       <main className={styles.main}>
-        {assetsManifest.length > 0 ? (
-          <Fragment>
-            {assetsManifest
-              .filter((value) => {
-                if (tokenSet.has(value.symbol)) {
-                  return false;
-                } else {
-                  tokenSet.add(value.symbol);
-                  return true;
-                }
-              })
-              .map((item) => (
-                <div>
-                  <h1>{item.symbol}</h1>
-                  <BaseIcon
-                    key={item.symbol.toLowerCase()}
-                    name={item.symbol.toLowerCase()}
-                  />
-                </div>
-              ))}
-          </Fragment>
-        ) : (
-          <h4>Problems with fetching cryptocurrencies, please try again.</h4>
-        )}
         <h1 className={styles.title}>Exchange Token</h1>
-
         <p className={styles.description}>
           Placeholder for Exchange Token description.
         </p>
@@ -54,7 +135,6 @@ const ExchangeToken: NextPage = () => {
           </Link>
         </div>
       </main>
-
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
