@@ -8,7 +8,8 @@ import { Fragment } from "react";
 import type { NextPage } from "next";
 
 const ExchangeToken: NextPage = () => {
-    let tokenSet = new Set();
+  let tokenSet: Set<unknown> = new Set();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -20,24 +21,24 @@ const ExchangeToken: NextPage = () => {
       <main className={styles.main}>
         {assetsManifest.length > 0 ? (
           <Fragment>
-              {
-              assetsManifest.filter((value) => {
-                  if(tokenSet.has(value.symbol)){
-                    return false;
-                  } else {
-                    tokenSet.add(value.symbol);
-                    console.log(tokenSet);
-                    return true;
-                  }
+            {assetsManifest
+              .filter((value) => {
+                if (tokenSet.has(value.symbol)) {
+                  return false;
+                } else {
+                  tokenSet.add(value.symbol);
+                  return true;
                 }
-              ).map(
-                (item) => (
-              <BaseIcon
-                key={item.symbol.toLowerCase()}
-                name={item.symbol.toLowerCase()}
-              />
-            ))
-            }
+              })
+              .map((item) => (
+                <div>
+                  <h1>{item.symbol}</h1>
+                  <BaseIcon
+                    key={item.symbol.toLowerCase()}
+                    name={item.symbol.toLowerCase()}
+                  />
+                </div>
+              ))}
           </Fragment>
         ) : (
           <h4>Problems with fetching cryptocurrencies, please try again.</h4>
