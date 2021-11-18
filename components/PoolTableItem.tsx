@@ -5,18 +5,15 @@ import { CHARTS } from "../config/data/pools/dummy-charts";
 import styles from "../styles/PoolStatistics.module.scss";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const PoolTableItem = (props: { pool: { title: string }}) => {
+const PoolTableItem = (props: { pool: { title: string } }) => {
+  // TODO Raduan: expandable table row, like in https://www.freakyjolly.com/react-table-tutorial/, to discuss if it makes sense.
   const { pool } = props;
   return (
     <tr>
       <td className={styles.profile_info}>
         <div className="d-flex align-items-center justify-content-start">
           <div className={styles.wrapper}>
-            <img
-              alt={pool.title}
-              src="/avatar_1.png"
-              title={pool.title}
-            />
+            <img alt={pool.title} src="/avatar_1.png" title={pool.title} />
           </div>
           <div className={styles.pool_name}>
             <p>{pool.title}</p>
@@ -45,21 +42,15 @@ const PoolTableItem = (props: { pool: { title: string }}) => {
         </div>
       </td>
       <td>
-        <a
-          href="trade.html"
-          className={`${styles.btn} btn_primary`}
-        >
+        <a href="trade.html" className={`${styles.btn} btn_primary`}>
           SELL
         </a>
-        <a
-          href="trade.html"
-          className={`${styles.btn} btn_primary`}
-        >
+        <a href="trade.html" className={`${styles.btn} btn_primary`}>
           BUY
         </a>
       </td>
     </tr>
   );
-}
+};
 
 export default PoolTableItem;

@@ -11,6 +11,14 @@ import PoolTableItem from "../components/PoolTableItem";
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
+  function onSortClick() {
+    console.log(
+      "TODO Raduan: please implement sorting logic here. On first click ascending, and on second toggle it to descending. Third click ascending, fourth descending, etc., i.e. toggle sorting mechanism for the 'pool.title'. You can follow https://www.freakyjolly.com/react-table-tutorial/ & https://react-table.tanstack.com"
+    );
+  }
+
+  // TODO Raduan: you can try to implement pagination as well, information is also included in https://www.freakyjolly.com/react-table-tutorial/ how to do it.
+
   function search(pools: Pool[]) {
     return pools.filter((pool: Pool) => {
       return (
@@ -50,6 +58,12 @@ const PoolStatistics: NextPage = () => {
                 </button>
                 <button className={`${styles.btn} ${styles.tab_btnp}`}>
                   Recent
+                </button>
+                <button
+                  className={`${styles.btn} ${styles.tab_btnp}`}
+                  onClick={onSortClick}
+                >
+                  Sort
                 </button>
               </div>
               <div className={styles.pool_search_tab_wrapper}>
