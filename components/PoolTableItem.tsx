@@ -1,8 +1,9 @@
 import dynamic from "next/dynamic";
+import styles from "../styles/PoolStatistics.module.scss";
+import PropTypes from "prop-types";
 import { faCaretUp, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CHARTS } from "../config/data/pools/dummy-charts";
-import styles from "../styles/PoolStatistics.module.scss";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const PoolTableItem = (props: { pool: { title: string } }) => {
@@ -51,6 +52,10 @@ const PoolTableItem = (props: { pool: { title: string } }) => {
       </td>
     </tr>
   );
+};
+
+PoolTableItem.propTypes = {
+  pool: PropTypes.object.isRequired,
 };
 
 export default PoolTableItem;

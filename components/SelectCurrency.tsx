@@ -1,9 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const SelectCurrency = (props: {
   currencies: any;
-  isOne: boolean;
+  isOne?: boolean;
   onSelectCurrency: any;
 }) => {
   const { currencies, isOne, onSelectCurrency } = props;
@@ -33,6 +32,7 @@ const SelectCurrency = (props: {
 
 SelectCurrency.propTypes = {
   currencies: PropTypes.array.isRequired,
+  isOne: PropTypes.bool,
   onSelectCurrency: PropTypes.func.isRequired,
 };
 
