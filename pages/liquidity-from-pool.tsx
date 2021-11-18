@@ -17,9 +17,7 @@ const LiquidityFromPool: NextPage = () => {
   const [currencyAval, setCurrencyAval] = useState(
     CURRENCIES.currencies[0].sellRate
   );
-  const [currencyBval, setCurrencyBval] = useState(
-      tether.sellRate
-  );
+  const [currencyBval, setCurrencyBval] = useState(tether.sellRate);
 
   function onSelectCurrency(code: string) {
     const currency = currencies.filter(

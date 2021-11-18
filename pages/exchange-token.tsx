@@ -13,9 +13,7 @@ const ExchangeToken: NextPage = () => {
   const [currencies, setCurrencies] = useState(CURRENCIES.currencies);
   const [currencyA, setCurrencyA] = useState(CURRENCIES.currencies[0]);
   const [currencyB, setCurrencyB] = useState(CURRENCIES.currencies[1]);
-  const [currencyAval, setCurrencyAval] = useState(
-    1
-  );
+  const [currencyAval, setCurrencyAval] = useState(1);
   const [currencyBval, setCurrencyBval] = useState(
     CURRENCIES.currencies[1].sellRate / CURRENCIES.currencies[0].sellRate
   );
@@ -120,7 +118,7 @@ const ExchangeToken: NextPage = () => {
         <div className="col-sm-12">
           <p>
             Exchange Rate {`1 ${currencyA.code}`} ={" "}
-            {`${currencyB.sellRate/currencyA.sellRate} ${currencyB.code}`}
+            {`${currencyB.sellRate / currencyA.sellRate} ${currencyB.code}`}
           </p>
         </div>
       </div>
