@@ -1,8 +1,9 @@
-import type { NextPage } from "next";
+import styles from "../styles/Home.module.scss";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles/Home.module.scss";
+import PerformTransaction from "../components/PerformTransaction";
+import type { NextPage } from "next";
 
 const CreatePool: NextPage = () => {
   return (
@@ -13,6 +14,15 @@ const CreatePool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <PerformTransaction />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <PerformTransaction isBuy={true} />
       <main className={styles.main}>
         <h1 className={styles.title}>Create Pool</h1>
 

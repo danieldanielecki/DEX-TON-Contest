@@ -42,10 +42,10 @@ const PoolTableItem = (props: { pool: { title: string } }) => {
         </div>
       </td>
       <td>
-        <a href="trade.html" className={`${styles.btn} btn_primary`}>
+        <a href="#" className={`${styles.btn} btn_primary`}>
           SELL
         </a>
-        <a href="trade.html" className={`${styles.btn} btn_primary`}>
+        <a href="#" className={`${styles.btn} btn_primary`}>
           BUY
         </a>
       </td>

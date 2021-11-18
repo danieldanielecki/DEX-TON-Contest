@@ -1,0 +1,108 @@
+@import "./main.scss";
+@import "./next_starter.scss";
+
+.trade_tab {
+  background-position: center center;
+  background-repeat: no-repeat;
+  bottom: -10rem; // TODO: It might be dropped later when styling will be from the parent component containing this component.
+  margin: -9rem auto 0;
+  max-width: 60rem;
+  padding: 2rem 1rem;
+  position: relative;
+
+  .tit {
+    color: $white;
+    font-family: $mulish;
+    text-align: center;
+  }
+}
+
+.activet {
+  display: block;
+}
+
+.sha {
+  font-family: $mulish;
+  font-weight: bold;
+  color: $white;
+}
+
+.txt_wrapper {
+  max-width: 50rem;
+  margin: 1.5rem auto 0;
+
+  .tot {
+    border-top: 1px dashed $white;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+  }
+  a {
+    @include border-radius(30px);
+    @include gradient;
+
+    color: $white;
+    display: inline-block;
+    font-family: $mulish;
+    line-height: 2;
+    margin: 1rem 0 2rem;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $lochmara;
+    }
+  }
+}
+
+.val {
+  color: $white;
+  font-family: $mulish;
+  font-weight: bold;
+}
+
+.wrap {
+  margin-top: 1rem;
+
+  .rangee_wrapper {
+    @include border-radius(1rem);
+
+    background-color: $pickled-bluewood;
+    padding: 0.5rem 1rem;
+
+    .number {
+      @include border-radius(1rem);
+
+      background-color: $lochmara;
+      height: 3rem;
+      margin: 0.25rem;
+      padding-top: 0.75rem;
+      width: 6rem;
+
+      p {
+        color: $white;
+        font-family: $mulish;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+    .minus,
+    .plus {
+      @include border-radius(2rem);
+      @include transition(all 0.6s);
+
+      background-color: $lochmara;
+      cursor: pointer;
+      height: 2.5rem;
+      width: 2.5rem;
+
+      svg {
+        color: $white;
+        display: inline-block;
+        font-size: 1.5rem;
+      }
+      &:hover {
+        background-color: $lochmara;
+      }
+    }
+  }
+}
