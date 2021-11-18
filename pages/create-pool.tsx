@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.scss";
+import useIsBuySelected from "../hooks/useIsBuySelected";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +7,8 @@ import PerformTransaction from "../components/PerformTransaction";
 import type { NextPage } from "next";
 
 const CreatePool: NextPage = () => {
+  const [isBuySelected, setIsBuySelected] = useIsBuySelected();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,15 +17,9 @@ const CreatePool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PerformTransaction />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <PerformTransaction isBuy={true} />
+      <button onClick={setIsBuySelected}>Toggle Buy/Sell</button>
+
+      <PerformTransaction isBuy={isBuySelected} />
       <main className={styles.main}>
         <h1 className={styles.title}>Create Pool</h1>
 

@@ -7,12 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const PerformTransaction = (props: { isBuy?: boolean }) => {
   const { isBuy } = props;
 
-  if (isBuy) {
-    console.log("buy");
-  } else {
-    console.log("sell");
-  }
-
   return (
     <div>
       <div
