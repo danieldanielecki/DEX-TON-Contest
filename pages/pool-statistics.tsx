@@ -28,6 +28,8 @@ const PoolStatistics: NextPage = () => {
     });
   }
 
+  // TODO Katarzyna: the styling has margins from left/right, please figure out what's wrong, I guess some Bootstrap classes.
+  // TODO Katarzyna: the PoolTableItem isn't centered, please fix this; should be some Bootstrap/Flexbox-classes related.
   return (
     <div className={styles.container}>
       <Head>

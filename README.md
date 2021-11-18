@@ -44,3 +44,7 @@ https://ton.org/brand-assets
 ## TODO Raduan
 
 Add linting to `package.json`, make sure you're using Prettier with settings of 2 spaces for indents, so after you'll implement it the code won't change too much.
+
+## TODO Katarzyna
+
+Please add mobile responsive header with hamburger menu and animation. The menu should have 5 routers links: home, create-pool, exchange-token, liquidity-from-pool, and pool-statistics.
