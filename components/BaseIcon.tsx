@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 const BaseIcon = (props: { name: string }) => {
   const { name } = props;
+  // TODO Raduan: make an exception for ton.svg, and load it locally; you can find brand assets here https://ton.org/brand-assets.
 
   return (
     <div>

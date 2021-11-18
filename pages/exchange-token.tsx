@@ -8,6 +8,7 @@ import { useState, ChangeEvent, Fragment } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
 
+// TODO Raduan: Fix initial state of the icon which displays an icon of Bitcoin now, even though in the option/select list Binance Coin is being selected for the second "SelectCurrency" component.
 const ExchangeToken: NextPage = () => {
   let tokenSet: Set<unknown> = new Set();
   const [currencies, setCurrencies] = useState(CURRENCIES.currencies);
