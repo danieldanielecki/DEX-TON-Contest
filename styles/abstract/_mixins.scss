@@ -94,3 +94,29 @@
   -o-transition: $value;
   transition: $value;
 }
+
+@mixin burger {
+  z-index: 100;
+  width: 40px;
+  height: 35px;
+  border: 0;
+  outline: none;
+  border-top: 5px solid #ffffff;
+  background: transparent;
+  position: absolute;
+  right: 40px;
+  top: 25px;
+  transition: 0.3s transform linear;
+  cursor: crosshair;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 5px solid #ffffff;
+    z-index: 100;
+  }
+}

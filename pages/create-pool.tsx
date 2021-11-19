@@ -20,7 +20,7 @@ const CreatePool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header /> */}
+      <Header />
 
       <PerformTransaction isBuy={isBuySelected} />
       <main className={styles.main}>

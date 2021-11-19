@@ -15,10 +15,72 @@
   color: $white;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
   &:hover {
     color: $lochmara;
   }
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: $screen-change-max) {
+    margin: 2px 0px;
+    padding: 15px 20px;
+    font-size: 14px;
+    background-color: $logotype-dark;
+  }
 }
+
 .white {
   color: $white;
+}
+
+.main_burger {
+  @media only screen and (min-device-width: 320px) and (max-device-width: $screen-change-max) {
+    @include burger;
+
+    &::before {
+      transform: translateY(10px);
+    }
+
+    &::after {
+      transform: translateY(25px);
+      transition: 0.3s transform linear;
+    }
+
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+
+  @media only screen and (min-device-width: $screen-change-min) {
+    display: none;
+  }
+}
+
+.main_burger_focus {
+  @media only screen and (min-device-width: 320px) and (max-device-width: $screen-change-max) {
+    @include burger;
+    transform: rotate(45deg) translateY(5px);
+    border: none;
+
+    &::after {
+      transition: 0.3s transform linear;
+      transform: rotate(-90deg);
+    }
+
+    &::before {
+      transition: 0.3s transform linear;
+    }
+  }
+
+  @media only screen and (min-device-width: $screen-change-min) {
+    display: none;
+  }
+}
+
+.navbar-collapse {
+  margin: 25px 0px;
+  border: 2px solid white;
+  border-left: none;
+  border-right: none;
+  max-height: 290px;
+  overflow: auto;
 }
