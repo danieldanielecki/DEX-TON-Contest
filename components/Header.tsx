@@ -1,5 +1,5 @@
 // import PropTypes from "prop-types";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/router';
@@ -8,53 +8,64 @@ const Header = () => {
   const router = useRouter();
   return (
     <header>
-      <nav className="navbar fixed-top navbar-expand-lg">
+      <nav className={`${styles.navbar} fixed-top navbar-expand-lg`}>
         <div className="container">
           <a className="navbar-brand" href="https://ton.org/" target="_blank">
-            <Image src="/logoTon.svg" alt="Ton Logo" width={72} height={48}/>
+            <Image src="/logoTon.svg" alt="Ton Logo" width={72} height={48} />
           </a>
-          <div className="d-flex flex-row order-2 order-lg-3 user_info">
+          {/* <div className="d-flex flex-row order-2 order-lg-3 user_info">
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDefault" aria-controls="navDefault" aria-expanded="false" aria-label="Toggle navigation" id="toggleIcon">
               <span className="bar_one"></span>
               <span className="bar_two"></span>
               <span className="bar_three"></span>
+            </button>
+          </div> */}
+          <div className="switch_wrapper">
+            <span> Theme </span>
+            <button className="btn switcher" id="light" title="Switch to Light Theme">
+              <i className="fas fa-star-and-crescent"></i>
+              light
+            </button>
+            <button className="btn switcher actives" id="dark" title="Switch to Dark Theme">
+              <i className="fas fa-adjust"></i>
+              dark
             </button>
           </div>
           <div className="collapse navbar-collapse justify-content-end order-3 order-lg-2" id="navDefault">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link href="/">
-                  <span className={router.pathname === '/' ? 'btn disabled' : 'nav-link'}>
+                  <a className={router.pathname === '/' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
                     Home
-                    </span>
+                  </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/create-pool">
-                  <span className={router.pathname === '/create-pool' ? 'btn disabled' : 'nav-link'}>
+                  <a className={router.pathname === '/create-pool' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
                     Create Pool
-                    </span>
+                  </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/exchange-token">
-                  <span className={router.pathname === '/exchange-token' ? 'btn disabled' : 'nav-link'}>
+                  <a className={router.pathname === '/exchange-token' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
                     Exchange Token
-                    </span>
+                  </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/liquidity-from-pool">
-                  <span className={router.pathname === '/liquidity-from-pool' ? 'btn disabled' : 'nav-link'}>
+                  <a className={router.pathname === '/liquidity-from-pool' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
                     Liquidity from Pool
-                  </span>
+                  </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/pool-statistics">
-                  <span className={router.pathname === '/pool-statistics' ? 'btn disabled' : 'nav-link'}>
+                  <a className={router.pathname === '/pool-statistics' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
                     Pool Statistics
-                    </span>
+                  </a>
                 </Link>
               </li>
               {/* <li className="nav-item d-block d-sm-none">
