@@ -70,10 +70,8 @@ const PoolStatistics: NextPage = () => {
                     required
                     type="text"
                   />
-                  <button className={`${styles.btn} ${styles.btn_primary}`}>
-                    <i className="fab fa-sistrix"></i>
-                    Search
-                  </button>
+                  <BaseButton title="Search" />
+                  {/* <i className="fab fa-sistrix"></i> */}
                 </form>
               </div>
               <div

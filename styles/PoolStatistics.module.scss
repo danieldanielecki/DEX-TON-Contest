@@ -87,20 +87,6 @@
           color: $lochmara;
         }
       }
-
-      .btn {
-        @include btn_style;
-        @include border-radius(3rem);
-
-        padding: 0.2rem 2rem;
-        position: absolute;
-        right: 0.5rem;
-        top: 0.5rem;
-        i {
-          display: inline-block;
-          margin-right: 0.5rem;
-        }
-      }
     }
   }
 
