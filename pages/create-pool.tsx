@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.scss";
 import useIsBuySelected from "../hooks/useIsBuySelected";
+import BaseButton from "../components/BaseButton";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,4 +1,5 @@
 import styles from "../styles/PerformTransaction.module.scss";
+import BaseButton from "./BaseButton";
 import PropTypes from "prop-types";
 import React from "react";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -53,7 +54,8 @@ const PerformTransaction = (props: { isBuy?: boolean }) => {
               <p className={styles.sha}>Total: </p>
               <p className={styles.val}>$18.96</p>
             </div>
-            <a href="#">{isBuy ? "Buy" : "Sell"}</a>
+
+            <BaseButton title={isBuy ? "Buy" : "Sell"} />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import styles from "../styles/PoolStatistics.module.scss";
+import BaseButton from "./BaseButton";
 import PropTypes from "prop-types";
 import { faCaretUp, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -43,12 +44,8 @@ const PoolTableItem = (props: { pool: { title: string } }) => {
         </div>
       </td>
       <td>
-        <a href="#" className={`${styles.btn} btn_primary`}>
-          SELL
-        </a>
-        <a href="#" className={`${styles.btn} btn_primary`}>
-          BUY
-        </a>
+        <BaseButton title="Buy" />
+        <BaseButton title="Sell" />
       </td>
     </tr>
   );

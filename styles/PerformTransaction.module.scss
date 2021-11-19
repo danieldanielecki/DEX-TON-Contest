@@ -36,22 +36,6 @@
     margin-top: 1rem;
     padding-top: 0.5rem;
   }
-  a {
-    @include border-radius(30px);
-    @include gradient;
-
-    color: $white;
-    display: inline-block;
-    font-family: $mulish;
-    line-height: 2;
-    margin: 1rem 0 2rem;
-    padding: 1rem 2rem;
-    text-transform: uppercase;
-
-    &:hover {
-      color: $lochmara;
-    }
-  }
 }
 
 .val {

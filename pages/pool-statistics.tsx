@@ -1,4 +1,5 @@
 import styles from "../styles/PoolStatistics.module.scss";
+import BaseButton from "../components/BaseButton";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -50,23 +51,10 @@ const PoolStatistics: NextPage = () => {
             </Link>
             <div className={styles.pools_tab_wrapper}>
               <div className={`${styles.tab_btn_wrapper} text-center`}>
-                <button
-                  className={`${styles.active} ${styles.btn} ${styles.tab_btnp}`}
-                >
-                  Best
-                </button>
-                <button className={`${styles.btn} ${styles.tab_btnp}`}>
-                  Worst
-                </button>
-                <button className={`${styles.btn} ${styles.tab_btnp}`}>
-                  Recent
-                </button>
-                <button
-                  className={`${styles.btn} ${styles.tab_btnp}`}
-                  onClick={onSortClick}
-                >
-                  Sort
-                </button>
+                <BaseButton title="Best" />
+                <BaseButton title="Worst" />
+                <BaseButton title="Recent" />
+                <BaseButton title="Sort" />
               </div>
               <div className={styles.pool_search_tab_wrapper}>
                 <form action="#" method="post">
@@ -80,9 +68,7 @@ const PoolStatistics: NextPage = () => {
                     required
                     type="text"
                   />
-                  <button
-                    className={`${styles.btn} ${styles.btn_primary} d_flex align_items_center`}
-                  >
+                  <button className={`${styles.btn} ${styles.btn_primary}`}>
                     <i className="fab fa-sistrix"></i>
                     Search
                   </button>
