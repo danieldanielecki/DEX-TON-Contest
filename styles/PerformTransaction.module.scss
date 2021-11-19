@@ -5,8 +5,9 @@
   background-position: center center;
   background-repeat: no-repeat;
   bottom: -10rem; // TODO: It might be dropped later when styling will be from the parent component containing this component.
-  margin: -9rem auto 0;
+  margin: -2rem auto 5rem;
   max-width: 60rem;
+  min-width: 30rem;
   padding: 2rem 1rem;
   position: relative;
 
