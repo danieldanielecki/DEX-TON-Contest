@@ -48,9 +48,6 @@ const PoolStatistics: NextPage = () => {
               <h1 className={styles.name}>Pools</h1>
               <p>Trading</p>
             </div>
-            <Link href="/">
-              <a className={styles.card}>Home</a>
-            </Link>
             <div className={styles.pools_tab_wrapper}>
               <div className={`${styles.tab_btn_wrapper} text-center`}>
                 <BaseButton title="Best" />

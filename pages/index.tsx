@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import type { NextPage } from "next";
-import Header from '../components/Header';
+import Header from "../components/Header";
 
 const Home: NextPage = () => {
   return (
@@ -29,21 +29,6 @@ const Home: NextPage = () => {
         </h1>
 
         <p className={styles.description}>Placeholder for Home description.</p>
-
-        <div>
-          <Link href="/create-pool">
-            <span className={styles.card}>Create Pool</span>
-          </Link>
-          <Link href="/exchange-token">
-            <span className={styles.card}>Exchange Token</span>
-          </Link>
-          <Link href="/liquidity-from-pool">
-            <span className={styles.card}>Liquidity from Pool</span>
-          </Link>
-          <Link href="/pool-statistics">
-            <span className={styles.card}>Pool Statistics</span>
-          </Link>
-        </div>
       </main>
 
       <footer className={styles.footer}>

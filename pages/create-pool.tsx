@@ -31,11 +31,6 @@ const CreatePool: NextPage = () => {
         </p>
 
         <BaseButton onClick={setIsBuySelected} title="Toggle" />
-        <div>
-          <Link href="/">
-            <a className={styles.card}>Home</a>
-          </Link>
-        </div>
       </main>
       <footer className={styles.footer}>
         <a
