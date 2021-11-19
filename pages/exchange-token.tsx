@@ -55,7 +55,7 @@ const ExchangeToken: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      {/* <Header /> */}
 
       <SelectCurrency
         currencies={currencies}
