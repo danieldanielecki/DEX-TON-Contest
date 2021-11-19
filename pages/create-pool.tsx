@@ -20,8 +20,8 @@ const CreatePool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <button onClick={setIsBuySelected}>Toggle Buy/Sell</button>
-      <Header />
+      {/* <Header /> */}
+
       <PerformTransaction isBuy={isBuySelected} />
       <main className={styles.main}>
         <h1 className={styles.title}>Create Pool</h1>
@@ -29,13 +29,14 @@ const CreatePool: NextPage = () => {
         <p className={styles.description}>
           Placeholder for Create Pool description.
         </p>
+
+        <BaseButton onClick={setIsBuySelected} title="Toggle" />
         <div>
           <Link href="/">
             <a className={styles.card}>Home</a>
           </Link>
         </div>
       </main>
-
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
