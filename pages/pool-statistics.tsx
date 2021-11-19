@@ -8,6 +8,7 @@ import { Pool } from "../interfaces/pool";
 import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
 import PoolTableItem from "../components/PoolTableItem";
+import Header from "../components/Header";
 
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,6 +41,7 @@ const PoolStatistics: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <Header />
         <div className="container-fluid">
           <div className="row">
             <div className={`${styles.pools_info} text-center`}>

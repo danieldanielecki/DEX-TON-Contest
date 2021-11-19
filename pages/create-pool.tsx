@@ -5,6 +5,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import PerformTransaction from "../components/PerformTransaction";
+import Header from "../components/Header";
+
 import type { NextPage } from "next";
 
 const CreatePool: NextPage = () => {
@@ -19,7 +21,7 @@ const CreatePool: NextPage = () => {
       </Head>
 
       <button onClick={setIsBuySelected}>Toggle Buy/Sell</button>
-
+      <Header />
       <PerformTransaction isBuy={isBuySelected} />
       <main className={styles.main}>
         <h1 className={styles.title}>Create Pool</h1>
