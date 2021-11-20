@@ -49,45 +49,39 @@ const Header = () => {
             <ul className='navbar-nav'>
               <li className={`nav-item ${burgerVisible ? 'dropdown' : ''}`} >
                 <Link href="/">
-                  <a className={router.pathname === '/' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
+                  <a className={router.pathname === '/' ? `${styles.highlighted}` : styles.nav_link}>
                     Home
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/create-pool">
-                  <a className={router.pathname === '/create-pool' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
+                  <a className={router.pathname === '/create-pool' ? `${styles.highlighted}` : styles.nav_link}>
                     Create Pool
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/exchange-token">
-                  <a className={router.pathname === '/exchange-token' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
+                  <a className={router.pathname === '/exchange-token' ? `${styles.highlighted}` : styles.nav_link}>
                     Exchange Token
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/liquidity-from-pool">
-                  <a className={router.pathname === '/liquidity-from-pool' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
+                  <a className={router.pathname === '/liquidity-from-pool' ? `${styles.highlighted}` : styles.nav_link}>
                     Liquidity from Pool
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/pool-statistics">
-                  <a className={router.pathname === '/pool-statistics' ? `btn disabled ${styles.highlighted}` : styles.nav_link}>
+                  <a className={router.pathname === '/pool-statistics' ? `${styles.highlighted}` : styles.nav_link}>
                     Pool Statistics
                   </a>
                 </Link>
               </li>
-              {/* <li className="nav-item d-block d-sm-none">
-                <a className="nav-link registration" href="login.html">LOG IN</a>
-              </li>
-              <li className="nav-item d-block d-sm-none">
-                <a className="nav-link registration" href="signup.html">SIGN UP</a>
-              </li> */}
             </ul>
           </div>
         </div>
