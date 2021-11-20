@@ -7,10 +7,12 @@ const BaseIcon = (props: { name: string }) => {
   return (
     <div>
       <img
+        height={64}
         src={
           require(`../node_modules/cryptocurrency-icons/svg/color/${name}.svg`)
             .default.src
         }
+        width={64}
       />
     </div>
   );

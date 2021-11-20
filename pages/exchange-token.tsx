@@ -7,7 +7,7 @@ import SelectCurrency from "../components/SelectCurrency";
 import { useState, ChangeEvent, Fragment } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
-import Header from '../components/Header';
+import Header from "../components/Header";
 
 // TODO Raduan: Fix initial state of the icon which displays an icon of Bitcoin now, even though in the option/select list Binance Coin is being selected for the second "SelectCurrency" component.
 const ExchangeToken: NextPage = () => {
@@ -55,7 +55,7 @@ const ExchangeToken: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      {/* <Header /> */}
 
       <SelectCurrency
         currencies={currencies}
@@ -131,11 +131,6 @@ const ExchangeToken: NextPage = () => {
         <p className={styles.description}>
           Placeholder for Exchange Token description.
         </p>
-        <div>
-          <Link href="/">
-            <a className={styles.card}>Home</a>
-          </Link>
-        </div>
       </main>
       <footer className={styles.footer}>
         <a
