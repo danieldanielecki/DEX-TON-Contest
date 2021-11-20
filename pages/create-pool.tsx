@@ -21,6 +21,8 @@ const CreatePool: NextPage = () => {
       </Head>
       <Header />
 
+      <PerformTransaction isBuy={isBuySelected} />
+
       <main className={styles.main}>
         <PerformTransaction isBuy={isBuySelected} />
         <h1 className={styles.title}>Create Pool</h1>
