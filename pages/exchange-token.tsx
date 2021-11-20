@@ -74,11 +74,6 @@ const ExchangeToken: NextPage = () => {
       <div className="row">
         <div className="col-sm-6">
           <h3>{currencyA.name}</h3>
-          {/* !IMPORTANT: ton.svg is broken! */}
-          <BaseIcon
-            key={currencyA.code.toLowerCase()}
-            name={currencyA.code.toLowerCase()}
-          />
           <div className="input-group">
             <input
               aria-describedby="currencyA"
@@ -96,10 +91,6 @@ const ExchangeToken: NextPage = () => {
           </div>
         </div>
         <div className="col-sm-6">
-          <BaseIcon
-            key={currencyB.code.toLowerCase()}
-            name={currencyB.code.toLowerCase()}
-          />
           <h3>{currencyB.name}</h3>
           <div className="input-group">
             <input
