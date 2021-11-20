@@ -6,7 +6,11 @@
 }
 
 .highlighted {
+  display: inline-block;
   color: $lochmara;
+  pointer-events: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .nav_link {
