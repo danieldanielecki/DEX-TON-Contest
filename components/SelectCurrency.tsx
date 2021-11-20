@@ -23,9 +23,10 @@ const SelectCurrency = (props: {
   currencies: any;
   isOne?: boolean;
   onSelectCurrency: any;
+  startCurrency: any;
 }) => {
-  const { currencies, isOne, onSelectCurrency } = props;
-  const [selectedOption, setSelectedOption] = useState("BTC");
+  const { currencies, isOne, onSelectCurrency, startCurrency } = props;
+  const [selectedOption, setSelectedOption] = useState(startCurrency);
   let filteredCurrencies: any[];
 
   const handleChange = (e: any) => {
@@ -41,7 +42,6 @@ const SelectCurrency = (props: {
   } else {
     filteredCurrencies = currencies;
   }
-
   return (
     <Select
       components={{ Option: IconOption }}
