@@ -8,7 +8,6 @@ import { CHARTS } from "../config/data/pools/dummy-charts";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const PoolTableItem = (props: { pool: { title: string } }) => {
-  // TODO Raduan: expandable table row, like in https://www.freakyjolly.com/react-table-tutorial/, to discuss if it makes sense.
   const { pool } = props;
   return (
     <tr>
