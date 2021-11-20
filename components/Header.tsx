@@ -23,7 +23,7 @@ const Header = () => {
           className={burgerVisible ? styles.main_burger_focus : styles.main_burger}
         />
         <div className="container">
-          <a className="navbar-brand" href="https://ton.org/" target="_blank">
+          <a className="navbar-brand" href="https://ton.org/" target="_blank" rel="noreferrer">
             <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={200} height={50} />
           </a>
           {/* <div className="d-flex flex-row order-2 order-lg-3 user_info">
