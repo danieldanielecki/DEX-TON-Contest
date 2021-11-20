@@ -9,14 +9,15 @@ import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
 import PoolTableItem from "../components/PoolTableItem";
 
+import Header from "../components/Header";
+import PaginationTableComponent from "../components/PaginationWithTable";
+
 
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   function onSortClick() {
-    console.log(
-      "TODO Raduan: please implement sorting logic here. On first click ascending, and on second toggle it to descending. Third click ascending, fourth descending, etc., i.e. toggle sorting mechanism for the 'pool.title'. You can follow https://www.freakyjolly.com/react-table-tutorial/ & https://react-table.tanstack.com"
-    );
+    console.log("");
   }
 
   // TODO Raduan: you can try to implement pagination as well, information is also included in https://www.freakyjolly.com/react-table-tutorial/ how to do it.
@@ -69,17 +70,7 @@ const PoolStatistics: NextPage = () => {
                 className={`${styles.pool_search_tabs} ${styles.active}`}
               >
                 <div className={styles.pools_responsive_table_wrapper}>
-                  <table className={styles.table}>
-                    {search(POOLS).length > 0 ? (
-                      <Fragment>
-                        {search(POOLS).map((pool: Pool) => (
-                          <PoolTableItem pool={pool} key={pool.id} />
-                        ))}
-                      </Fragment>
-                    ) : (
-                      <h4>No results for searched pools.</h4>
-                    )}
-                  </table>
+                  <PaginationTableComponent />
                 </div>
                 <div className={`${styles.show_wrapper} text-center`}>
                   <a href="#">View More</a>

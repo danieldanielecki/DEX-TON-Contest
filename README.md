@@ -41,9 +41,6 @@ Take a look on https://info.uniswap.org/#/pools
 
 https://ton.org/brand-assets
 
-## TODO Raduan
-
-Add linting to `package.json`, make sure you're using Prettier with settings of 2 spaces for indents, so after you'll implement it the code won't change too much.
 
 ## TODO Katarzyna
 

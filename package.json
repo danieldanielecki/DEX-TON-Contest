@@ -2,7 +2,7 @@
   "name": "dex-ton",
   "private": true,
   "scripts": {
-    "dev": "node ssr-server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
