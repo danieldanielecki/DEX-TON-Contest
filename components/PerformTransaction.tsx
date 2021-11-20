@@ -1,22 +1,58 @@
+import { useState, useEffect } from "react";
 import styles from "../styles/PerformTransaction.module.scss";
-import BaseButton from "./BaseButton";
+import BaseIcon from "./BaseIcon";
 import PropTypes from "prop-types";
 import React from "react";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import getCoinsList from "../services/getCoinsList";
+import getCurrenciesList from "../services/getCurrenciesList";
+
 
 const PerformTransaction = (props: { isBuy?: boolean }) => {
   const { isBuy } = props;
+  const [dropdownVisible, toggledropdownVisible] = useState(false);
+  const [coins, setCoins] = useState(new Array());
 
+  useEffect(() => {
+    fetch('/simple/supported_vs_currencies')
+      .then(res => res.json())
+      .then(currencies => {
+        fetch('coins/list')
+          .then(res => res.json())
+          .then(coins => {
+            const symbols = new Array();
+            currencies.forEach((currency: String) => {
+              const coinFound = coins.find((coin: { symbol: String }) => coin.symbol === currency);
+              if (coinFound) {
+                symbols.push(coinFound);
+              }
+            })
+            setCoins(symbols);
+          })
+      })
+  }, [])
+  function handleVisibility() {
+    toggledropdownVisible(!dropdownVisible);
+  }
   return (
-    <div>
-      <div
-        style={{
-          backgroundImage: `url("/trade_bg.png")`,
-        }}
-        className={`${styles.activet} ${styles.trade_tab}`}
-      >
-        {/* <div className={`${styles.wrap} text-center`}>
+    <div className="">
+      <div>
+        {/* <select className={`${dropdownVisible ? styles.drop_content : styles.user_link}`}> */}
+        <button onClick={handleVisibility} > Choose</button>
+        <div id="currency_choice"
+        className={`flex-column ${dropdownVisible ? `${styles.drop_content} d-flex` : styles.drop_close}`}
+
+        >
+          {coins.map((currency: { name: string, id: string, symbol: string }) =>
+          (<button key={currency.id} className={styles.option_button}>
+            <BaseIcon name={currency.symbol} />
+            <span> {currency.name} </span>
+          </button>)
+          )}
+        </div>
+      </div>
+      {/* <div className={`${styles.wrap} text-center`}>
             <div className={`${styles.rangee_wrapper} d-inline-flex align-items-center`}>
               <div className={`${styles.number} d-flex align-items-center justify-content-center`}>
                 <p>10</p>
@@ -41,7 +77,7 @@ const PerformTransaction = (props: { isBuy?: boolean }) => {
 
             <BaseButton title={isBuy ? "Buy" : "Sell"} />
           </div> */}
-      </div>
+
     </div>
   );
 };

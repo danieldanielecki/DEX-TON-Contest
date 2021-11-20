@@ -91,3 +91,14 @@
     }
   }
 }
+
+.drop_content {
+  height: 600px;
+  width: 300px;
+  overflow-y: scroll;
+  z-index: 1;
+}
+
+.drop_close {
+display: none;
+}

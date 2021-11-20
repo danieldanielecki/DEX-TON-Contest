@@ -34660,6 +34660,11 @@
     "name": "OOGI"
   },
   {
+    "id": "oolongswap",
+    "symbol": "olo",
+    "name": "OolongSwap"
+  },
+  {
     "id": "opacity",
     "symbol": "opct",
     "name": "Opacity"

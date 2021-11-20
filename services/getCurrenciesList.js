@@ -1,7 +1,7 @@
 import currencies from '../stubs/currencies/currencies-list.json';
 import coins from '../stubs/coins/coins-list.json';
 
-function getCurrenciesList() {
+export default function getCurrenciesList() {
   fetch('/simple/supported_vs_currencies')
     .then(res => res.json())
     .catch(error => error.message)
