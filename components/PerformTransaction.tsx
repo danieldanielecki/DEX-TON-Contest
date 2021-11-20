@@ -16,26 +16,10 @@ const PerformTransaction = (props: { isBuy?: boolean }) => {
         }}
         className={`${styles.activet} ${styles.trade_tab}`}
       >
-        <div>
-          <h1 className={styles.tit}>{isBuy ? "Buy" : "Sell"} Coins</h1>
-          <div className={`${styles.wrap} text-center`}>
-            <div
-              className={`${styles.rangee_wrapper} d-inline-flex align-items-center`}
-            >
-              <div
-                className={`${styles.minus} d-flex align-items-center justify-content-center`}
-              >
-                <FontAwesomeIcon icon={faMinus} />
-              </div>
-              <div
-                className={`${styles.number} d-flex align-items-center justify-content-center`}
-              >
+        {/* <div className={`${styles.wrap} text-center`}>
+            <div className={`${styles.rangee_wrapper} d-inline-flex align-items-center`}>
+              <div className={`${styles.number} d-flex align-items-center justify-content-center`}>
                 <p>10</p>
-              </div>
-              <div
-                className={`${styles.plus} d-flex align-items-center justify-content-center`}
-              >
-                <FontAwesomeIcon icon={faPlus} />
               </div>
             </div>
           </div>
@@ -56,8 +40,7 @@ const PerformTransaction = (props: { isBuy?: boolean }) => {
             </div>
 
             <BaseButton title={isBuy ? "Buy" : "Sell"} />
-          </div>
-        </div>
+          </div> */}
       </div>
     </div>
   );

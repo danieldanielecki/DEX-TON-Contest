@@ -1,17 +1,28 @@
-import styles from "../styles/Home.module.scss";
+import { useState } from "react";
+import styles from "../styles/CreatePool.module.scss";
 import useIsBuySelected from "../hooks/useIsBuySelected";
 import BaseButton from "../components/BaseButton";
-import Head from "next/head";
-
 import PerformTransaction from "../components/PerformTransaction";
 
 import type { NextPage } from "next";
 
 const CreatePool: NextPage = () => {
   const [isBuySelected, setIsBuySelected] = useIsBuySelected(false);
+  const [dropdownVisible, toggledropdownVisible] = useState(false);
 
   return (
     <div className={styles.container}>
+      <div>
+        <div className={styles.drop}>
+          <ul className={`${dropdownVisible ? styles.drop_content : styles.user_link}`}>
+            <li className="user-link">a</li>
+            <li className="user-link">b</li>
+            <li className="user-link">c</li>
+            <li className="user-link">d</li>
+            <li className="user-link">e</li>
+          </ul>
+        </div>
+      </div>
       <PerformTransaction isBuy={isBuySelected} />
 
       <main className={styles.main}>

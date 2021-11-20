@@ -4,36 +4,51 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from 'next/router';
+import currencies from '../stubs/currencies/currencies-list.json';
+import coins from '../stubs/coins/coins-list.json';
+
 
 const Header = () => {
   const [burgerVisible, toggleburgerVisible] = useState(false);
   const router = useRouter();
- 
 
-  function handleMenu (event: { preventDefault: Function}) {
-    event.preventDefault();
-    toggleburgerVisible(!burgerVisible)
-  }
 
-  return (
-    <header>
-      <nav className={`${styles.navbar} navbar fixed-top navbar-expand-lg`}>
-        <button
-          onClick={handleMenu}
-          className={burgerVisible ? styles.main_burger_focus : styles.main_burger}
-        />
-        <div className="container">
-          <a className="navbar-brand" href="https://ton.org/" target="_blank">
-            <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={200} height={50} />
-          </a>
-          {/* <div className="d-flex flex-row order-2 order-lg-3 user_info">
+  function handleMenu(event: { preventDefault: Function }) {
+    const symbols = new Array();
+    currencies.forEach(el => {
+      const coinFound = coins.find(coin => coin.symbol === el);
+      if (coinFound?.id) {
+        symbols.push(coinFound.id);
+      }
+    })
+    
+    if(symbols.length > 1) {
+      return symbols.reduce((prev, cur) => prev?.concat(', ', cur)); 
+    }
+
+  event.preventDefault();
+  toggleburgerVisible(!burgerVisible)
+}
+
+return (
+  <header>
+    <nav className={`${styles.navbar} navbar navbar-expand-lg`}>
+      <button
+        onClick={handleMenu}
+        className={burgerVisible ? styles.main_burger_focus : styles.main_burger}
+      />
+      <div className="container">
+        <a className="navbar-brand" href="https://ton.org/" target="_blank">
+          <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={200} height={50} />
+        </a>
+        {/* <div className="d-flex flex-row order-2 order-lg-3 user_info">
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDefault" aria-controls="navDefault" aria-expanded="false" aria-label="Toggle navigation" id="toggleIcon">
               <span className="bar_one"></span>
               <span className="bar_two"></span>
               <span className="bar_three"></span>
             </button>
           </div> */}
-          {/* <div className="switch_wrapper">
+        {/* <div className="switch_wrapper">
             <span> Theme </span>
             <button className="btn switcher" id="light" title="Switch to Light Theme">
               <i className="fas fa-star-and-crescent"></i>
@@ -44,50 +59,50 @@ const Header = () => {
               dark
             </button>
           </div> */}
-          <div className={`collapse navbar-collapse justify-content-end order-3 order-lg-2 ${burgerVisible ? 'collapse show' : ''}`}
-            id="navDefault">
-            <ul className='navbar-nav'>
-              <li className={`nav-item ${burgerVisible ? 'dropdown' : ''}`} >
-                <Link href="/">
-                  <a className={router.pathname === '/' ? `${styles.highlighted}` : styles.nav_link}>
-                    Home
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/create-pool">
-                  <a className={router.pathname === '/create-pool' ? `${styles.highlighted}` : styles.nav_link}>
-                    Create Pool
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/exchange-token">
-                  <a className={router.pathname === '/exchange-token' ? `${styles.highlighted}` : styles.nav_link}>
-                    Exchange Token
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/liquidity-from-pool">
-                  <a className={router.pathname === '/liquidity-from-pool' ? `${styles.highlighted}` : styles.nav_link}>
-                    Liquidity from Pool
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/pool-statistics">
-                  <a className={router.pathname === '/pool-statistics' ? `${styles.highlighted}` : styles.nav_link}>
-                    Pool Statistics
-                  </a>
-                </Link>
-              </li>
-            </ul>
-          </div>
+        <div className={`collapse navbar-collapse justify-content-end order-3 order-lg-2 ${burgerVisible ? 'collapse show' : ''}`}
+          id="navDefault">
+          <ul className='navbar-nav'>
+            <li className={`nav-item ${burgerVisible ? 'dropdown' : ''}`} >
+              <Link href="/">
+                <a className={router.pathname === '/' ? `${styles.highlighted}` : styles.nav_link}>
+                  Home
+                </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/create-pool">
+                <a className={router.pathname === '/create-pool' ? `${styles.highlighted}` : styles.nav_link}>
+                  Create Pool
+                </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/exchange-token">
+                <a className={router.pathname === '/exchange-token' ? `${styles.highlighted}` : styles.nav_link}>
+                  Exchange Token
+                </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/liquidity-from-pool">
+                <a className={router.pathname === '/liquidity-from-pool' ? `${styles.highlighted}` : styles.nav_link}>
+                  Liquidity from Pool
+                </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/pool-statistics">
+                <a className={router.pathname === '/pool-statistics' ? `${styles.highlighted}` : styles.nav_link}>
+                  Pool Statistics
+                </a>
+              </Link>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </header>
-  );
+      </div>
+    </nav>
+  </header>
+);
 };
 
 export default Header;
