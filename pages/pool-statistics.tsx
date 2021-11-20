@@ -15,9 +15,7 @@ const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   function onSortClick() {
-    console.log(
-      "TODO Raduan: please implement sorting logic here. On first click ascending, and on second toggle it to descending. Third click ascending, fourth descending, etc., i.e. toggle sorting mechanism for the 'pool.title'. You can follow https://www.freakyjolly.com/react-table-tutorial/ & https://react-table.tanstack.com"
-    );
+    console.log("");
   }
 
   // TODO Raduan: you can try to implement pagination as well, information is also included in https://www.freakyjolly.com/react-table-tutorial/ how to do it.
