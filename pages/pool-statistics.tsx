@@ -40,12 +40,6 @@ const PoolStatistics: NextPage = () => {
               <p>Trading</p>
             </div>
             <div className={styles.pools_tab_wrapper}>
-              <div className={`${styles.tab_btn_wrapper} text-center`}>
-                <BaseButton title="Best" />
-                <BaseButton title="Worst" />
-                <BaseButton title="Recent" />
-                <BaseButton title="Sort" />
-              </div>
               <div className={styles.pool_search_tab_wrapper}>
                 <form action="#" method="post">
                   <input

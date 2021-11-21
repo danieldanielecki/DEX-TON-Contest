@@ -100,21 +100,6 @@ function Table({ columns, data }: any) {
   // Render the UI for your table
   return (
     <div>
-      <pre>
-        <code>
-          {JSON.stringify(
-            {
-              pageIndex,
-              pageSize,
-              pageCount,
-              canNextPage,
-              canPreviousPage,
-            },
-            null,
-            2
-          )}
-        </code>
-      </pre>
       <GlobalFilter
         preGlobalFilteredRows={preGlobalFilteredRows}
         globalFilter={state.globalFilter}
