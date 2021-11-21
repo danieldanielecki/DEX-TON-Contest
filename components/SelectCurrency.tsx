@@ -2,7 +2,9 @@ import BaseIcon from "./BaseIcon";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import Select, { components } from "react-select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import getCurrencies from '../redux/getters/getCurrencies';
+
 
 const { Option } = components;
 const IconOption = (props: any) => (
@@ -25,9 +27,19 @@ const SelectCurrency = (props: {
   onSelectCurrency: any;
   startCurrency: any;
 }) => {
-  const { currencies, isOne, onSelectCurrency, startCurrency } = props;
+  const { isOne, onSelectCurrency, startCurrency } = props;
   const [selectedOption, setSelectedOption] = useState(startCurrency);
   let filteredCurrencies: any[];
+
+  const [currencies, setCurrencies] = useState([]);
+
+  useEffect(() => {
+    async function anyNameFunction() {
+      const result: Array<Object> = await getCurrencies();
+      setCurrencies(result);
+    }
+    anyNameFunction();
+  }, [])
 
   const handleChange = (e: any) => {
     setSelectedOption(e.name);
@@ -53,7 +65,6 @@ const SelectCurrency = (props: {
 };
 
 SelectCurrency.propTypes = {
-  currencies: PropTypes.array.isRequired,
   isOne: PropTypes.bool,
   onSelectCurrency: PropTypes.func.isRequired,
 };

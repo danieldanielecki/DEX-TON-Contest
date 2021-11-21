@@ -1,43 +1,23 @@
-import { useState, useEffect } from "react";
+
 import styles from "../styles/PerformTransaction.module.scss";
-import BaseIcon from "./BaseIcon";
 import PropTypes from "prop-types";
 import React from "react";
-// import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import getCoinsList from "../services/getCoinsList";
-import getCurrenciesList from "../services/getCurrenciesList";
+
 import SelectCurrency from "./SelectCurrency";
-import store from '../redux/store';
 
 const PerformTransaction = (props: { isBuy?: boolean }) => {
   const { isBuy } = props;
-  const [dropdownVisible, toggledropdownVisible] = useState(false);
-  const [coins, setCoins] = useState(new Array());
 
-  useEffect(() => {
-    const { currencyList, coinsList } = store.getState().fetched;
-    const symbols = new Array();
-    currencyList.forEach((currency: String) => {
-      const coinFound = coinsList.find((coin: { symbol: String }) => coin.symbol === currency);
-      if (coinFound) {
-        symbols.push(coinFound);
-      }
-    })
-    setCoins(symbols);
-  }, [])
-  function handleVisibility() {
-    toggledropdownVisible(!dropdownVisible);
-  }
+
   return (
     <div className="">
       <div>
         {/* <select className={`${dropdownVisible ? styles.drop_content : styles.user_link}`}> */}
-        <div id="currency_choice"
+        <div
         // className={`flex-column ${dropdownVisible ? `${styles.drop_content} d-flex` : styles.drop_close}`}
 
         >
-          <SelectCurrency currencies={coins} isOne={false} onSelectCurrency={(e) => console.log(e)}
+          <SelectCurrency isOne={false} onSelectCurrency={(e) => console.log(e)}
             startCurrency="btc" />
           {/* {coins.map((currency: { name: string, id: string, symbol: string }) =>
           

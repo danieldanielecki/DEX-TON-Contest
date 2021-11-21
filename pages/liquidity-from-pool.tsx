@@ -6,7 +6,6 @@ import { useState, ChangeEvent, useEffect } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
 import SelectCurrency from "../components/SelectCurrency";
-import HeadPage from "../components/HeadPage";
 
 
 const LiquidityFromPool: NextPage = () => {
@@ -43,7 +42,6 @@ const LiquidityFromPool: NextPage = () => {
   return (
     <div className={styles.container}>
       <SelectCurrency
-        currencies={currencies}
         isOne={true}
         onSelectCurrency={onSelectCurrency}
       />
