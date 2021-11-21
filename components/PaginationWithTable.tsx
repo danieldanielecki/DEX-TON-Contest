@@ -1,7 +1,7 @@
 // src/components/pagination.table.js
 import "regenerator-runtime/runtime";
 import React from "react";
-import { TABLE_DATA } from "../config/data/pools/dummy-data";
+import { POOLS } from "../config/data/pools/dummy-pools";
 
 import {
   useTable,
@@ -211,36 +211,27 @@ function PaginationTableComponent() {
   const columns = React.useMemo(
     () => [
       {
-        Header: "Name",
+        Header: "All Pools",
         columns: [
           {
-            Header: "First Name",
-            accessor: "firstName",
+            Header: "#",
+            accessor: "id",
           },
           {
-            Header: "Last Name",
-            accessor: "lastName",
-          },
-        ],
-      },
-      {
-        Header: "Info",
-        columns: [
-          {
-            Header: "Age",
-            accessor: "age",
+            Header: "Pool",
+            accessor: "pair",
           },
           {
-            Header: "Visits",
-            accessor: "visits",
+            Header: "% 24h",
+            accessor: "priceChangePercentage24h",
           },
           {
-            Header: "Status",
-            accessor: "status",
+            Header: "Volume",
+            accessor: "volume",
           },
           {
-            Header: "Profile Progress",
-            accessor: "progress",
+            Header: "Market Cap",
+            accessor: "marketCap",
           },
         ],
       },
@@ -248,7 +239,7 @@ function PaginationTableComponent() {
     []
   );
 
-  return <Table columns={columns} data={TABLE_DATA} />;
+  return <Table columns={columns} data={POOLS} />;
 }
 
 export default PaginationTableComponent;

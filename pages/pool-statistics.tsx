@@ -15,14 +15,10 @@ import PaginationTableComponent from "../components/PaginationWithTable";
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  function onSortClick() {
-    console.log("");
-  }
-
   function search(pools: Pool[]) {
     return pools.filter((pool: Pool) => {
       return (
-        pool.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+        pool.pair.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
         -1
       );
     });
