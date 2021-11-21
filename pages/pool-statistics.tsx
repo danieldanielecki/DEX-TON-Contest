@@ -1,15 +1,8 @@
 import styles from "../styles/PoolStatistics.module.scss";
 import BaseButton from "../components/BaseButton";
-import Head from "next/head";
-import Image from "next/image";
-
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { Pool } from "../interfaces/pool";
-import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
-import PoolTableItem from "../components/PoolTableItem";
-
-import Header from "../components/Header";
 import PaginationTableComponent from "../components/PaginationWithTable";
 
 const PoolStatistics: NextPage = () => {

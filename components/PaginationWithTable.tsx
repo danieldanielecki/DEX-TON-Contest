@@ -11,7 +11,6 @@ import {
   useSortBy,
   useAsyncDebounce,
 } from "react-table";
-import "react-table";
 
 // Define a default UI for filtering
 function GlobalFilter({

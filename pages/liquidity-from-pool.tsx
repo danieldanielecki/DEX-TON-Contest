@@ -1,13 +1,9 @@
 import styles from "../styles/Home.module.scss";
 import BaseIcon from "../components/BaseIcon";
-import Head from "next/head";
-import Image from "next/image";
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
 import SelectCurrency from "../components/SelectCurrency";
-import HeadPage from "../components/HeadPage";
-
 
 const LiquidityFromPool: NextPage = () => {
   let tokenSet: Set<unknown> = new Set();
