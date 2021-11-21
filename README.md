@@ -40,8 +40,3 @@ Take a look on https://info.uniswap.org/#/pools
 ## Brand assets
 
 https://ton.org/brand-assets
-
-
-## TODO Katarzyna
-
-Please add mobile responsive header with hamburger menu and animation. The menu should have 5 routers links: home, create-pool, exchange-token, liquidity-from-pool, and pool-statistics.

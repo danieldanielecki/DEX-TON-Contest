@@ -50,7 +50,6 @@ const LiquidityFromPool: NextPage = () => {
       <div className="row">
         <div className="col-sm-6">
           <h3>{currencyA.name}</h3>
-          {/* !IMPORTANT: ton.svg is broken! */}
           <BaseIcon
             key={currencyA.code.toLowerCase()}
             name={currencyA.code.toLowerCase()}

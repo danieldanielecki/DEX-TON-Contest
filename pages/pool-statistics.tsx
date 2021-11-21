@@ -12,15 +12,12 @@ import PoolTableItem from "../components/PoolTableItem";
 import Header from "../components/Header";
 import PaginationTableComponent from "../components/PaginationWithTable";
 
-
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   function onSortClick() {
     console.log("");
   }
-
-  // TODO Raduan: you can try to implement pagination as well, information is also included in https://www.freakyjolly.com/react-table-tutorial/ how to do it.
 
   function search(pools: Pool[]) {
     return pools.filter((pool: Pool) => {
