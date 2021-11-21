@@ -1,28 +1,17 @@
 import styles from "../styles/PoolStatistics.module.scss";
 import BaseButton from "../components/BaseButton";
-import Head from "next/head";
-import Image from "next/image";
-
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { Pool } from "../interfaces/pool";
-import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
-import PoolTableItem from "../components/PoolTableItem";
-
-import Header from "../components/Header";
 import PaginationTableComponent from "../components/PaginationWithTable";
 
 const PoolStatistics: NextPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  function onSortClick() {
-    console.log("");
-  }
-
   function search(pools: Pool[]) {
     return pools.filter((pool: Pool) => {
       return (
-        pool.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+        pool.pair.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
         -1
       );
     });
@@ -40,12 +29,6 @@ const PoolStatistics: NextPage = () => {
               <p>Trading</p>
             </div>
             <div className={styles.pools_tab_wrapper}>
-              <div className={`${styles.tab_btn_wrapper} text-center`}>
-                <BaseButton title="Best" />
-                <BaseButton title="Worst" />
-                <BaseButton title="Recent" />
-                <BaseButton title="Sort" />
-              </div>
               <div className={styles.pool_search_tab_wrapper}>
                 <form action="#" method="post">
                   <input
