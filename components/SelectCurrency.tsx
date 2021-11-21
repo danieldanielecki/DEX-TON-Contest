@@ -7,12 +7,12 @@ import { useState } from "react";
 const { Option } = components;
 const IconOption = (props: any) => (
   <Option {...props}>
-    {props.data.code.toLowerCase() === "ton" ? (
+    {props.data.symbol === "ton" ? (
       <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={64} height={64} />
     ) : (
       <BaseIcon
-        key={props.data.code.toLowerCase()}
-        name={props.data.code.toLowerCase()}
+        key={props.data.symbol}
+        name={props.data.symbol}
       />
     )}
     {props.data.name}
