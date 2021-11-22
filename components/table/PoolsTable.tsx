@@ -1,5 +1,7 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
 import getTableSettings from "./getTableSettings";
+import styles from "../../styles/PoolsTable.module.scss";
+import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
 import GlobalFilter from "./GlobalFilter";
 import React from "react";
 import { Cell, Row } from "react-table";
@@ -7,6 +9,8 @@ import { Pool } from "../../interfaces/pool";
 
 const Table = () => {
   const tableSettings = getTableSettings();
+  const [isToggleClassOnHover, setIsToggleClassOnHover] =
+    useToggleClassOnHover(false);
 
   return (
     <div>
@@ -15,7 +19,7 @@ const Table = () => {
         globalFilter={tableSettings.globalFilter}
         setGlobalFilter={tableSettings.setGlobalFilter}
       />
-      <table className="table" {...tableSettings.getTableProps}>
+      <table className={styles.styled_table} {...tableSettings.getTableProps}>
         <thead>
           {tableSettings.headerGroups.map((headerGroup) => (
             <tr>
@@ -31,7 +35,13 @@ const Table = () => {
           {tableSettings.page.map((row: Row<Pool>, i: number) => {
             tableSettings.prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps()}
+                className={isToggleClassOnHover ? styles.active_row : ""}
+                // TODO Raduan: Currently the class "active_row" applies on hover any of the row elements of the table, and it highlights all of the elements as well. Your task is to highlight particular row which is being hovered.
+                onMouseEnter={setIsToggleClassOnHover}
+                onMouseLeave={setIsToggleClassOnHover}
+              >
                 {row.cells.map((cell: Cell<Pool, any>) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
