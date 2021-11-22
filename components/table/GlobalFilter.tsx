@@ -1,3 +1,4 @@
+import styles from "../../styles/PoolStatistics.module.scss";
 import React from "react";
 import { useAsyncDebounce, Row } from "react-table";
 import { Pool } from "../../interfaces/pool";
@@ -16,18 +17,27 @@ const GlobalFilter = (props: {
   }, 200);
 
   return (
-    <span>
-      Search:{" "}
-      <input
-        className="form-control"
-        value={value || ""}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder={`${count} records...`}
-      />
-    </span>
+    <div className={styles.pools_tab_wrapper}>
+      <div className={styles.pool_search_tab_wrapper}>
+        <span>
+          <form action="#" method="post">
+            <input
+              aria-describedby="poolSearch"
+              className={styles.form_control}
+              id="poolSearch"
+              name="poolSearch"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setValue(e.target.value);
+                onChange(e.target.value);
+              }}
+              placeholder={`Search ${count} pools...`}
+              type="text"
+              value={value || ""}
+            />
+          </form>
+        </span>
+      </div>
+    </div>
   );
 };
 
