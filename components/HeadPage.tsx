@@ -1,17 +1,16 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Head from "next/head";
 
 const HeadPage = () => {
-
   function returnTitle() {
     const router = useRouter();
-    const pageTitle = router.pathname.replaceAll('-', ' ').substring(1);
+    const pageTitle = router.pathname.replaceAll("-", " ").substring(1);
     if (pageTitle.length > 1) {
-      return ` This is the ${pageTitle} page.`
+      return ` This is the ${pageTitle} page.`;
     }
-    return '';
+    return "";
   }
 
   return (
