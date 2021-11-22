@@ -49,15 +49,13 @@
   margin-top: 1rem;
 
   .rangee_wrapper {
-    @include border-radius(1rem);
-
     background-color: $pickled-bluewood;
+    border-radius: 1rem;
     padding: 0.5rem 1rem;
 
     .number {
-      @include border-radius(1rem);
-
       background-color: $lochmara;
+      border-radius: 1rem;
       height: 3rem;
       margin: 0.25rem;
       padding-top: 0.75rem;
@@ -72,10 +70,10 @@
     }
     .minus,
     .plus {
-      @include border-radius(2rem);
       @include transition(all 0.6s);
 
       background-color: $lochmara;
+      border-radius: 2rem;
       cursor: pointer;
       height: 2.5rem;
       width: 2.5rem;

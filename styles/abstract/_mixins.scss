@@ -10,40 +10,6 @@
   animation-timing-function: $timing;
 }
 
-@mixin border-radius($value) {
-  border-radius: $value;
-}
-
-@mixin box-shadow($value) {
-  box-shadow: $value;
-}
-
-@mixin btn_style {
-  @include border-radius(5px);
-  @include gradient;
-
-  border: none;
-  color: $white;
-  display: inline-block;
-  font-family: $mulish;
-  font-weight: 700;
-  line-height: 1.5;
-  outline: none;
-  padding: 16px 32px;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  &:hover {
-    border: none;
-    outline: none;
-  }
-  &:focus {
-    @include box-shadow(none);
-    border: none;
-    outline: none;
-  }
-}
-
 @mixin button($bcolor, $url, $x1, $y1, $col) {
   background: $bcolor;
   -webkit-mask: url($url);
@@ -51,14 +17,6 @@
   -webkit-mask-size: $x1 $y1;
   mask-size: $x1 $y1;
   color: $col;
-}
-
-@mixin gradient {
-  background-image: linear-gradient(
-    135deg,
-    rgb(0, 136, 204) 0%,
-    rgba(48, 55, 87) 100%
-  );
 }
 
 @mixin fluid-typography($min-vw, $max-vw, $min-font-size, $max-font-size) {
@@ -111,7 +69,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

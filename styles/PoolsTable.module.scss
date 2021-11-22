@@ -1,8 +1,7 @@
 @import "./main.scss";
 
 .styled_table {
-  @include border-radius(0.5rem);
-
+  border-radius: 0.5rem;
   box-shadow: 0.01rem 0.01rem 0.1rem $lochmara;
   margin: 2rem 0.5rem;
   font-family: $mulish;

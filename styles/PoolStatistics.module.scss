@@ -29,9 +29,8 @@
 
 .pools_tab_wrapper {
   .pool_search_tab_wrapper {
-    @include border-radius(3rem);
-
     background-color: $pickled-bluewood;
+    border-radius: 3rem;
     margin: 0 auto -3rem;
     max-width: 768px;
     padding: 1rem;
@@ -42,11 +41,10 @@
       position: relative;
 
       input {
-        @include border-radius(3rem);
-
-        color: $white;
         background-color: $pickled-bluewood;
         border: 1px solid $lochmara;
+        border-radius: 3rem;
+        color: $white;
         font-family: $mulish;
         padding: 1rem 12rem 1rem 2rem;
 
@@ -77,13 +75,11 @@
             vertical-align: middle;
 
             &:first-child {
-              @include border-radius(60px 0px 0px 60px);
-
+              border-radius: 3rem 0 0 3rem;
               padding-left: 1rem;
             }
             &:last-child {
-              @include border-radius(0px 60px 60px 0px);
-
+              border-radius: 0 3rem 3rem 0;
               padding-right: 1rem;
             }
           }
@@ -132,10 +128,10 @@
   padding: 2rem 0px 2rem;
 
   a {
-    @include border-radius(1.5rem);
     @include transition(all 0.6s);
 
     border: 0.1rem solid $pickled-bluewood;
+    border-radius: 1.5rem;
     color: #0088cc;
     display: inline-block;
     font-family: $mulish;
