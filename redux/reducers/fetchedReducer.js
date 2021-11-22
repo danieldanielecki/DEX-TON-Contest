@@ -1,15 +1,14 @@
 
-import { FETCH_CURRENCIESLIST, FETCH_COINSLIST } from '../actions/currencyListAction';
+import { FETCH_CURRENCIESLIST, FETCH_COINSLIST } from '../actions/fetchedActions';
 import getCurrenciesList from '../../services/getCurrenciesList';
 import getCoinsList from '../../services/getCoinsList';
 
 const initialState = {
   currencyList: getCurrenciesList(),
   coinsList: getCoinsList(),
-  currencies: []
 }
 
-const currencyList = (state = initialState, action) => {
+const fetched = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CURRENCIESLIST:
       return { ...state, currencyList: getCurrenciesList() };
@@ -20,4 +19,4 @@ const currencyList = (state = initialState, action) => {
   }
 };
 
-export default currencyList;
+export default fetched;

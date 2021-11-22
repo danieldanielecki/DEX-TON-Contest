@@ -9,7 +9,7 @@ const loadModule = () => {
     return icon;
   }
   catch (ex) {
-    return ex;
+    return '';
   }
 }
   return (

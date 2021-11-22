@@ -8,7 +8,9 @@ export default async function getCurrencies() {
   currencyList.forEach((currency: Object) => {
     const coinFound = coinsList.find((coin: {symbol: String}) => coin.symbol === currency);
     if (coinFound) {
-      symbols.push(coinFound);
+      let coinExtra = coinFound;
+      coinExtra.sellRate = 0.000;
+      symbols.push(coinExtra);
     }
   })
   return symbols;

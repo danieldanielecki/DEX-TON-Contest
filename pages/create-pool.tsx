@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from "react-redux";
 import styles from "../styles/CreatePool.module.scss";
 import useIsBuySelected from "../hooks/useIsBuySelected";
 import BaseButton from "../components/BaseButton";
