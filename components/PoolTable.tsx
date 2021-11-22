@@ -4,14 +4,23 @@ import styles from "../styles/PoolStatistics.module.scss";
 import { Fragment } from "react";
 import { Pool } from "../interfaces/pool";
 
-const PoolTable = (props: { pools: Pool[] }) => {
-  const { pools } = props;
+const PoolTable = (props: { pools: Pool[]; queryString: string }) => {
+  const { pools, queryString } = props;
+
+  function search(pools: Pool[]) {
+    return pools.filter((pool: Pool) => {
+      return (
+        pool.pair.toString().toLowerCase().indexOf(queryString.toLowerCase()) >
+        -1
+      );
+    });
+  }
 
   return (
     <table className={styles.table}>
-      {pools.length > 0 ? (
+      {search(pools).length > 0 ? (
         <Fragment>
-          {pools.map((pool: Pool) => (
+          {search(pools).map((pool: Pool) => (
             <PoolTableItem pool={pool} key={pool.id} />
           ))}
         </Fragment>

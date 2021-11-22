@@ -26,7 +26,7 @@
     "sass": "^1.43.4"
   },
   "devDependencies": {
-    "@types/node": "16.11.7",
+    "@types/node": "^16.11.9",
     "@types/react": "17.0.34",
     "@types/react-table": "^7.7.8",
     "@types/regenerator-runtime": "^0.13.1",
