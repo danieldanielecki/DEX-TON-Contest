@@ -1,14 +1,17 @@
+import { Pool } from "../../interfaces/pool";
+import { Row } from "react-table";
+
 const DefaultColumnFilter = (props: {
-  column: { filterValue: any; preFilteredRows: any; setFilter: any };
+  column: { filterValue: string; preFilteredRows: Row<Pool>[]; setFilter: any };
 }) => {
   const { column } = props;
-  const count = column.preFilteredRows.length;
+  const count: number = column.preFilteredRows.length;
 
   return (
     <input
       className="form-control"
       value={column.filterValue || ""}
-      onChange={(e) => {
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
         column.setFilter(e.target.value || undefined);
       }}
       placeholder={`Search ${count} records...`}

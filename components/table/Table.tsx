@@ -5,11 +5,14 @@ import {
   useFilters,
   useGlobalFilter,
   useSortBy,
+  Cell,
+  Row,
 } from "react-table";
+import { Pool } from "../../interfaces/pool";
 import DefaultColumnFilter from "./DefaultColumnFilter";
 import GlobalFilter from "./GlobalFilter";
 
-const Table = (props: { columns: any; data: any }) => {
+const Table = (props: { columns: any; data: Pool[] }) => {
   const { columns, data } = props;
 
   const defaultColumn = React.useMemo(
@@ -49,7 +52,6 @@ const Table = (props: { columns: any; data: any }) => {
     usePagination
   );
 
-  // Render the UI for your table
   return (
     <div>
       <GlobalFilter
@@ -70,11 +72,11 @@ const Table = (props: { columns: any; data: any }) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
+          {page.map((row: Row<Pool>, i: number) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+                {row.cells.map((cell: Cell<Pool, any>) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
@@ -131,7 +133,7 @@ const Table = (props: { columns: any; data: any }) => {
               className="form-control"
               type="number"
               defaultValue={pageIndex + 1}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 gotoPage(page);
               }}
@@ -142,7 +144,7 @@ const Table = (props: { columns: any; data: any }) => {
         <select
           className="form-control"
           value={pageSize}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
             setPageSize(Number(e.target.value));
           }}
           style={{ width: "120px", height: "38px" }}

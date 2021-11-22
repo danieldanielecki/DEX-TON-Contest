@@ -1,14 +1,15 @@
 import React from "react";
-import { useAsyncDebounce } from "react-table";
+import { useAsyncDebounce, Row } from "react-table";
+import { Pool } from "../../interfaces/pool";
 
 const GlobalFilter = (props: {
   globalFilter: any;
-  preGlobalFilteredRows: any;
+  preGlobalFilteredRows: Row<Pool>[];
   setGlobalFilter: any;
 }) => {
   const { globalFilter, preGlobalFilteredRows, setGlobalFilter } = props;
 
-  const count = preGlobalFilteredRows.length;
+  const count: number = preGlobalFilteredRows.length;
   const [value, setValue] = React.useState(globalFilter);
   const onChange = useAsyncDebounce((value) => {
     setGlobalFilter(value || undefined);
@@ -20,7 +21,7 @@ const GlobalFilter = (props: {
       <input
         className="form-control"
         value={value || ""}
-        onChange={(e) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
