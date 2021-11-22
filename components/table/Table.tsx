@@ -9,18 +9,11 @@ import {
   Row,
 } from "react-table";
 import { Pool } from "../../interfaces/pool";
-import DefaultColumnFilter from "./DefaultColumnFilter";
 import GlobalFilter from "./GlobalFilter";
 
 const Table = (props: { columns: any; data: Pool[] }) => {
   const { columns, data } = props;
 
-  const defaultColumn = React.useMemo(
-    () => ({
-      Filter: DefaultColumnFilter,
-    }),
-    []
-  );
   const {
     getTableProps,
     getTableBodyProps,
@@ -43,7 +36,6 @@ const Table = (props: { columns: any; data: Pool[] }) => {
     {
       columns,
       data,
-      defaultColumn,
       initialState: { pageIndex: 0, pageSize: 5 },
     },
     useFilters,

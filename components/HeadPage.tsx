@@ -6,7 +6,7 @@ import Head from "next/head";
 const HeadPage = () => {
   function returnTitle() {
     const router = useRouter();
-    const pageTitle = "router.pathname.replaceAll('-', ' ').substring(1);";
+    const pageTitle = router.pathname.replaceAll("-", " ").substring(1);
     if (pageTitle.length > 1) {
       return ` This is the ${pageTitle} page.`;
     }
