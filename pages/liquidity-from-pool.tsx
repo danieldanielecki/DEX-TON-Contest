@@ -39,17 +39,16 @@ const LiquidityFromPool: NextPage = () => {
   return (
     <div className={styles.container}>
       <SelectCurrency
-        currencies={currencies}
         isOne={true}
         onSelectCurrency={onSelectCurrency}
       />
       <div className="row">
         <div className="col-sm-6">
-          <h3>{currencyA.name}</h3>
+          {/* <h3>{currencyA.name}</h3>
           <BaseIcon
             key={currencyA.code.toLowerCase()}
             name={currencyA.code.toLowerCase()}
-          />
+          /> */}
           <div className="input-group">
             <input
               aria-describedby="currencyA"

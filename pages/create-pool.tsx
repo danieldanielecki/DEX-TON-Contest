@@ -1,4 +1,5 @@
-import styles from "../styles/Home.module.scss";
+import React, { useEffect } from 'react';
+import styles from "../styles/CreatePool.module.scss";
 import useIsBuySelected from "../hooks/useIsBuySelected";
 import BaseButton from "../components/BaseButton";
 
@@ -11,17 +12,17 @@ const CreatePool: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <PerformTransaction isBuy={isBuySelected} />
-
       <main className={styles.main}>
-        <PerformTransaction isBuy={isBuySelected} />
-        <h1 className={styles.title}>Create Pool</h1>
-
+        <div className="d-flex align-items-center">
+          <PerformTransaction />
+          <PerformTransaction />
+        </div>
+        <h1 className={styles.title}>Created Pool</h1>
+        
         <p className={styles.description}>
           Placeholder for Create Pool description.
         </p>
-
-        <BaseButton onClick={setIsBuySelected} title="Toggle" />
+        {/* <BaseButton onClick={setIsBuySelected} title="Toggle" /> */}
       </main>
     </div>
   );

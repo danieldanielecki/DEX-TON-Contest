@@ -1,41 +1,37 @@
+
 import styles from "../styles/PerformTransaction.module.scss";
-import BaseButton from "./BaseButton";
 import PropTypes from "prop-types";
 import React from "react";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import SelectCurrency from "./SelectCurrency";
 
 const PerformTransaction = (props: { isBuy?: boolean }) => {
   const { isBuy } = props;
 
+
   return (
-    <div>
-      <div
-        style={{
-          backgroundImage: `url("/trade_bg.png")`,
-        }}
-        className={`${styles.activet} ${styles.trade_tab}`}
-      >
-        <div>
-          <h1 className={styles.tit}>{isBuy ? "Buy" : "Sell"} Coins</h1>
-          <div className={`${styles.wrap} text-center`}>
-            <div
-              className={`${styles.rangee_wrapper} d-inline-flex align-items-center`}
-            >
-              <div
-                className={`${styles.minus} d-flex align-items-center justify-content-center`}
-              >
-                <FontAwesomeIcon icon={faMinus} />
-              </div>
-              <div
-                className={`${styles.number} d-flex align-items-center justify-content-center`}
-              >
+    <div className="">
+      <div>
+        {/* <select className={`${dropdownVisible ? styles.drop_content : styles.user_link}`}> */}
+        <div
+        // className={`flex-column ${dropdownVisible ? `${styles.drop_content} d-flex` : styles.drop_close}`}
+
+        >
+          <SelectCurrency isOne={false} onSelectCurrency={(e) => console.log(e)}
+            startCurrency="btc" />
+          {/* {coins.map((currency: { name: string, id: string, symbol: string }) =>
+          
+          (<button key={currency.id} className={styles.option_button}>
+            <BaseIcon name={currency.symbol} />
+            <span> {currency.name} </span>
+          </button>)
+          )} */}
+        </div>
+      </div>
+      {/* <div className={`${styles.wrap} text-center`}>
+            <div className={`${styles.rangee_wrapper} d-inline-flex align-items-center`}>
+              <div className={`${styles.number} d-flex align-items-center justify-content-center`}>
                 <p>10</p>
-              </div>
-              <div
-                className={`${styles.plus} d-flex align-items-center justify-content-center`}
-              >
-                <FontAwesomeIcon icon={faPlus} />
               </div>
             </div>
           </div>
@@ -56,9 +52,8 @@ const PerformTransaction = (props: { isBuy?: boolean }) => {
             </div>
 
             <BaseButton title={isBuy ? "Buy" : "Sell"} />
-          </div>
-        </div>
-      </div>
+          </div> */}
+
     </div>
   );
 };

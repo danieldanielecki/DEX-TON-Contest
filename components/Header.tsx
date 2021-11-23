@@ -8,22 +8,21 @@ import { useRouter } from 'next/router';
 const Header = () => {
   const [burgerVisible, toggleburgerVisible] = useState(false);
   const router = useRouter();
- 
 
-  function handleMenu (event: { preventDefault: Function}) {
+  function handleMenu(event: { preventDefault: Function }) {
     event.preventDefault();
     toggleburgerVisible(!burgerVisible)
   }
 
   return (
     <header>
-      <nav className={`${styles.navbar} navbar fixed-top navbar-expand-lg`}>
+      <nav className={`${styles.navbar} navbar navbar-expand-lg`}>
         <button
           onClick={handleMenu}
           className={burgerVisible ? styles.main_burger_focus : styles.main_burger}
         />
         <div className="container">
-          <a className="navbar-brand" href="https://ton.org/" target="_blank" rel="noreferrer">
+          <a className="navbar-brand" href="https://ton.org/" target="_blank">
             <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={200} height={50} />
           </a>
           {/* <div className="d-flex flex-row order-2 order-lg-3 user_info">
