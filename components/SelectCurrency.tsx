@@ -36,6 +36,7 @@ const IconOption = (props: any) => (
   </Option>
 );
 
+// TODO Katarzyna: cleanup of these props what's needed / what's not.
 const SelectCurrency = (props: {
   currencyA?: Object;
   currencyB?: Object;
@@ -87,6 +88,7 @@ const SelectCurrency = (props: {
   );
 };
 
+// TODO Katarzyna: cleanup of these props what's needed / what's not.
 SelectCurrency.propTypes = {
   currencyA: PropTypes.object,
   currencyB: PropTypes.object,

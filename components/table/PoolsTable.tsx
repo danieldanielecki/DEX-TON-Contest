@@ -2,6 +2,7 @@ import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRunti
 import getTableSettings from "./getTableSettings";
 import styles from "../../styles/PoolsTable.module.scss";
 import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
+import BaseButton from "../../components/BaseButton";
 import GlobalFilter from "./GlobalFilter";
 import React from "react";
 import { Cell, Row } from "react-table";
@@ -62,7 +63,7 @@ const Table = () => {
           onClick={() => tableSettings.gotoPage(0)}
           //   disabled={!canPreviousPage}
         >
-          <a className="page-link">First</a>
+          <BaseButton title="First" />
         </li>
         <li
           className="page-item"
@@ -83,7 +84,7 @@ const Table = () => {
           onClick={() => tableSettings.gotoPage(tableSettings.pageCount - 1)}
           //   disabled={!canNextPage}
         >
-          <a className="page-link">Last</a>
+          <BaseButton title="Last" />
         </li>
         <li>
           <a className="page-link">
