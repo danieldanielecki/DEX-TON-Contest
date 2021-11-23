@@ -6,7 +6,6 @@ import type { NextPage } from "next";
 import SelectCurrency from "../components/SelectCurrency";
 
 const LiquidityFromPool: NextPage = () => {
-  let tokenSet: Set<unknown> = new Set();
   const tether = CURRENCIES.currencies[5];
   const [currencies, setCurrencies] = useState(CURRENCIES.currencies);
   const [currencyA, setCurrencyA] = useState(CURRENCIES.currencies[0]);
@@ -38,17 +37,9 @@ const LiquidityFromPool: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <SelectCurrency
-        isOne={true}
-        onSelectCurrency={onSelectCurrency}
-      />
+      <SelectCurrency isOne={true} onSelectCurrency={onSelectCurrency} />
       <div className="row">
         <div className="col-sm-6">
-          {/* <h3>{currencyA.name}</h3>
-          <BaseIcon
-            key={currencyA.code.toLowerCase()}
-            name={currencyA.code.toLowerCase()}
-          /> */}
           <div className="input-group">
             <input
               aria-describedby="currencyA"

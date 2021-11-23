@@ -1,7 +1,5 @@
-import { useRouter } from "next/router";
-import Image from "next/image";
-import styles from "../styles/Home.module.scss";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 const HeadPage = () => {
   function returnTitle() {

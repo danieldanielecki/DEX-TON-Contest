@@ -3,12 +3,14 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import Select, { components } from "react-select";
 import { useState, useEffect } from "react";
-import getCurrencies from '../redux/getters/getCurrencies';
-import { setCurrencyA, setCurrencyB } from '../redux/actions/selectedActions';
-import { connect } from 'react-redux'
-import store from '../redux/store';
+import getCurrencies from "../redux/getters/getCurrencies";
+import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
+import { connect } from "react-redux";
+import store from "../redux/store";
 
-const mapStateToProps = (state: { selected: { currencyA: Object, currencyB: Object } }) => ({
+const mapStateToProps = (state: {
+  selected: { currencyA: Object; currencyB: Object };
+}) => ({
   currencyA: state.selected.currencyA,
   currencyB: state.selected.currencyB,
 });
@@ -17,10 +19,10 @@ const mapDispatchToProps = () => {
   return {
     setCurrencyA,
     setCurrencyB,
-  }
-}
+  };
+};
 
-const connector = connect(mapStateToProps, mapDispatchToProps)
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 const { Option } = components;
 const IconOption = (props: any) => (
@@ -28,23 +30,21 @@ const IconOption = (props: any) => (
     {props.data.symbol === "ton" ? (
       <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={64} height={64} />
     ) : (
-      <BaseIcon
-        key={props.data.symbol}
-        name={props.data.symbol}
-      />
+      <BaseIcon key={props.data.symbol} name={props.data.symbol} />
     )}
     {props.data.name}
   </Option>
 );
 
 const SelectCurrency = (props: {
-  setCurrencyA: Function,
-  setCurrencyB: Function,
-  currencyA: Object,
-  currencyB: Object,
-  isOne?: boolean,
-  startCurrency: any,
-  optionVal: string,
+  currencyA?: Object;
+  currencyB?: Object;
+  isOne?: boolean;
+  onSelectCurrency?: Function;
+  optionVal?: string;
+  setCurrencyA?: any;
+  setCurrencyB?: any;
+  startCurrency?: string;
 }) => {
   const { isOne, startCurrency, optionVal, setCurrencyA, setCurrencyB } = props;
   const [selectedOption, setSelectedOption] = useState(startCurrency);
@@ -54,11 +54,11 @@ const SelectCurrency = (props: {
 
   useEffect(() => {
     async function loadCurrencies() {
-      const result = await getCurrencies();
+      const result: any = await getCurrencies();
       setCurrencies(result);
     }
     loadCurrencies();
-  }, [])
+  }, []);
 
   const handleChange = (event: any) => {
     if (optionVal === "A") {
@@ -67,9 +67,7 @@ const SelectCurrency = (props: {
     if (optionVal === "B") {
       store.dispatch(setCurrencyB(event));
     }
-    console.log(store.getState());
     setSelectedOption(event.name);
-    // onSelectCurrency(event.symbol);
   };
 
   if (isOne) {
@@ -90,11 +88,14 @@ const SelectCurrency = (props: {
 };
 
 SelectCurrency.propTypes = {
-  setCurrencyA: PropTypes.func.isRequired,
-  setCurrencyB: PropTypes.func.isRequired,
+  currencyA: PropTypes.object,
+  currencyB: PropTypes.object,
   isOne: PropTypes.bool,
+  onSelectCurrency: PropTypes.func,
   optionVal: PropTypes.string,
-  onSelectCurrency: PropTypes.func.isRequired,
+  setCurrencyA: PropTypes.func,
+  setCurrencyB: PropTypes.func,
+  startCurrency: PropTypes.string,
 };
 
 export default connector(SelectCurrency);
