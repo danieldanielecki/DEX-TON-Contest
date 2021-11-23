@@ -43,7 +43,6 @@ const Table = () => {
               <tr
                 {...row.getRowProps()}
                 className={hooks[i][0] ? styles.active_row : ""}
-                // TODO Raduan: Currently the class "active_row" applies on hover any of the row elements of the table, and it highlights all of the elements as well. Your task is to highlight particular row which is being hovered.
                 onMouseEnter={hooks[i][1]}
                 onMouseLeave={hooks[i][1]}
               >
