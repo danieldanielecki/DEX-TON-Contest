@@ -1,17 +1,31 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
 import getTableSettings from "./getTableSettings";
 import styles from "../../styles/PoolsTable.module.scss";
+import styles2 from "../../styles/PoolStatistics.module.scss";
 import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
 import BaseButton from "../../components/BaseButton";
 import GlobalFilter from "./GlobalFilter";
 import React from "react";
+import Select from "react-select";
 import { Cell, Row } from "react-table";
+import { ISelect } from "../../interfaces/select";
 import { Pool } from "../../interfaces/pool";
 
 const Table = () => {
   const tableSettings = getTableSettings();
   const [isToggleClassOnHover, setIsToggleClassOnHover] =
     useToggleClassOnHover(false);
+  const numberOfRecords: ISelect[] = [
+    { label: 5, value: 5 },
+    { label: 10, value: 10 },
+    { label: 25, value: 25 },
+    { label: 50, value: 50 },
+    { label: 100, value: 100 },
+  ];
+
+  const handleChange = (numberOfRecordsObject: ISelect) => {
+    tableSettings.setPageSize(Number(numberOfRecordsObject.value));
+  };
 
   return (
     <div>
@@ -52,78 +66,55 @@ const Table = () => {
             );
           })}
         </tbody>
+        <tfoot className="rowgroup">
+          Page{" "}
+          <strong>
+            {tableSettings.pageIndex + 1} of {tableSettings.pageOptions.length}
+          </strong>{" "}
+        </tfoot>
       </table>
-      {/* 
-          Pagination can be built however you'd like. 
-          This is just a very basic UI implementation:
-        */}
-      <ul className="pagination">
-        <li
-          className="page-item"
-          onClick={() => tableSettings.gotoPage(0)}
-          //   disabled={!canPreviousPage}
-        >
-          <BaseButton title="First" />
-        </li>
-        <li
-          className="page-item"
-          onClick={() => tableSettings.previousPage()}
-          //   disabled={!canPreviousPage}
-        >
-          <a className="page-link">{"<"}</a>
-        </li>
-        <li
-          className="page-item"
-          onClick={() => tableSettings.nextPage()}
-          //   disabled={!canNextPage}
-        >
-          <a className="page-link">{">"}</a>
-        </li>
-        <li
-          className="page-item"
-          onClick={() => tableSettings.gotoPage(tableSettings.pageCount - 1)}
-          //   disabled={!canNextPage}
-        >
-          <BaseButton title="Last" />
-        </li>
-        <li>
-          <a className="page-link">
-            Page{" "}
-            <strong>
-              {tableSettings.pageIndex + 1} of{" "}
-              {tableSettings.pageOptions.length}
-            </strong>{" "}
-          </a>
-        </li>
-        <li>
-          <a className="page-link">
-            <input
-              className="form-control"
-              type="number"
-              defaultValue={tableSettings.pageIndex + 1}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                tableSettings.gotoPage(page);
-              }}
-              style={{ width: "100px", height: "20px" }}
-            />
-          </a>
-        </li>{" "}
-        <select
-          className="form-control"
-          value={tableSettings.pageSize}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-            tableSettings.setPageSize(Number(e.target.value));
-          }}
-          style={{ width: "120px", height: "38px" }}
-        >
-          {[5, 10, 20, 30, 40, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </ul>
+      <BaseButton
+        disabled={!tableSettings.canPreviousPage}
+        onClick={() => tableSettings.gotoPage(0)}
+        title="First"
+      />
+      <BaseButton
+        disabled={!tableSettings.canPreviousPage}
+        onClick={() => tableSettings.previousPage()}
+        title="Previous"
+      />
+      <BaseButton
+        disabled={!tableSettings.canNextPage}
+        onClick={() => tableSettings.nextPage()}
+        title="Next"
+      />
+      <BaseButton
+        disabled={!tableSettings.canNextPage}
+        onClick={() => tableSettings.gotoPage(tableSettings.pageCount - 1)}
+        title="Last"
+      />
+      <div className={`${styles2.show_wrapper} `}>
+        <div style={{ display: "inline-block", maxWidth: 200 }}>
+          <input
+            aria-describedby="pageSearch"
+            className={styles2.form_control}
+            id="pageSearch"
+            name="pageSearch"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              tableSettings.gotoPage(page);
+            }}
+            type="number"
+          />
+        </div>
+        <div style={{ display: "inline-block", maxWidth: 200 }}>
+          <Select
+            onChange={handleChange}
+            options={numberOfRecords}
+            value={tableSettings.pageSize}
+          />
+        </div>
+      </div>
     </div>
   );
 };

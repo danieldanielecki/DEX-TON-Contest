@@ -19,23 +19,19 @@ const GlobalFilter = (props: {
   return (
     <div className={styles.pools_tab_wrapper}>
       <div className={styles.pool_search_tab_wrapper}>
-        <span>
-          <form action="#" method="post">
-            <input
-              aria-describedby="poolSearch"
-              className={styles.form_control}
-              id="poolSearch"
-              name="poolSearch"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setValue(e.target.value);
-                onChange(e.target.value);
-              }}
-              placeholder={`Search ${count} pools...`}
-              type="text"
-              value={value || ""}
-            />
-          </form>
-        </span>
+        <input
+          aria-describedby="poolSearch"
+          className={styles.form_control}
+          id="poolSearch"
+          name="poolSearch"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setValue(e.target.value);
+            onChange(e.target.value);
+          }}
+          placeholder={`Search ${count} pools...`}
+          type="text"
+          value={value || ""}
+        />
       </div>
     </div>
   );

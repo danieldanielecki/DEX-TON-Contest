@@ -20,19 +20,9 @@ const PoolStatistics: NextPage = () => {
               <h1 className={styles.name}>Pools</h1>
               <p>Trading</p>
             </div>
-            <div className={styles.pools_tab_wrapper}>
-              <div
-                id="best"
-                className={`${styles.pool_search_tabs} ${styles.active}`}
-              >
-                <div className={styles.pools_responsive_table_wrapper}>
-                  {/* <PoolTable pools={POOLS} queryString={searchQuery} /> */}
-                  <PoolsTable />
-                </div>
-                <div className={`${styles.show_wrapper} text-center`}>
-                  <a href="#">View More</a>
-                </div>
-              </div>
+            <div className={styles.pools_responsive_table_wrapper}>
+              {/* <PoolTable pools={POOLS} queryString={searchQuery} /> */}
+              <PoolsTable />
             </div>
           </div>
         </div>

@@ -27,122 +27,96 @@
   }
 }
 
-.pools_tab_wrapper {
-  .pool_search_tab_wrapper {
-    background-color: $pickled-bluewood;
+.pool_search_tab_wrapper {
+  input {
+    border: 1px solid $lochmara;
     border-radius: 3rem;
-    margin: 0 auto -3rem;
-    max-width: 768px;
-    padding: 1rem;
-    position: relative;
-    top: -3rem;
+    color: $white;
+    font-family: $mulish;
+    padding: 1rem 12rem 1rem 2rem;
 
-    form {
-      position: relative;
-
-      input {
-        background-color: $pickled-bluewood;
-        border: 1px solid $lochmara;
-        border-radius: 3rem;
-        color: $white;
-        font-family: $mulish;
-        padding: 1rem 12rem 1rem 2rem;
-
-        &::placeholder {
-          font-family: $mulish;
-          color: $lochmara;
-        }
-        &:focus {
-          border: 1px solid $pickled-bluewood;
-          color: $lochmara;
-        }
-      }
+    &::placeholder {
+      font-family: $mulish;
+      color: $lochmara;
+    }
+    &:focus {
+      border: 1px solid $pickled-bluewood;
+      color: $lochmara;
     }
   }
 
-  .pool_search_tabs {
-    margin-top: 2rem;
+  .pools_responsive_table_wrapper {
+    .table {
+      border-collapse: separate;
+      border-spacing: 0 1.5rem;
 
-    .pools_responsive_table_wrapper {
-      .table {
-        border-collapse: separate;
-        border-spacing: 0 1.5rem;
-        tr {
-          background-color: $lochmara;
+      tr {
+        background-color: $lochmara;
 
-          td {
-            padding: 1rem 0.8rem;
-            vertical-align: middle;
+        td {
+          padding: 1rem 0.8rem;
+          vertical-align: middle;
 
+          &:first-child {
+            border-radius: 3rem 0 0 3rem;
+            padding-left: 1rem;
+          }
+          &:last-child {
+            border-radius: 0 3rem 3rem 0;
+            padding-right: 1rem;
+          }
+        }
+
+        .price {
+          margin-right: 2rem;
+
+          p {
             &:first-child {
-              border-radius: 3rem 0 0 3rem;
-              padding-left: 1rem;
+              color: $white;
+              font-family: $mulish;
+              font-weight: bold;
+
+              i {
+                color: $white;
+              }
             }
             &:last-child {
-              border-radius: 0 3rem 3rem 0;
-              padding-right: 1rem;
-            }
-          }
+              color: rgb(11, 80, 22);
+              font-family: $mulish;
+              font-weight: bold;
 
-          .price {
-            margin-right: 2rem;
-
-            p {
-              &:first-child {
-                color: $white;
-                font-family: $mulish;
-                font-weight: bold;
-
-                i {
-                  color: $white;
-                }
-              }
-              &:last-child {
+              i {
                 color: rgb(11, 80, 22);
-                font-family: $mulish;
-                font-weight: bold;
-
-                i {
-                  color: rgb(11, 80, 22);
-                }
               }
+            }
 
-              svg {
-                display: inline-block;
-                max-width: 1rem;
-              }
+            svg {
+              display: inline-block;
+              max-width: 1rem;
             }
           }
         }
       }
     }
-  }
-
-  .active {
-    display: inherit;
   }
 }
 
 .show_wrapper {
-  margin-top: 0;
-  padding: 2rem 0px 2rem;
+  display: inline-block;
 
-  a {
-    @include transition(all 0.6s);
-
-    border: 0.1rem solid $pickled-bluewood;
-    border-radius: 1.5rem;
-    color: #0088cc;
-    display: inline-block;
+  input {
+    border: 0.1rem solid $lochmara;
+    border-radius: 3rem;
+    color: $pickled-bluewood;
     font-family: $mulish;
-    font-weight: bold;
-    padding: 0.5rem 2rem;
-    text-decoration: none;
+    padding: 0.5rem 0 0.5rem 2rem;
+    max-width: 5rem;
 
-    &:hover {
-      border: 0.2rem solid $pickled-bluewood;
-      color: #0088cc;
-      text-decoration: none;
+    &::placeholder {
+      font-family: $mulish;
+    }
+    &:focus {
+      color: $lochmara;
     }
   }
 }
