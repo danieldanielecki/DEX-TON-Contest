@@ -1,22 +1,13 @@
 import PropTypes from "prop-types";
 
-const BaseIcon = (props: { name: string }) => {
-  const { name } = props;
+const BaseIcon = (props: { image: string }) => {
+  const { image } = props;
 
-const loadModule = () => {
-  try {
-    const icon = require(`../node_modules/cryptocurrency-icons/svg/color/${name}.svg`).default.src;
-    return icon;
-  }
-  catch (ex) {
-    return '';
-  }
-}
   return (
     <div>
       <img
         height={64}
-        src={ loadModule() }
+        src={ image }
         width={64}
       />
     </div>

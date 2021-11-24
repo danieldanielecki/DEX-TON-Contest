@@ -16,8 +16,13 @@ const ExchangeToken: NextPage = () => {
         <div className="form-control w-50">
           <div>
             <ToggleBuySell />
-            <SelectCurrency optionVal="A" />
-            <AmountInput />
+            <div className="d-flex">
+              <div className="w-75">
+              <label> Currency: </label>
+              <SelectCurrency optionVal="A" />
+              </div>
+              <AmountInput />
+            </div>
           </div>
           <div className="flex-column">
             <label> With: </label>
