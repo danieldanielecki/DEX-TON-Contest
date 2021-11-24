@@ -13,8 +13,6 @@ import { Pool } from "../../interfaces/pool";
 
 const Table = () => {
   const tableSettings = getTableSettings();
-  const [isToggleClassOnHover, setIsToggleClassOnHover] =
-    useToggleClassOnHover(false);
   const numberOfRecords: ISelect[] = [
     { label: 5, value: 5 },
     { label: 10, value: 10 },
@@ -26,6 +24,14 @@ const Table = () => {
   const handleChange = (numberOfRecordsObject: ISelect) => {
     tableSettings.setPageSize(Number(numberOfRecordsObject.value));
   };
+
+  const [isToggleClassOnHover, setIsToggleClassOnHover] = useToggleClassOnHover(
+    new Array(100).fill(false)
+  );
+  const hooks = tableSettings.data.map((val: any, i: number) => {
+    return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];
+  });
+
 
   return (
     <div>
@@ -67,10 +73,9 @@ const Table = () => {
             return (
               <tr
                 {...row.getRowProps()}
-                className={isToggleClassOnHover ? styles.active_row : ""}
-                // TODO Raduan: Currently the class "active_row" applies on hover any of the row elements of the table, and it highlights all of the elements as well. Your task is to highlight particular row which is being hovered.
-                onMouseEnter={setIsToggleClassOnHover}
-                onMouseLeave={setIsToggleClassOnHover}
+                className={hooks[i][0] ? styles.active_row : ""}
+                onMouseEnter={hooks[i][1]}
+                onMouseLeave={hooks[i][1]}
               >
                 {row.cells.map((cell: Cell<Pool, any>) => {
                   return (
@@ -103,8 +108,9 @@ const Table = () => {
               >
                 Page{" "}
                 <strong>
-                  {tableSettings.pageIndex + 1} of{" "}
-                  {tableSettings.pageOptions.length}
+                  {`${tableSettings.state.pageIndex + 1} of ${
+                    tableSettings.pageOptions.length
+                  }`}
                 </strong>{" "}
               </p>
               <BaseButton

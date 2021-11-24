@@ -1,10 +1,20 @@
 import { useCallback, useState } from "react";
 
-export default function useToggleClassOnHover(isHovered = false) {
-  const [value, setValue] = useState(isHovered);
+export default function useToggleClassOnHover(array: boolean[]) {
+  const [value, setValue] = useState(array);
 
-  const toggleState = useCallback(() => {
-    setValue((value) => !value);
-  }, []);
-  return [value, toggleState];
+  const getWrapperFunction = (i: number) => {
+    return value[i];
+  };
+
+  const setWrapperFunction = (index: number) => {
+    return useCallback(() => {
+      setValue((value: boolean[]) => {
+        return value.map((v: boolean, i: number) => {
+          return i != index ? v : !v;
+        });
+      });
+    }, []);
+  };
+  return [getWrapperFunction, setWrapperFunction];
 }
