@@ -15,7 +15,7 @@ const BaseIcon = (props: { image: string }) => {
 };
 
 BaseIcon.propTypes = {
-  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default BaseIcon;

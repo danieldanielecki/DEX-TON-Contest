@@ -11,24 +11,24 @@ const BuySellSummary = (props: {
 }) => {
 
   const [isCalcVisible, setCalcVisible] = useState(false);
+  const [amountB, setAmountB] = useState(0);
 
   const { currencyA, currencyB, method, amount } = props;
-  // useEffect(() => {
-  //   console.log('A: ', currencyA);
-  //   console.log('B: ', currencyB);
-  //   //buy
-  //   console.log(props.currencyA.current_price / props.currencyB.current_price * 1);
-  //   //sell
-  //   console.log(props.currencyB.current_price / props.currencyA.current_price * 1);
-  // })
   const calculateAmount = () => {
-    if (method === "sell") {
-      return currencyA.current_price / currencyB.current_price * amount;
-    } else if (method === "buy") {
-      return currencyB.current_price / currencyA.current_price * amount;
+    let value;
+    console.log();
+    
+    if (method.type === "sell") {
+      value =  currencyA.current_price / currencyB.current_price * amount;
+    } else if (method.type === "buy") {
+      value = currencyB.current_price / currencyA.current_price * amount;
     }
+    console.log(value);
+    
+    setAmountB(value);
   }
   const handleCalculation = () => {
+    calculateAmount();
     setCalcVisible(true);
   }
 
@@ -61,9 +61,9 @@ const BuySellSummary = (props: {
               </p>
             </div>
           </div>
-          {/* <div>
-            {method} {amount} {currencyA.name} with {calculateAmount()} {currencyB.name}
-          </div> */}
+          <div>
+            {method.type} {amount} {currencyA.name} with {amountB} {currencyB.name}
+          </div>
         </div>
         : ''}
     </>
