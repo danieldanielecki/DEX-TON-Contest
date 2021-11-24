@@ -1,8 +1,10 @@
 @import "./main.scss";
 
 .styled_table {
-  border-radius: 0.5rem;
+  border-radius: 2rem;
+  bottom: 0;
   box-shadow: 0.01rem 0.01rem 0.1rem $lochmara;
+  background-color: #ececec;
   margin: 2rem 0.5rem;
   font-family: $mulish;
   min-width: 25rem;
@@ -24,7 +26,19 @@
 
     &.active_row {
       color: $pickled-bluewood;
-      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        transition: 1s;
+
+        &:nth-of-type(even) {
+          background-color: rgba(0, 136, 204, 0.4);
+        }
+
+        &:nth-of-type(odd) {
+          background-color: rgba(206, 206, 206);
+        }
+      }
     }
 
     &:last-of-type {
@@ -34,5 +48,9 @@
     &:nth-of-type(even) {
       background-color: rgba(0, 136, 204, 0.2);
     }
+  }
+
+  @media (max-width: 767px) {
+    margin: 0.5rem 0.1rem;
   }
 }
