@@ -81,7 +81,6 @@ const getTableSettings = () => {
     setGlobalFilter: setGlobalFilter,
     setPageSize: setPageSize,
     state: state,
-    // state: { pageIndex, pageSize }, // TODO Raduan: I've broken it when decoupling your shitty code; what is not working is the text "{tableSettings.pageIndex + 1} of{" "}" in Table.tsx, please fix it. The commented out code was there responsible for displaying it. Tip: look at TableState interface properties.
   } = useTable(
     {
       columns: columnHeaders,
