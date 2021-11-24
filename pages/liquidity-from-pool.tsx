@@ -1,4 +1,6 @@
 import styles from "../styles/Home.module.scss";
+import useToggleAlert from "../hooks/useToggleAlert";
+import BaseDialog from "../components/BaseDialog";
 import BaseIcon from "../components/BaseIcon";
 import { useState, ChangeEvent } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
@@ -14,6 +16,7 @@ const LiquidityFromPool: NextPage = () => {
     CURRENCIES.currencies[0].sellRate
   );
   const [currencyBval, setCurrencyBval] = useState(tether.sellRate);
+  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   function onSelectCurrency(code: string) {
     const currency = currencies.filter(
@@ -87,6 +90,15 @@ const LiquidityFromPool: NextPage = () => {
           </p>
         </div>
       </div>
+      <button onClick={setIsOpened}>Open</button>
+      {isOpened && (
+        <BaseDialog
+          onOpenDialog={isOpened}
+          section="Section text"
+          title="Title"
+        />
+      )}
+
       <main className={styles.main}>
         <h1 className={styles.title}>Exchange Token</h1>
         <p className={styles.description}>
