@@ -29,13 +29,28 @@ const Table = () => {
 
   return (
     <div>
-      <GlobalFilter
-        preGlobalFilteredRows={tableSettings.preGlobalFilteredRows}
-        globalFilter={tableSettings.globalFilter}
-        setGlobalFilter={tableSettings.setGlobalFilter}
-      />
       <table className={styles.styled_table} {...tableSettings.getTableProps}>
+        <span
+          className="text-center"
+          style={{ display: "inline-block", marginLeft: 10 }}
+        >
+          Number of records:
+          <Select
+            onChange={handleChange}
+            options={numberOfRecords}
+            value={tableSettings.pageSize}
+          />
+        </span>
         <thead>
+          <tr className="text-center">
+            <td colSpan={5}>
+              <GlobalFilter
+                preGlobalFilteredRows={tableSettings.preGlobalFilteredRows}
+                globalFilter={tableSettings.globalFilter}
+                setGlobalFilter={tableSettings.setGlobalFilter}
+              />
+            </td>
+          </tr>
           {tableSettings.headerGroups.map((headerGroup) => (
             <tr>
               {headerGroup.headers.map((column) => (
@@ -66,55 +81,69 @@ const Table = () => {
             );
           })}
         </tbody>
-        <tfoot className="rowgroup">
-          Page{" "}
-          <strong>
-            {tableSettings.pageIndex + 1} of {tableSettings.pageOptions.length}
-          </strong>{" "}
+        <tfoot>
+          <tr className="text-center">
+            <td colSpan={5}>
+              <BaseButton
+                disabled={!tableSettings.canPreviousPage}
+                onClick={() => tableSettings.gotoPage(0)}
+                title="First"
+              />
+              <BaseButton
+                disabled={!tableSettings.canPreviousPage}
+                onClick={() => tableSettings.previousPage()}
+                title="Previous"
+              />
+              <p
+                style={{
+                  display: "inline-block",
+                  margin: 20,
+                  verticalAlign: "bottom",
+                }}
+              >
+                Page{" "}
+                <strong>
+                  {tableSettings.pageIndex + 1} of{" "}
+                  {tableSettings.pageOptions.length}
+                </strong>{" "}
+              </p>
+              <BaseButton
+                disabled={!tableSettings.canNextPage}
+                onClick={() => tableSettings.nextPage()}
+                title="Next"
+              />
+              <BaseButton
+                disabled={!tableSettings.canNextPage}
+                onClick={() =>
+                  tableSettings.gotoPage(tableSettings.pageCount - 1)
+                }
+                title="Last"
+              />
+            </td>
+          </tr>
+          <tr className="text-center">
+            <td colSpan={5}>
+              <div className={`${styles2.show_wrapper} align-items-center`}>
+                <p>Page number</p>
+                <input
+                  aria-describedby="pageSearch"
+                  className={styles2.form_control}
+                  id="pageSearch"
+                  name="pageSearch"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    const page = e.target.value
+                      ? Number(e.target.value) - 1
+                      : 0;
+                    tableSettings.gotoPage(page);
+                  }}
+                  value={tableSettings.state.pageIndex + 1}
+                  type="number"
+                />
+              </div>
+            </td>
+          </tr>
         </tfoot>
       </table>
-      <BaseButton
-        disabled={!tableSettings.canPreviousPage}
-        onClick={() => tableSettings.gotoPage(0)}
-        title="First"
-      />
-      <BaseButton
-        disabled={!tableSettings.canPreviousPage}
-        onClick={() => tableSettings.previousPage()}
-        title="Previous"
-      />
-      <BaseButton
-        disabled={!tableSettings.canNextPage}
-        onClick={() => tableSettings.nextPage()}
-        title="Next"
-      />
-      <BaseButton
-        disabled={!tableSettings.canNextPage}
-        onClick={() => tableSettings.gotoPage(tableSettings.pageCount - 1)}
-        title="Last"
-      />
-      <div className={`${styles2.show_wrapper} `}>
-        <div style={{ display: "inline-block", maxWidth: 200 }}>
-          <input
-            aria-describedby="pageSearch"
-            className={styles2.form_control}
-            id="pageSearch"
-            name="pageSearch"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              tableSettings.gotoPage(page);
-            }}
-            type="number"
-          />
-        </div>
-        <div style={{ display: "inline-block", maxWidth: 200 }}>
-          <Select
-            onChange={handleChange}
-            options={numberOfRecords}
-            value={tableSettings.pageSize}
-          />
-        </div>
-      </div>
     </div>
   );
 };

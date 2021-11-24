@@ -15,15 +15,13 @@ const PoolStatistics: NextPage = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <div className="container-fluid">
-          <div className="row">
-            <div className={`${styles.pools_info} text-center`}>
-              <h1 className={styles.name}>Pools</h1>
-              <p>Trading</p>
-            </div>
-            <div className={styles.pools_responsive_table_wrapper}>
-              {/* <PoolTable pools={POOLS} queryString={searchQuery} /> */}
-              <PoolsTable />
-            </div>
+          <div className={`${styles.pools_info} text-center`}>
+            <h1 className={styles.name}>Pools</h1>
+            <p>Trading</p>
+          </div>
+          <div className={styles.pools_responsive_table_wrapper}>
+            {/* <PoolTable pools={POOLS} queryString={searchQuery} /> */}
+            <PoolsTable />
           </div>
         </div>
       </main>

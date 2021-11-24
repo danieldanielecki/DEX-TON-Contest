@@ -36,8 +36,10 @@
     );
 
     &:disabled {
+      animation: none;
       background-color: rgb(230, 225, 225);
       border-color: rgb(230, 225, 225);
+      pointer-events: none;
     }
 
     &:hover {
