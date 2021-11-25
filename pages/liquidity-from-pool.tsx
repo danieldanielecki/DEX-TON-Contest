@@ -3,6 +3,7 @@ import useToggleAlert from "../hooks/useToggleAlert";
 import BaseDialog from "../components/BaseDialog";
 import BaseIcon from "../components/BaseIcon";
 import SelectCurrency from "../components/SelectCurrency";
+import ToggleBuySell from "../components/ToggleBuySell/index";
 import ToggleOnOffSwitch from "../components/ToggleOnOffSwitch";
 import { useState, ChangeEvent, Fragment } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
@@ -103,6 +104,7 @@ const LiquidityFromPool: NextPage = () => {
           onChange={onExpertModeChange}
           title="Expert Mode"
         />
+        <ToggleBuySell />
       </div>
       <Fragment>
         <button onClick={setIsOpened}>Open</button>
