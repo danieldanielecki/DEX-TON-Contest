@@ -10,7 +10,8 @@
   color: $lochmara;
   pointer-events: none;
   padding: 0.5rem 1rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .nav_link {
@@ -18,7 +19,8 @@
   padding: 0.5rem 1rem;
   color: $white;
   text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 
   &:hover {
     color: $lochmara;
@@ -28,7 +30,7 @@
     margin: 2px 0px;
     padding: 15px 20px;
     font-size: 14px;
-    background-color: $logotype-dark;
+    background-color: $pickled-bluewood;
   }
 }
 
@@ -74,7 +76,6 @@
       transition: 0.3s transform linear;
     }
   }
-
 }
 
 .navbar-collapse {
