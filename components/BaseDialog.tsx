@@ -18,7 +18,7 @@ const BaseDialog = (props: {
             <div className={styles.menu}>
               <a
                 href="#modal-closed"
-                className={styles.link2}
+                className={styles.link_to_open_dialog}
                 onClick={() => setIsOpened(false)}
               ></a>
             </div>

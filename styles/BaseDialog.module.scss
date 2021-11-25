@@ -34,7 +34,7 @@
   width: 15%;
 }
 
-.link2 {
+.link_to_open_dialog {
   align-items: center;
   border: 1px solid $pickled-bluewood;
   border-radius: 3rem;
@@ -46,18 +46,18 @@
   position: absolute;
   transition: 0.5s;
   width: 3rem;
-}
 
-.link2::before {
-  content: "×";
-  transform: translateX(0.07rem) translateY(-0.15rem);
-}
+  &:before {
+    content: "×";
+    transform: translateX(0.07rem) translateY(-0.15rem);
+  }
 
-.link2:hover,
-.link2:focus {
-  border: 1px solid $lochmara;
-  color: $lochmara;
-  transform: translateY(-0.1rem);
+  &:focus,
+  &:hover {
+    border: 1px solid $lochmara;
+    color: $lochmara;
+    transform: translateY(-0.1rem);
+  }
 }
 
 .menu {
