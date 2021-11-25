@@ -2,39 +2,68 @@
 
 .backdrop {
   background-color: rgba(0, 0, 0, 0.8);
+  font-family: $mulish;
   height: 100vh;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 4;
 
   section {
-    padding: 1rem;
+    padding: 4rem;
   }
 }
 
 .dialog {
   background-color: white;
   border-radius: 1rem;
+  box-shadow: 0rem 0rem 1rem 0.1rem $white;
   overflow: hidden;
   position: fixed;
   top: 20vh;
   width: 80%;
-  z-index: 3;
+  z-index: 5;
 }
 
 .header {
-  background-color: $lochmara;
-  color: white;
-  padding: 1rem;
+  border-bottom: 0.1rem solid $lochmara;
+  color: $lochmara;
+  margin: 0 auto;
   text-align: center;
-  width: 100%;
+  width: 15%;
+}
 
-  .menu {
-    display: flex;
-    justify-content: flex-end;
-  }
+.link2 {
+  align-items: center;
+  border: 1px solid $pickled-bluewood;
+  border-radius: 3rem;
+  color: $pickled-bluewood;
+  display: flex;
+  font-size: 2.2rem;
+  height: 3rem;
+  justify-content: center;
+  position: absolute;
+  transition: 0.5s;
+  width: 3rem;
+}
+
+.link2::before {
+  content: "×";
+  transform: translateX(0.07rem) translateY(-0.15rem);
+}
+
+.link2:hover,
+.link2:focus {
+  border: 1px solid $lochmara;
+  color: $lochmara;
+  transform: translateY(-0.1rem);
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {

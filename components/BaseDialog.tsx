@@ -15,12 +15,14 @@ const BaseDialog = (props: {
       {isOpened && (
         <div className={styles.backdrop}>
           <div className={styles.dialog}>
+            <div className={styles.menu}>
+              <a
+                href="#modal-closed"
+                className={styles.link2}
+                onClick={() => setIsOpened(false)}
+              ></a>
+            </div>
             <div className={styles.header}>
-              <div className={styles.menu}>
-                <div>
-                  <button onClick={() => setIsOpened(false)}>x</button>
-                </div>
-              </div>
               <h2>{title}</h2>
             </div>
             <section>{section}</section>
