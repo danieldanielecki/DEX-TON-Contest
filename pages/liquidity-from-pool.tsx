@@ -2,10 +2,11 @@ import styles from "../styles/Home.module.scss";
 import useToggleAlert from "../hooks/useToggleAlert";
 import BaseDialog from "../components/BaseDialog";
 import BaseIcon from "../components/BaseIcon";
-import { useState, ChangeEvent } from "react";
+import SelectCurrency from "../components/SelectCurrency";
+import ToggleOnOffSwitch from "../components/ToggleOnOffSwitch";
+import { useState, ChangeEvent, Fragment } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
-import SelectCurrency from "../components/SelectCurrency";
 
 const LiquidityFromPool: NextPage = () => {
   const tether = CURRENCIES.currencies[5];
@@ -17,6 +18,11 @@ const LiquidityFromPool: NextPage = () => {
   );
   const [currencyBval, setCurrencyBval] = useState(tether.sellRate);
   const [isOpened, setIsOpened] = useToggleAlert(false);
+  const [expertMode, setExpertMode] = useState(false);
+
+  const onExpertModeChange = (checked: boolean) => {
+    setExpertMode(checked);
+  };
 
   function onSelectCurrency(code: string) {
     const currency = currencies.filter(
@@ -90,15 +96,24 @@ const LiquidityFromPool: NextPage = () => {
           </p>
         </div>
       </div>
-      <button onClick={setIsOpened}>Open</button>
-      {isOpened && (
-        <BaseDialog
-          onOpenDialog={isOpened}
-          section="Section text"
-          title="Title"
+      <div>
+        <ToggleOnOffSwitch
+          checked={expertMode}
+          id="expert_mode"
+          onChange={onExpertModeChange}
+          title="Expert Mode"
         />
-      )}
-
+      </div>
+      <Fragment>
+        <button onClick={setIsOpened}>Open</button>
+        {isOpened && (
+          <BaseDialog
+            onOpenDialog={isOpened}
+            section="Section text"
+            title="Title"
+          />
+        )}
+      </Fragment>
       <main className={styles.main}>
         <h1 className={styles.title}>Exchange Token</h1>
         <p className={styles.description}>

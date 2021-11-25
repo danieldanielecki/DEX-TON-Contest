@@ -1,0 +1,79 @@
+@import "/styles/main.scss";
+
+.label {
+  font-family: $mulish;
+}
+
+.toggle_switch {
+  display: inline-block;
+  font-family: $mulish;
+  margin-right: 0.65rem;
+  position: relative;
+  text-align: left;
+  vertical-align: middle;
+  width: 4.5rem;
+
+  &_checkbox {
+    display: none;
+  }
+
+  &_label {
+    border-radius: 2rem;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+  }
+
+  &_inner {
+    display: block;
+    margin-left: -100%;
+    transition: margin 0.5s ease-in 0s;
+    width: 200%;
+
+    &:after,
+    &:before {
+      float: left;
+      height: 2rem;
+      line-height: 2rem;
+      width: 50%;
+    }
+
+    &:after {
+      background-color: #cacaca;
+      color: $white;
+      content: attr(data-no);
+      padding-right: 0.5rem;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    &:before {
+      background-color: $lochmara;
+      color: $white;
+      content: attr(data-yes);
+      padding-left: 0.5rem;
+      text-transform: uppercase;
+    }
+  }
+
+  &_switch {
+    background: $white;
+    border-radius: 2rem;
+    bottom: 0;
+    margin: 0.25rem;
+    position: absolute;
+    right: 2.5rem;
+    width: 1.5rem;
+    top: 0;
+    transition: all 0.5s ease-in 0s;
+  }
+
+  &_checkbox:checked + &_label {
+    .toggle_switch_inner {
+      margin-left: 0;
+    }
+    .toggle_switch_switch {
+      right: 0;
+    }
+  }
+}

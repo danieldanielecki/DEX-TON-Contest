@@ -47,12 +47,6 @@
   transform: $value;
 }
 
-@mixin transition($value) {
-  -webkit-transition: $value;
-  -o-transition: $value;
-  transition: $value;
-}
-
 @mixin burger {
   z-index: 100;
   width: 40px;
