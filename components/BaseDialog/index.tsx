@@ -1,7 +1,7 @@
-import styles from "../styles/BaseDialog.module.scss";
-import useToggleAlert from "../hooks/useToggleAlert";
+import styles from "./styles.module.scss";
+import useToggleAlert from "../../hooks/useToggleAlert";
 import PropTypes from "prop-types";
-import SettingsDialog from "../components/SettingsDialog";
+import SettingsDialog from "../SettingsDialog";
 import { Fragment } from "react";
 
 const BaseDialog = (props: {

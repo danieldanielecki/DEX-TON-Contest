@@ -1,4 +1,4 @@
-import styles from "../styles/Header.module.scss";
+import styles from "./styles.module.scss";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";

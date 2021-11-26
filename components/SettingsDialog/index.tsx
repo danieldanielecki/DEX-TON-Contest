@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import useToggleAlert from "../../hooks/useToggleAlert";
-import AmountInput from "./../AmountInput";
-import BaseButton from "./../BaseButton";
+import AmountInput from "../AmountInput";
+import BaseButton from "../BaseButton";
 import PropTypes from "prop-types";
 import ToggleOnOffSwitch from "../ToggleOnOffSwitch";
 import { useState } from "react";

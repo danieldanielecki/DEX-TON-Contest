@@ -3,14 +3,14 @@ import getTableSettings from "./getTableSettings";
 import styles from "../../styles/PoolsTable.module.scss";
 import styles2 from "../../styles/PoolStatistics.module.scss";
 import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
-import BaseButton from "../../components/BaseButton";
+import BaseButton from "../BaseButton";
 import GlobalFilter from "./GlobalFilter";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { Cell, Row } from "react-table";
 import { ISelect } from "../../interfaces/select";
 import { Pool } from "../../interfaces/pool";
-import store from '../../redux/store';
+import store from "../../redux/store";
 
 const Table = () => {
   const tableSettings = getTableSettings();
@@ -107,8 +107,9 @@ const Table = () => {
               >
                 Page{" "}
                 <strong>
-                  {`${tableSettings.state.pageIndex + 1} of ${tableSettings.pageOptions.length
-                    }`}
+                  {`${tableSettings.state.pageIndex + 1} of ${
+                    tableSettings.pageOptions.length
+                  }`}
                 </strong>{" "}
               </p>
               <BaseButton
