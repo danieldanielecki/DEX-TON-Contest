@@ -1,10 +1,10 @@
 import styles from "../styles/Home.module.scss";
 import useToggleAlert from "../hooks/useToggleAlert";
+import AmountInput from "../components/AmountInput";
+import BaseButton from "../components/BaseButton";
 import BaseDialog from "../components/BaseDialog";
 import BaseIcon from "../components/BaseIcon";
 import SelectCurrency from "../components/SelectCurrency";
-import ToggleBuySell from "../components/ToggleBuySell/index";
-import ToggleOnOffSwitch from "../components/ToggleOnOffSwitch";
 import { useState, ChangeEvent, Fragment } from "react";
 import { CURRENCIES } from "../config/data/currency-exchanges/dummy-exchanges";
 import type { NextPage } from "next";
@@ -19,11 +19,6 @@ const LiquidityFromPool: NextPage = () => {
   );
   const [currencyBval, setCurrencyBval] = useState(tether.sellRate);
   const [isOpened, setIsOpened] = useToggleAlert(false);
-  const [expertMode, setExpertMode] = useState(false);
-
-  const onExpertModeChange = (checked: boolean) => {
-    setExpertMode(checked);
-  };
 
   function onSelectCurrency(code: string) {
     const currency = currencies.filter(
@@ -47,80 +42,90 @@ const LiquidityFromPool: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <SelectCurrency isOne={true} onSelectCurrency={onSelectCurrency} />
-      <div className="row">
-        <div className="col-sm-6">
-          <div className="input-group">
-            <input
-              aria-describedby="currencyA"
-              className="form-control"
-              pattern="\d\.\d{2}"
-              type="number"
-              value={currencyAval}
-              onChange={(e) => {
-                onChangeHandler(e, "A");
-              }}
-            />
-            <span className="input-group-addon" id="currencyA">
-              {currencyA.code}
-            </span>
-          </div>
-        </div>
-        <div className="col-sm-6">
-          <BaseIcon
-            key={currencyB.code.toLowerCase()}
-            name={currencyB.code.toLowerCase()}
-          />
-          <h3>{currencyB.name}</h3>
-          <div className="input-group">
-            <input
-              aria-describedby="currencyB"
-              className="form-control"
-              onChange={(e) => {
-                onChangeHandler(e, "B");
-              }}
-              pattern="\d\.\d{2}"
-              type="number"
-              value={currencyBval}
-            />
-            <span className="input-group-addon" id="currencyB">
-              {currencyB.code}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-sm-12">
-          <p>
-            Exchange Rate {`${currencyA.sellRate} ${currencyA.code}`} ={" "}
-            {`${currencyB.sellRate} ${currencyB.code}`}
-          </p>
-        </div>
-      </div>
-      <div>
-        <ToggleOnOffSwitch
-          checked={expertMode}
-          id="expert_mode"
-          onChange={onExpertModeChange}
-          title="Expert Mode"
-        />
-        <ToggleBuySell />
-      </div>
-      <Fragment>
-        <button onClick={setIsOpened}>Open</button>
-        {isOpened && (
-          <BaseDialog
-            onOpenDialog={isOpened}
-            section="Section text"
-            title="Title"
-          />
-        )}
-      </Fragment>
       <main className={styles.main}>
         <h1 className={styles.title}>Exchange Token</h1>
         <p className={styles.description}>
           Placeholder for Exchange Token description.
         </p>
+        <SelectCurrency isOne={true} onSelectCurrency={onSelectCurrency} />
+        <div className="row">
+          <div className="col-sm-6">
+            <div className="input-group">
+              <input
+                aria-describedby="currencyA"
+                className="form-control"
+                pattern="\d\.\d{2}"
+                type="number"
+                value={currencyAval}
+                onChange={(e) => {
+                  onChangeHandler(e, "A");
+                }}
+              />
+              <span className="input-group-addon" id="currencyA">
+                {currencyA.code}
+              </span>
+            </div>
+          </div>
+          <div className="col-sm-6">
+            <BaseIcon
+              key={currencyB.code.toLowerCase()}
+              name={currencyB.code.toLowerCase()}
+            />
+            <h3>{currencyB.name}</h3>
+            <div className="input-group">
+              <input
+                aria-describedby="currencyB"
+                className="form-control"
+                onChange={(e) => {
+                  onChangeHandler(e, "B");
+                }}
+                pattern="\d\.\d{2}"
+                type="number"
+                value={currencyBval}
+              />
+              <span className="input-group-addon" id="currencyB">
+                {currencyB.code}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            <p>
+              Exchange Rate {`${currencyA.sellRate} ${currencyA.code}`} ={" "}
+              {`${currencyB.sellRate} ${currencyB.code}`}
+            </p>
+          </div>
+        </div>
+        <Fragment>
+          <button onClick={setIsOpened}>Open FLOW</button>
+
+          {isOpened && (
+            <BaseDialog
+              onOpenDialog={isOpened}
+              subtitle="Add liquidity to receive tokens"
+              summary="Prices and pool share"
+              title="Title"
+              AmountInputA={<AmountInput />}
+              AmountInputB={<AmountInput />}
+              BaseButton={<BaseButton title="Connect" />}
+              SelectCurrencyA={
+                <SelectCurrency
+                  isOne={false}
+                  optionVal="A"
+                  startCurrency="Bitcoin"
+                />
+              }
+              SelectCurrencyB={
+                <SelectCurrency
+                  isOne={false}
+                  optionVal="B"
+                  startCurrency="Ethereum"
+                />
+              }
+            />
+          )}
+        </Fragment>
       </main>
     </div>
   );

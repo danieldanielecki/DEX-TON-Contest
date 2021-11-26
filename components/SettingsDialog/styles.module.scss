@@ -1,17 +1,23 @@
-@import "./main.scss";
+@import "/styles/main.scss";
 
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.1);
   font-family: $mulish;
   height: 100vh;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 4;
+  z-index: 14;
 
   section {
+    margin: 0 auto;
     padding: 4rem;
+
+    div {
+      margin: 0.5rem 0;
+      text-align: left;
+    }
 
     p {
       padding-top: 0.75rem;
@@ -33,7 +39,7 @@
   position: fixed;
   top: 20vh;
   width: 80%;
-  z-index: 5;
+  z-index: 15;
 }
 
 .header {
@@ -41,7 +47,7 @@
   color: $lochmara;
   margin: 0 auto;
   text-align: center;
-  width: 15%;
+  width: 25%;
 }
 
 .link_to_close_dialog {
