@@ -31,21 +31,21 @@
         cursor: pointer;
         transition: 1s;
 
-        &:nth-of-type(even) {
+        &:nth-of-type(odd) {
           background-color: rgba(0, 136, 204, 0.4);
         }
 
-        &:nth-of-type(odd) {
+        &:nth-of-type(even) {
           background-color: rgba(206, 206, 206);
         }
       }
     }
 
-    &:last-of-type {
-      border-bottom: none;
+    &:first-child {
+      border-top: 0.01rem solid $lochmara;
     }
 
-    &:nth-of-type(even) {
+    &:nth-of-type(odd) {
       background-color: rgba(0, 136, 204, 0.2);
     }
   }

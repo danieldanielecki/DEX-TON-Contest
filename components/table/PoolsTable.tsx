@@ -32,7 +32,6 @@ const Table = () => {
     return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];
   });
 
-
   return (
     <div>
       <table className={styles.styled_table} {...tableSettings.getTableProps}>
