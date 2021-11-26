@@ -1,7 +1,8 @@
-import store from "../redux/store";
+import store from "../../redux/store";
+import styles from "./styles.module.scss";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setExchangeAmount } from "../redux/actions/selectedActions";
+import { setExchangeAmount } from "../../redux/actions/selectedActions";
 
 const mapStateToProps = (state: { selected: { method: Object } }) => ({
   method: state.selected.method,

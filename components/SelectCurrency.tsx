@@ -7,7 +7,6 @@ import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
 import { connect } from "react-redux";
 import store from "../redux/store";
 
-
 const mapDispatchToProps = () => {
   return {
     setCurrencyA,
@@ -23,7 +22,11 @@ const IconOption = (props: any) => (
     {props.data.symbol === "ton" ? (
       <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={64} height={64} />
     ) : (
-      <BaseIcon key={props.data.symbol} name={props.data.symbol} image={props.data.image} />
+      <BaseIcon
+        key={props.data.symbol}
+        name={props.data.symbol}
+        image={props.data.image}
+      />
     )}
     {props.data.name}
   </Option>
@@ -48,6 +51,7 @@ const SelectCurrency = (props: {
     async function loadCurrencies() {
       const result: any = await store.getState().fetched.currencies;
       setCurrencies(result);
+      console.log(currencies); // TODO Raduan: Here all the data comes, you can align the data with what's needed to be in the Pool Statistics table, and display the fetched data from here to the format of Pool Statistics. We need only index, Pool, 24% change, Volume, and Market Cap. The image is also needed, so don't delete it.
     }
     loadCurrencies();
   }, []);
@@ -70,7 +74,6 @@ const SelectCurrency = (props: {
     );
   } else {
     filteredCurrencies = currencies;
-    
   }
   return (
     <Select

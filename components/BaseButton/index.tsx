@@ -1,4 +1,4 @@
-import styles from "../styles/Buttons.module.scss";
+import styles from "./styles.module.scss";
 import PropTypes from "prop-types";
 
 const BaseButton = (props: {

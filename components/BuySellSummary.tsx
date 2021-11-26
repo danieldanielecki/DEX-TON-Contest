@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import BaseIcon from "./BaseIcon";
 import BaseButton from "./BaseButton";
+import BaseIcon from "./BaseIcon";
 
 const BuySellSummary = (props: {
-  currencyA: { name: string; symbol: string, image: string, current_price: number },
-  currencyB: { name: string; symbol: string, image: string, current_price: number },
-  method: { type: string },
-  amount: { type: number },
+  currencyA: {
+    name: string;
+    symbol: string;
+    image: string;
+    current_price: number;
+  };
+  currencyB: {
+    name: string;
+    symbol: string;
+    image: string;
+    current_price: number;
+  };
+  method: { type: string };
+  amount: { type: number };
 }) => {
-
+  const [isCalcVisible, setCalcVisible] = useState(false);
   const [amountCalc, setAmountCalc] = useState(0);
   const { currencyA, currencyB, method, amount } = props;
 
@@ -74,15 +84,15 @@ const BuySellSummary = (props: {
       </div>
       {/* : ''} */}
     </>
-  )
+  );
 };
 
 const mapStateToProps = (state: {
   selected: {
-    currencyA: Object,
-    currencyB: Object,
-    method: Object,
-    amount: String,
+    currencyA: Object;
+    currencyB: Object;
+    method: Object;
+    amount: String;
   };
 }) => ({
   currencyA: state.selected.currencyA,
@@ -92,5 +102,4 @@ const mapStateToProps = (state: {
 });
 
 const connector = connect(mapStateToProps);
-
 export default connector(BuySellSummary);
