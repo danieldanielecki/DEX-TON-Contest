@@ -16,17 +16,20 @@ const ExchangeToken: NextPage = () => {
         <div className="form-control w-50">
           <div>
             <ToggleBuySell />
-            <div className="d-flex">
-              <div className="w-75">
-              <label> Currency: </label>
-              <SelectCurrency optionVal="A" />
-              </div>
-              <AmountInput />
-            </div>
+            <SelectCurrency
+              isOne={false}
+              optionVal="A"
+              startCurrency="Bitcoin"
+            />
+            <AmountInput />
           </div>
           <div className="flex-column">
             <label> With: </label>
-            <SelectCurrency optionVal="B" />
+            <SelectCurrency
+              isOne={false}
+              optionVal="B"
+              startCurrency="Ethereum"
+            />
           </div>
         </div>
         <BuySellSummary />

@@ -32,14 +32,6 @@ const Table = () => {
   const hooks = tableSettings.data.map((val: any, i: number) => {
     return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];
   });
-  useEffect(() => {
-    const showPools = async() => {
-
-      console.log(await store.getState().pools);
-    }
-    showPools()
-  })
-
   return (
     <div>
       <table className={styles.styled_table} {...tableSettings.getTableProps}>

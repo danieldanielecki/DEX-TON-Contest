@@ -1,0 +1,71 @@
+@import "/styles/main.scss";
+
+$width_switch_button: 26rem;
+
+.switch_button {
+  background: #cacaca;
+  border-radius: 2rem;
+  color: white;
+  font-family: $mulish;
+  font-size: 1.5rem;
+  padding-right: $width_switch_button / 2;
+  position: relative;
+  text-align: center;
+  width: $width_switch_button;
+
+  &:before {
+    align-items: center;
+    bottom: 0;
+    content: "Sell";
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $width_switch_button / 2;
+    z-index: 3;
+  }
+
+  &_checkbox {
+    bottom: 0;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &:checked + .switch_button_label:before {
+      @include toggle_transition;
+
+      transform: translateX($width_switch_button / 2);
+    }
+
+    & + .switch_button_label {
+      display: block;
+      padding: 1rem;
+      pointer-events: none;
+      position: relative;
+
+      &:before {
+        @include toggle_transition;
+
+        background: $lochmara;
+        border-radius: 2rem;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        transform: translateX(0);
+      }
+
+      .switch_button_label_span {
+        position: relative;
+      }
+    }
+  }
+}

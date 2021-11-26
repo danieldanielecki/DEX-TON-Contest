@@ -41,16 +41,14 @@
   }
 }
 
+@mixin toggle_transition {
+  transition: all 0.5s ease-in 0s;
+}
+
 @mixin transform($value) {
   -webkit-transform: $value;
   -ms-transform: $value;
   transform: $value;
-}
-
-@mixin transition($value) {
-  -webkit-transition: $value;
-  -o-transition: $value;
-  transition: $value;
 }
 
 @mixin burger {
