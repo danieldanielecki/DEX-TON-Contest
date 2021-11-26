@@ -1,11 +1,20 @@
 import type { NextPage } from "next";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import styles from "../styles/Home.module.scss";
 import SelectCurrency from "../components/SelectCurrency";
 import ToggleBuySell from "../components/ToggleBuySell";
 import AmountInput from "../components/AmountInput";
 import BuySellSummary from "../components/BuySellSummary";
+import store from '../redux/store';
+import { clearSelected } from '../redux/actions/selectedActions';
 
-const ExchangeToken: NextPage = () => {
+const ExchangeToken: NextPage = (props: {
+  clearSelected: Function
+}) => {
+  useEffect(() => {
+    store.dispatch(clearSelected());
+  }, [])
   return (
     <div>
       <main className={styles.main}>
@@ -38,4 +47,11 @@ const ExchangeToken: NextPage = () => {
   );
 };
 
-export default ExchangeToken;
+const mapDispatchToProps = () => {
+  return {
+    clearSelected
+  };
+};
+
+const connector = connect(null, mapDispatchToProps);
+export default connector(ExchangeToken);

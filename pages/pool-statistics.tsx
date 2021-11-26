@@ -1,15 +1,20 @@
 import styles from "../styles/PoolStatistics.module.scss";
-import PoolTable from "../components/PoolTable";
+// import PoolTable from "../components/PoolTable";
 import PoolsTable from "../components/table/PoolsTable";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 // import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
 import store from '../redux/store';
 import { setPools } from '../redux/actions/poolsActions';
+import { clearSelected } from '../redux/actions/selectedActions';
 import createPools from '../redux/helpers/createPools';
 import { connect } from "react-redux";
 
-const PoolStatistics: NextPage = (props: {setPools: Function}) => {
+const PoolStatistics: NextPage = (props: {
+  setPools: Function,
+  clearSelected: Function
+}) => {
+
   // TODO: It might be deleted later, but first style table.
   // const [searchQuery, setSearchQuery] = useState("");
 
@@ -17,6 +22,7 @@ const PoolStatistics: NextPage = (props: {setPools: Function}) => {
   // TODO Katarzyna: the PoolTableItem isn't centered, please fix this; should be some Bootstrap/Flexbox-classes related.
 
   useEffect(() => {
+    store.dispatch(clearSelected());
     const asyncPoolsCreate = async () => {
       const pools = await createPools();
       store.dispatch(setPools(pools))
@@ -44,6 +50,7 @@ const PoolStatistics: NextPage = (props: {setPools: Function}) => {
 const mapDispatchToProps = () => {
   return {
     setPools,
+    clearSelected
   };
 };
 

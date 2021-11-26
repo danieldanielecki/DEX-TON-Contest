@@ -1,9 +1,18 @@
 
-import { SET_CURRENCYAVAL, SET_CURRENCYBVAL, SET_EXCHANGEBUY, SET_EXCHANGESELL, SET_EXCHANGEAMOUNT } from '../actions/selectedActions';
+import {
+  SET_CURRENCYAVAL,
+  SET_CURRENCYBVAL,
+  SET_EXCHANGEBUY,
+  SET_EXCHANGESELL,
+  SET_EXCHANGEAMOUNT,
+  RESTORE_SELECTED
+} from '../actions/selectedActions';
 
 const initialState = {
   currencyA: {},
   currencyB: {},
+  amount: Number,
+  method: {}
 }
 
 const selected = (state = initialState, action) => {
@@ -18,6 +27,8 @@ const selected = (state = initialState, action) => {
       return { ...state, method: { type: "sell" } };
     case SET_EXCHANGEAMOUNT:
       return { ...state, amount: action.payload };
+    case RESTORE_SELECTED:
+      return { initialState };
     default:
       return { ...state };
   }
