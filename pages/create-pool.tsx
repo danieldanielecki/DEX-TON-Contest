@@ -2,9 +2,10 @@ import type { NextPage } from "next";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SelectCurrency from "../components/SelectCurrency";
+import ShowCreatedPool from "../components/ShowCreatedPool";
 import { clearSelected } from '../redux/actions/selectedActions';
 import store from '../redux/store';
-import styles from "../styles/CreatePool.module.scss";
+import styles from "../styles/Home.module.scss";
 
 const CreatePool: NextPage = (props: {
   clearSelected: Function
@@ -13,9 +14,12 @@ const CreatePool: NextPage = (props: {
     store.dispatch(clearSelected());
   }, [])
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <div className="d-flex align-items-center">
+    <main className={styles.main}>
+      <h1 className={styles.title}>Create Pool</h1>
+      <p className={styles.description}>
+        Placeholder for Create Pool description.
+      </p>
+      <div className="form-control w-50">
           <SelectCurrency
             isOne={false}
             optionVal="A"
@@ -24,16 +28,11 @@ const CreatePool: NextPage = (props: {
           <SelectCurrency
             isOne={false}
             optionVal="B"
-            startCurrency="Bitcoin"
+            startCurrency="Ethereum"
           />
-        </div>
-        <h1 className={styles.title}>Created Pool</h1>
-
-        <p className={styles.description}>
-          Placeholder for Create Pool description.
-        </p>
-      </main>
-    </div>
+          <ShowCreatedPool />
+      </div>
+    </main>
   );
 };
 
