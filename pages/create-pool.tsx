@@ -8,8 +8,8 @@ const CreatePool: NextPage = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <div className="d-flex align-items-center">
-          <SelectCurrency isOne={false} startCurrency="btc" />
-          <SelectCurrency isOne={false} startCurrency="btc" />
+          <SelectCurrency isOne={false} startCurrency="Bitcoin" />
+          <SelectCurrency isOne={false} startCurrency="Ethereum" />
         </div>
         <h1 className={styles.title}>Created Pool</h1>
 
