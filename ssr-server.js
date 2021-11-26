@@ -7,18 +7,16 @@ const handle = app.getRequestHandler()
 
 const coinsList = require('./stubs/coins/coins-list.json');
 const currenciesList = require('./stubs/currencies/currencies-list.json');
+const pricesUSD = require('./stubs/coins/coins-USD.json');
 
 app.prepare()
   .then(() => {
+    
     const server = express()
-
-    server.get('/simple/supported_vs_currencies', (req, res) => {
-      res.send(currenciesList);
+    server.get('/simple/price', (req, res) => {
+      res.send(pricesUSD);
     })
 
-    server.get('/coins/list', (req, res) => {
-      res.send(coinsList);
-    })
     server.get('/*', (req, res) => {
       return handle(req, res)
     })

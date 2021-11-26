@@ -3,17 +3,10 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import Select, { components } from "react-select";
 import { useState, useEffect } from "react";
-import getCurrencies from "../redux/getters/getCurrencies";
 import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
 import { connect } from "react-redux";
 import store from "../redux/store";
 
-const mapStateToProps = (state: {
-  selected: { currencyA: Object; currencyB: Object };
-}) => ({
-  currencyA: state.selected.currencyA,
-  currencyB: state.selected.currencyB,
-});
 
 const mapDispatchToProps = () => {
   return {
@@ -22,7 +15,7 @@ const mapDispatchToProps = () => {
   };
 };
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect(null, mapDispatchToProps);
 
 const { Option } = components;
 const IconOption = (props: any) => (
@@ -30,7 +23,7 @@ const IconOption = (props: any) => (
     {props.data.symbol === "ton" ? (
       <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={64} height={64} />
     ) : (
-      <BaseIcon key={props.data.symbol} name={props.data.symbol} />
+      <BaseIcon key={props.data.symbol} name={props.data.symbol} image={props.data.image} />
     )}
     {props.data.name}
   </Option>
@@ -38,8 +31,6 @@ const IconOption = (props: any) => (
 
 // TODO Katarzyna: cleanup of these props what's needed / what's not.
 const SelectCurrency = (props: {
-  currencyA?: Object;
-  currencyB?: Object;
   isOne?: boolean;
   onSelectCurrency?: Function;
   optionVal?: string;
@@ -55,13 +46,15 @@ const SelectCurrency = (props: {
 
   useEffect(() => {
     async function loadCurrencies() {
-      const result: any = await getCurrencies();
+      const result: any = await store.getState().fetched.currencies;
       setCurrencies(result);
     }
     loadCurrencies();
   }, []);
 
   const handleChange = (event: any) => {
+    console.log();
+
     if (optionVal === "A") {
       store.dispatch(setCurrencyA(event));
     }
@@ -77,6 +70,7 @@ const SelectCurrency = (props: {
     );
   } else {
     filteredCurrencies = currencies;
+    
   }
   return (
     <Select
@@ -90,8 +84,6 @@ const SelectCurrency = (props: {
 
 // TODO Katarzyna: cleanup of these props what's needed / what's not.
 SelectCurrency.propTypes = {
-  currencyA: PropTypes.object,
-  currencyB: PropTypes.object,
   isOne: PropTypes.bool,
   onSelectCurrency: PropTypes.func,
   optionVal: PropTypes.string,
