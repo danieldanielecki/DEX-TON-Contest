@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import BaseButton from "./BaseButton";
 import BaseIcon from "./BaseIcon";
-import store from '../redux/store';
 
 const BuySellSummary = (props: {
   currencyA: {
@@ -20,13 +18,13 @@ const BuySellSummary = (props: {
   method: { type: string };
   amount: { exchangeToken: string };
 }) => {
-  const [isCalcVisible, setCalcVisible] = useState(false);
+
   const [amountCalc, setAmountCalc] = useState(0);
   const { currencyA, currencyB, method, amount } = props;
 
   useEffect(() => {
     let value: number = 0;
-    if (!!method && !!currencyA && !!currencyB && !!amount.exchangeToken) {
+    if (!!method && !!currencyA && !!currencyB && !!amount) {
       if (method.type === "sell") {
         value = currencyA.current_price / currencyB.current_price * +amount.exchangeToken;
       } else if (method.type === "buy") {
@@ -37,8 +35,8 @@ const BuySellSummary = (props: {
   });
 
   return (
-    <div>
-      <div className="w-500 d-flex">
+    <div className="form-control w-50 mt-3">
+      <div className="w-500 d-flex justify-content-evenly pt-4">
         {!!currencyA
           ? (
             <div>
@@ -53,13 +51,23 @@ const BuySellSummary = (props: {
               </p>
             </div>
           ) : ''}
-        {!!amount
-          && !!method
-          && !!currencyA
-          && !!currencyB
-          ? <span>{amountCalc} USD</span>
-          : ''}
-        <BaseIcon image="swap-icon.svg" />
+        <div className="d-flex flex-column align-items-center">
+          <BaseIcon image="swap-icon.svg" size={48}/>
+          {!!amount
+            && !!method
+            && !!currencyA
+            && !!currencyB
+            ? (
+              <p className="d-flex flex-column align-items-center">
+                <span>Pay with</span>
+                <span>{amountCalc}</span>
+                {method.type === "buy"
+                  ? <span>{currencyA.name}</span>
+                  : <span>{currencyB.name}</span>
+                }
+              </p>)
+            : ''}
+        </div>
         {!!currencyB
           ? (
             <div>
