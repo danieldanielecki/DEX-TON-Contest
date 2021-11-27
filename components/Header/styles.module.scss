@@ -46,10 +46,30 @@ nav.navbar {
   }
 }
 
+.open {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.open_logo {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+
+  span {
+    display: block;
+    margin-right: 0.5rem;
+  }
+}
+
 @media (max-width: 991px) {
   .highlighted,
   .nav_link {
-    margin: 1rem;
+    margin: 3rem;
   }
 
   .main_burger {
@@ -70,5 +90,12 @@ nav.navbar {
 
     border: none;
     transform: rotate(45deg) translateY(0.5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .highlighted,
+  .nav_link {
+    margin: 2rem;
   }
 }

@@ -15,7 +15,11 @@ const Header = () => {
 
   return (
     <header>
-      <nav className={`${styles.navbar} navbar navbar-expand-lg`}>
+      <nav
+        className={`${styles.navbar} navbar navbar-expand-lg ${
+          burgerVisible ? styles.open : ""
+        }`}
+      >
         <button
           className={
             burgerVisible ? styles.main_burger_focus : styles.main_burger
@@ -24,7 +28,11 @@ const Header = () => {
         />
         <div className="container">
           <Link href="/">
-            <a className="navbar-brand">
+            <a
+              className={`navbar-brand ${
+                burgerVisible ? styles.open_logo : ""
+              }`}
+            >
               <Image
                 alt="The Open Network (TON)"
                 height={64}
