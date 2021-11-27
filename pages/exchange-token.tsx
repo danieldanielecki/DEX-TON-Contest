@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styles from "../styles/Home.module.scss";
 import SelectCurrency from "../components/SelectCurrency";
-import ToggleBuySell from "../components/ToggleBuySell";
-import ToggleOnOffSwitch from "../components/ToggleOnOffSwitch";
+import ToggleBuySellSwitch from "../components/ToggleBuySellSwitch";
 import AmountInput from "../components/AmountInput";
 import BuySellSummary from "../components/BuySellSummary";
 import store from '../redux/store';
@@ -15,15 +14,8 @@ const ExchangeToken: NextPage = (props: {
   setExchangeSell: Function;
 }) => {
   useEffect(() => {
-    store.dispatch(clearSelected());  
+    store.dispatch(clearSelected());
   }, [])
-  const [exchangeMethod, setExchangeMethod] = useState(false);
-
-  const handleExchangeMethod = (e) => {
-    console.log(e);
-    
-    // store.getState().selected.method
-  }
 
   return (
     <main className={styles.main}>
@@ -31,30 +23,24 @@ const ExchangeToken: NextPage = (props: {
       <p className={styles.description}>
         Placeholder for Exchange Token description.
       </p>
-      <div className="form-control w-50">
-        <div>
-          <ToggleBuySell />
-          {/* <ToggleOnOffSwitch 
-          checked={exchangeMethod}
-          id="transaction-method"
-          onChange={(e) => handleExchangeMethod(e)}
-          optionLabels={['Buy', 'Sell']}
-          title={"Select exchange direction"} /> */}
+      <div className="form-control w-50 p-3">
+        <ToggleBuySellSwitch />
+        <div className="pb-3">
           <SelectCurrency
             isOne={false}
             optionVal="A"
-            startCurrency="Bitcoin"
+            startCurrency="Select..."
           />
-          <AmountInput amountOf="exchangeToken"/>
         </div>
-        <div className="flex-column">
+        <div className="flex-column pb-3">
           <label> With: </label>
           <SelectCurrency
             isOne={false}
             optionVal="B"
-            startCurrency="Ethereum"
+            startCurrency="Select..."
           />
         </div>
+        <AmountInput amountOf="exchangeToken" />
       </div>
       <BuySellSummary />
     </main>
