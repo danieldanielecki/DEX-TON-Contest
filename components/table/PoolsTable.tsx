@@ -1,16 +1,16 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
 // import getTableSettings from "./getTableSettings"; // TODO Raduan: please outsource the settings here, the component looks too big.
+import columnHeaders from "./getTableSettings"; // TODO Raduan: for now I just could outsource this.
 import styles from "../../styles/PoolsTable.module.scss";
 import styles2 from "../../styles/PoolStatistics.module.scss";
 import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
 import BaseButton from "../BaseButton";
 import GlobalFilter from "./GlobalFilter";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Select from "react-select";
 import { Cell, Row } from "react-table";
 import { ISelect } from "../../interfaces/select";
 import { Pool } from "../../interfaces/pool";
-import store from "../../redux/store";
 import {
   useTable,
   usePagination,
@@ -27,34 +27,6 @@ import {
   TableState,
 } from "react-table";
 // import { Pool } from "../../interfaces/pool";
-
-const columnHeaders = [
-  {
-    Header: "All Pools",
-    columns: [
-      {
-        Header: "#",
-        accessor: "id",
-      },
-      {
-        Header: "Pool",
-        accessor: "pair",
-      },
-      {
-        Header: "% 24h",
-        accessor: "priceChangePercentage24h",
-      },
-      {
-        Header: "Volume",
-        accessor: "volume",
-      },
-      {
-        Header: "Market Cap",
-        accessor: "marketCap",
-      },
-    ],
-  },
-];
 
 const Table = (props: { pools: Pool[] }) => {
   const { pools } = props;
@@ -118,12 +90,13 @@ const Table = (props: { pools: Pool[] }) => {
     { label: 100, value: 100 },
   ];
 
+  // TODO Raduan: the pools are showing from index 0 to 299, make it from 1 to 300.
   const handleChange = (numberOfRecordsObject: ISelect) => {
     tableSettings.setPageSize(Number(numberOfRecordsObject.value));
   };
 
   const [isToggleClassOnHover, setIsToggleClassOnHover] = useToggleClassOnHover(
-    new Array(300).fill(false)
+    new Array(300).fill(false) // TODO Raduan: make it dynamic now.
   );
   const hooks = tableSettings.data.map((val: any, i: number) => {
     return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];
