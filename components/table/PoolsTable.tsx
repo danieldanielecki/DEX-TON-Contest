@@ -1,6 +1,5 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
-// import getTableSettings from "./getTableSettings"; // TODO Raduan: please outsource the settings here, the component looks too big.
-import columnHeaders from "./getTableSettings"; // TODO Raduan: for now I just could outsource this.
+import getTableSettings from "./getTableSettings";
 import styles from "../../styles/PoolsTable.module.scss";
 import styles2 from "../../styles/PoolStatistics.module.scss";
 import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
@@ -11,77 +10,10 @@ import Select from "react-select";
 import { Cell, Row } from "react-table";
 import { ISelect } from "../../interfaces/select";
 import { Pool } from "../../interfaces/pool";
-import {
-  useTable,
-  usePagination,
-  useFilters,
-  useGlobalFilter,
-  useSortBy,
-  FilterValue,
-  HeaderGroup,
-  // Row,
-  TableBodyPropGetter,
-  TableBodyProps,
-  TablePropGetter,
-  TableProps,
-  TableState,
-} from "react-table";
-// import { Pool } from "../../interfaces/pool";
 
 const Table = (props: { pools: Pool[] }) => {
   const { pools } = props;
-  const getTableSettings = () => {
-    let canPreviousPage: boolean;
-    let canNextPage: boolean;
-    let getTableProps: (propGetter?: TablePropGetter<Pool>) => TableProps;
-    let getTableBodyProps: (
-      propGetter?: TableBodyPropGetter<Pool>
-    ) => TableBodyProps;
-    let gotoPage: (updater: ((pageIndex: number) => number) | number) => void;
-    let headerGroups: HeaderGroup<Pool>[];
-    let nextPage: () => void;
-    let page: Array<Row<Pool>>;
-    let pageCount: number;
-    let pageOptions: number[];
-    let preGlobalFilteredRows: Array<Row<Pool>>;
-    let prepareRow: (row: Row<any>) => void;
-    let previousPage: () => void;
-    let setGlobalFilter: (filterValue: FilterValue) => void;
-    let setPageSize: (pageSize: number) => void;
-    let state: TableState<Pool>;
-
-    const tableSettings = ({
-      canPreviousPage: canPreviousPage,
-      canNextPage: canNextPage,
-      getTableProps: getTableProps,
-      getTableBodyProps: getTableBodyProps,
-      gotoPage: gotoPage,
-      headerGroups: headerGroups,
-      nextPage: nextPage,
-      page: page,
-      pageCount: pageCount,
-      pageOptions: pageOptions,
-      preGlobalFilteredRows: preGlobalFilteredRows,
-      prepareRow: prepareRow,
-      previousPage: previousPage,
-      setGlobalFilter: setGlobalFilter,
-      setPageSize: setPageSize,
-      state: state,
-    } = useTable(
-      {
-        columns: columnHeaders,
-        data: pools,
-        initialState: { pageIndex: 0, pageSize: 5 },
-      },
-      useFilters,
-      useGlobalFilter,
-      useSortBy,
-      usePagination
-    ));
-    return tableSettings;
-  };
-
-  const tableSettings = getTableSettings();
+  const tableSettings = getTableSettings(pools);
   const numberOfRecords: ISelect[] = [
     { label: 5, value: 5 },
     { label: 10, value: 10 },
@@ -90,13 +22,13 @@ const Table = (props: { pools: Pool[] }) => {
     { label: 100, value: 100 },
   ];
 
-  // TODO Raduan: the pools are showing from index 0 to 299, make it from 1 to 300.
   const handleChange = (numberOfRecordsObject: ISelect) => {
+    console.log(Number(numberOfRecordsObject.value));
     tableSettings.setPageSize(Number(numberOfRecordsObject.value));
   };
 
   const [isToggleClassOnHover, setIsToggleClassOnHover] = useToggleClassOnHover(
-    new Array(300).fill(false) // TODO Raduan: make it dynamic now.
+    new Array(pools.length).fill(false)
   );
   const hooks = tableSettings.data.map((val: any, i: number) => {
     return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];

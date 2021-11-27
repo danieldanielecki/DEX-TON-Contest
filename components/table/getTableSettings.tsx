@@ -13,7 +13,6 @@ import {
   TableProps,
   TableState,
 } from "react-table";
-import { POOLS } from "../../config/data/pools/dummy-pools";
 import { Pool } from "../../interfaces/pool";
 
 const columnHeaders = [
@@ -22,7 +21,7 @@ const columnHeaders = [
     columns: [
       {
         Header: "#",
-        accessor: "id",
+        accessor: (_row: Row, index: number) => index + 1,
       },
       {
         Header: "Pool",
@@ -44,7 +43,7 @@ const columnHeaders = [
   },
 ];
 
-const getTableSettings = () => {
+const getTableSettings = (pools: Pool[]) => {
   let canPreviousPage: boolean;
   let canNextPage: boolean;
   let getTableProps: (propGetter?: TablePropGetter<Pool>) => TableProps;
@@ -63,7 +62,6 @@ const getTableSettings = () => {
   let setGlobalFilter: (filterValue: FilterValue) => void;
   let setPageSize: (pageSize: number) => void;
   let state: TableState<Pool>;
-
   const tableSettings = ({
     canPreviousPage: canPreviousPage,
     canNextPage: canNextPage,
@@ -84,7 +82,7 @@ const getTableSettings = () => {
   } = useTable(
     {
       columns: columnHeaders,
-      data: POOLS, // TODO Raduan: check if it's possible to get the data here, otherwise we have to keep the whole settings in PoolsTable...
+      data: pools,
       initialState: { pageIndex: 0, pageSize: 5 },
     },
     useFilters,
@@ -95,5 +93,4 @@ const getTableSettings = () => {
   return tableSettings;
 };
 
-// export default getTableSettings; // TODO Raduan: it can be useful, if you'll try to export all settings.
-export default columnHeaders;
+export default getTableSettings;
