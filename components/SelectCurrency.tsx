@@ -51,14 +51,12 @@ const SelectCurrency = (props: {
     async function loadCurrencies() {
       const result: any = await store.getState().fetched.currencies;
       setCurrencies(result);
-      console.log(currencies); // TODO Raduan: Here all the data comes, you can align the data with what's needed to be in the Pool Statistics table, and display the fetched data from here to the format of Pool Statistics. We need only index, Pool, 24% change, Volume, and Market Cap. The image is also needed, so don't delete it.
+       // TODO Raduan: Here: currencies all the data comes, you can align the data with what's needed to be in the Pool Statistics table, and display the fetched data from here to the format of Pool Statistics. We need only index, Pool, 24% change, Volume, and Market Cap. The image is also needed, so don't delete it.
     }
     loadCurrencies();
   }, []);
 
   const handleChange = (event: any) => {
-    console.log();
-
     if (optionVal === "A") {
       store.dispatch(setCurrencyA(event));
     }
