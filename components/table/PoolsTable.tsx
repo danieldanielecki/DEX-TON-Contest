@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
-import getTableSettings from "./getTableSettings";
+// import getTableSettings from "./getTableSettings"; // TODO Raduan: please outsource the settings here, the component looks too big.
 import styles from "../../styles/PoolsTable.module.scss";
 import styles2 from "../../styles/PoolStatistics.module.scss";
 import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
@@ -11,8 +11,104 @@ import { Cell, Row } from "react-table";
 import { ISelect } from "../../interfaces/select";
 import { Pool } from "../../interfaces/pool";
 import store from "../../redux/store";
+import {
+  useTable,
+  usePagination,
+  useFilters,
+  useGlobalFilter,
+  useSortBy,
+  FilterValue,
+  HeaderGroup,
+  // Row,
+  TableBodyPropGetter,
+  TableBodyProps,
+  TablePropGetter,
+  TableProps,
+  TableState,
+} from "react-table";
+// import { Pool } from "../../interfaces/pool";
 
-const Table = () => {
+const columnHeaders = [
+  {
+    Header: "All Pools",
+    columns: [
+      {
+        Header: "#",
+        accessor: "id",
+      },
+      {
+        Header: "Pool",
+        accessor: "pair",
+      },
+      {
+        Header: "% 24h",
+        accessor: "priceChangePercentage24h",
+      },
+      {
+        Header: "Volume",
+        accessor: "volume",
+      },
+      {
+        Header: "Market Cap",
+        accessor: "marketCap",
+      },
+    ],
+  },
+];
+
+const Table = (props: { pools: Pool[] }) => {
+  const { pools } = props;
+  const getTableSettings = () => {
+    let canPreviousPage: boolean;
+    let canNextPage: boolean;
+    let getTableProps: (propGetter?: TablePropGetter<Pool>) => TableProps;
+    let getTableBodyProps: (
+      propGetter?: TableBodyPropGetter<Pool>
+    ) => TableBodyProps;
+    let gotoPage: (updater: ((pageIndex: number) => number) | number) => void;
+    let headerGroups: HeaderGroup<Pool>[];
+    let nextPage: () => void;
+    let page: Array<Row<Pool>>;
+    let pageCount: number;
+    let pageOptions: number[];
+    let preGlobalFilteredRows: Array<Row<Pool>>;
+    let prepareRow: (row: Row<any>) => void;
+    let previousPage: () => void;
+    let setGlobalFilter: (filterValue: FilterValue) => void;
+    let setPageSize: (pageSize: number) => void;
+    let state: TableState<Pool>;
+
+    const tableSettings = ({
+      canPreviousPage: canPreviousPage,
+      canNextPage: canNextPage,
+      getTableProps: getTableProps,
+      getTableBodyProps: getTableBodyProps,
+      gotoPage: gotoPage,
+      headerGroups: headerGroups,
+      nextPage: nextPage,
+      page: page,
+      pageCount: pageCount,
+      pageOptions: pageOptions,
+      preGlobalFilteredRows: preGlobalFilteredRows,
+      prepareRow: prepareRow,
+      previousPage: previousPage,
+      setGlobalFilter: setGlobalFilter,
+      setPageSize: setPageSize,
+      state: state,
+    } = useTable(
+      {
+        columns: columnHeaders,
+        data: pools,
+        initialState: { pageIndex: 0, pageSize: 5 },
+      },
+      useFilters,
+      useGlobalFilter,
+      useSortBy,
+      usePagination
+    ));
+    return tableSettings;
+  };
+
   const tableSettings = getTableSettings();
   const numberOfRecords: ISelect[] = [
     { label: 5, value: 5 },
@@ -27,7 +123,7 @@ const Table = () => {
   };
 
   const [isToggleClassOnHover, setIsToggleClassOnHover] = useToggleClassOnHover(
-    new Array(100).fill(false)
+    new Array(300).fill(false)
   );
   const hooks = tableSettings.data.map((val: any, i: number) => {
     return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];
