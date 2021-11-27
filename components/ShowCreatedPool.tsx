@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import BaseButton from "./BaseButton";
 import BaseIcon from "./BaseIcon";
 
-const BuySellSummary = (props: {
+const ShowCreatedPool = (props: {
   currencyA: {
     name: string;
     symbol: string;
@@ -16,22 +15,16 @@ const BuySellSummary = (props: {
     image: string;
     current_price: number;
   };
-  method: { type: string };
-  amount: { type: number };
+  pools: {
+    pair: string;
+  }
 }) => {
-  const [isCalcVisible, setCalcVisible] = useState(false);
-  const [amountCalc, setAmountCalc] = useState(0);
-  const { currencyA, currencyB, method, amount } = props;
+  // const [pool, setpool] = useState();
+  const { currencyA, currencyB, pools } = props;
 
   useEffect(() => {
-    let value: number = 0;
-    if (!!method && !!currencyA && !!currencyB && !!amount) {
-      if (method.type === "sell") {
-        value = currencyA.current_price / currencyB.current_price * +amount;
-      } else if (method.type === "buy") {
-        value = currencyB.current_price / currencyA.current_price * +amount;
-      }
-      setAmountCalc(value.toFixed(4));
+    if (currencyA && currencyB) {
+      //some logic to find the right pool and set it as created
     }
   });
 
@@ -46,19 +39,9 @@ const BuySellSummary = (props: {
                 <span>
                   {currencyA.name}
                 </span>
-                <span>
-                  {currencyA.current_price} USD
-                </span>
               </p>
             </div>
           ) : ''}
-        {amount
-          && !!method
-          && !!currencyA
-          && !!currencyB
-          ? <span>{amountCalc} USD</span>
-          : ''}
-        <BaseIcon image="swap-icon.svg" />
         {!!currencyB
           ? (
             <div>
@@ -66,9 +49,6 @@ const BuySellSummary = (props: {
               <p className="d-flex flex-column">
                 <span>
                   {currencyB.name}
-                </span>
-                <span>
-                  {currencyB.current_price} USD
                 </span>
               </p>
             </div>)
@@ -82,15 +62,15 @@ const mapStateToProps = (state: {
   selected: {
     currencyA: Object;
     currencyB: Object;
-    method: Object;
-    amount: String;
-  };
+  },
+  pools: {
+    pools: Object;
+  }
 }) => ({
   currencyA: state.selected.currencyA,
   currencyB: state.selected.currencyB,
-  method: state.selected.method,
-  amount: state.selected.amount,
+  pools: state.pools.pools,
 });
 
 const connector = connect(mapStateToProps);
-export default connector(BuySellSummary);
+export default connector(ShowCreatedPool);
