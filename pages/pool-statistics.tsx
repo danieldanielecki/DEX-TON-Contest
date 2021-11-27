@@ -1,7 +1,7 @@
 import styles from "../styles/PoolStatistics.module.scss";
 // import PoolTable from "../components/PoolTable";
 import PoolsTable from "../components/table/PoolsTable";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import { POOLS } from "../config/data/pools/dummy-pools";
 import type { NextPage } from "next";
 import store from "../redux/store";
