@@ -35,8 +35,8 @@ const BuySellSummary = (props: {
   });
 
   return (
-    <div>
-      <div className="w-500 d-flex">
+    <div className="form-control w-50 mt-3">
+      <div className="w-500 d-flex justify-content-evenly pt-4">
         {!!currencyA
           ? (
             <div>
@@ -51,20 +51,23 @@ const BuySellSummary = (props: {
               </p>
             </div>
           ) : ''}
-        {!!amount
-          && !!method
-          && !!currencyA
-          && !!currencyB
-          ? (
-            <p>
-              <span>{amountCalc} </span>
-              {method.type === "buy"
-                ? <span>{currencyA.name}</span>
-                : <span>{currencyB.name}</span>
-              }
-            </p>)
-          : ''}
-        <BaseIcon image="swap-icon.svg" />
+        <div className="d-flex flex-column align-items-center">
+          <BaseIcon image="swap-icon.svg" size={48}/>
+          {!!amount
+            && !!method
+            && !!currencyA
+            && !!currencyB
+            ? (
+              <p className="d-flex flex-column align-items-center">
+                <span>Pay with</span>
+                <span>{amountCalc}</span>
+                {method.type === "buy"
+                  ? <span>{currencyA.name}</span>
+                  : <span>{currencyB.name}</span>
+                }
+              </p>)
+            : ''}
+        </div>
         {!!currencyB
           ? (
             <div>
