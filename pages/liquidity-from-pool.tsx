@@ -56,56 +56,6 @@ const LiquidityFromPool: NextPage = (props: {
         <p className={styles.description}>
           Placeholder for Exchange Token description.
         </p>
-        <SelectCurrency isOne={true} onSelectCurrency={onSelectCurrency} />
-        <div className="row">
-          <div className="col-sm-6">
-            <div className="input-group">
-              <input
-                aria-describedby="currencyA"
-                className="form-control"
-                pattern="\d\.\d{2}"
-                type="number"
-                value={currencyAval}
-                onChange={(e) => {
-                  onChangeHandler(e, "A");
-                }}
-              />
-              <span className="input-group-addon" id="currencyA">
-                {currencyA.code}
-              </span>
-            </div>
-          </div>
-          <div className="col-sm-6">
-            <BaseIcon
-              key={currencyB.code.toLowerCase()}
-              name={currencyB.code.toLowerCase()}
-            />
-            <h3>{currencyB.name}</h3>
-            <div className="input-group">
-              <input
-                aria-describedby="currencyB"
-                className="form-control"
-                onChange={(e) => {
-                  onChangeHandler(e, "B");
-                }}
-                pattern="\d\.\d{2}"
-                type="number"
-                value={currencyBval}
-              />
-              <span className="input-group-addon" id="currencyB">
-                {currencyB.code}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <p>
-              Exchange Rate {`${currencyA.sellRate} ${currencyA.code}`} ={" "}
-              {`${currencyB.sellRate} ${currencyB.code}`}
-            </p>
-          </div>
-        </div>
         <Fragment>
           <button onClick={setIsOpened}>Open FLOW</button>
 
@@ -115,8 +65,8 @@ const LiquidityFromPool: NextPage = (props: {
               subtitle="Add liquidity to receive tokens"
               summary="Prices and pool share"
               title="Title"
-              AmountInputA={<AmountInput amountOf="liquidityA"/>}
-              AmountInputB={<AmountInput amountOf="liquidityB"/>}
+              AmountInputA={<AmountInput amountOf="liquidityA" />}
+              AmountInputB={<AmountInput amountOf="liquidityB" />}
               BaseButton={<BaseButton title="Connect" />}
               SelectCurrencyA={
                 <SelectCurrency
