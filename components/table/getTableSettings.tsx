@@ -84,7 +84,7 @@ const getTableSettings = () => {
   } = useTable(
     {
       columns: columnHeaders,
-      data: POOLS,
+      data: POOLS, // TODO Raduan: check if it's possible to get the data here, otherwise we have to keep the whole settings in PoolsTable...
       initialState: { pageIndex: 0, pageSize: 5 },
     },
     useFilters,
@@ -95,4 +95,5 @@ const getTableSettings = () => {
   return tableSettings;
 };
 
-export default getTableSettings;
+// export default getTableSettings; // TODO Raduan: it can be useful, if you'll try to export all settings.
+export default columnHeaders;
