@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import BaseButton from "./BaseButton";
 import BaseIcon from "./BaseIcon";
+import store from '../redux/store';
 
 const BuySellSummary = (props: {
   currencyA: {
@@ -17,7 +18,7 @@ const BuySellSummary = (props: {
     current_price: number;
   };
   method: { type: string };
-  amount: { type: number };
+  amount: { exchangeToken: string };
 }) => {
   const [isCalcVisible, setCalcVisible] = useState(false);
   const [amountCalc, setAmountCalc] = useState(0);
@@ -25,11 +26,11 @@ const BuySellSummary = (props: {
 
   useEffect(() => {
     let value: number = 0;
-    if (!!method && !!currencyA && !!currencyB && !!amount) {
+    if (!!method && !!currencyA && !!currencyB && !!amount.exchangeToken) {
       if (method.type === "sell") {
-        value = currencyA.current_price / currencyB.current_price * +amount;
+        value = currencyA.current_price / currencyB.current_price * +amount.exchangeToken;
       } else if (method.type === "buy") {
-        value = currencyB.current_price / currencyA.current_price * +amount;
+        value = currencyB.current_price / currencyA.current_price * +amount.exchangeToken;
       }
       setAmountCalc(value.toFixed(4));
     }
@@ -52,7 +53,7 @@ const BuySellSummary = (props: {
               </p>
             </div>
           ) : ''}
-        {amount
+        {!!amount
           && !!method
           && !!currencyA
           && !!currencyB

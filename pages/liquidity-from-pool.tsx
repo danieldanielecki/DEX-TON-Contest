@@ -115,8 +115,8 @@ const LiquidityFromPool: NextPage = (props: {
               subtitle="Add liquidity to receive tokens"
               summary="Prices and pool share"
               title="Title"
-              AmountInputA={<AmountInput />}
-              AmountInputB={<AmountInput />}
+              AmountInputA={<AmountInput amountOf="liquidityA"/>}
+              AmountInputB={<AmountInput amountOf="liquidityB"/>}
               BaseButton={<BaseButton title="Connect" />}
               SelectCurrencyA={
                 <SelectCurrency

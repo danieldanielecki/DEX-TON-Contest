@@ -1,4 +1,5 @@
 
+import { actions } from 'react-table';
 import {
   SET_CURRENCYAVAL,
   SET_CURRENCYBVAL,
@@ -11,7 +12,7 @@ import {
 const initialState = {
   currencyA: {},
   currencyB: {},
-  amount: Number,
+  amount: {},
   method: {}
 }
 
@@ -26,7 +27,7 @@ const selected = (state = initialState, action) => {
     case SET_EXCHANGESELL:
       return { ...state, method: { type: "sell" } };
     case SET_EXCHANGEAMOUNT:
-      return { ...state, amount: action.payload };
+      return { ...state, amount: {...state.amount, ...action.payload} };
     case RESTORE_SELECTED:
       return { initialState };
     default:
