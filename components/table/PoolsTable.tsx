@@ -90,7 +90,6 @@ const Table = (props: { pools: Pool[] }) => {
     { label: 100, value: 100 },
   ];
 
-  // TODO Raduan: the pools are showing from index 0 to 299, make it from 1 to 300.
   const handleChange = (numberOfRecordsObject: ISelect) => {
     tableSettings.setPageSize(Number(numberOfRecordsObject.value));
   };

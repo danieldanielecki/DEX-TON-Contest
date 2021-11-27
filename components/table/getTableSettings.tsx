@@ -22,7 +22,7 @@ const columnHeaders = [
     columns: [
       {
         Header: "#",
-        accessor: "id",
+        accessor: (_row: Row, index: number) => index + 1,
       },
       {
         Header: "Pool",
