@@ -22,7 +22,7 @@ export const setExchangeBuy = () => ({
 export const setExchangeSell = () => ({
    type: SET_EXCHANGESELL
 });
-export const setExchangeAmount = (value: Number) => ({
+export const setExchangeAmount = (value: Object) => ({
    type: SET_EXCHANGEAMOUNT,
    payload: value
 });
