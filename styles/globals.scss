@@ -9,6 +9,7 @@ html,
 body {
   @include fluid-typography($min_width, $max_width, $min_font, $max_font);
 
+  font-family: $mulish;
   padding: 0;
   margin: 0;
 }
