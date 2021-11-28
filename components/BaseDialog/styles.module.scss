@@ -1,14 +1,13 @@
 @import "/styles/main.scss";
 
-.backdrop {
-  background-color: rgba(0, 0, 0, 0.8);
+.dialog {
+  border-radius: 3rem;
+  box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
   font-family: $mulish;
-  height: 100vh;
-  left: 0;
+  overflow: hidden;
   position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 4;
+  top: 20vh;
+  width: 80%;
 
   section {
     padding: 4rem;
@@ -25,17 +24,6 @@
   }
 }
 
-.dialog {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0rem 0rem 1rem 0.1rem $white;
-  overflow: hidden;
-  position: fixed;
-  top: 20vh;
-  width: 80%;
-  z-index: 5;
-}
-
 .header {
   border-bottom: 0.1rem solid $lochmara;
   color: $lochmara;
@@ -44,7 +32,7 @@
   width: 15%;
 }
 
-.link_to_close_dialog {
+.link_to_open_dialog {
   align-items: center;
   border: 1px solid $pickled-bluewood;
   border-radius: 3rem;
@@ -58,7 +46,8 @@
   width: 3rem;
 
   &:before {
-    content: "×";
+    content: "⚙️";
+    font-size: 2rem;
     transform: translateX(0.07rem) translateY(-0.15rem);
   }
 
