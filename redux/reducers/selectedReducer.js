@@ -13,7 +13,7 @@ const initialState = {
   currencyA: {},
   currencyB: {},
   amount: {},
-  method: {}
+  method: { type: "buy"}
 }
 
 const selected = (state = initialState, action) => {
@@ -29,7 +29,7 @@ const selected = (state = initialState, action) => {
     case SET_EXCHANGEAMOUNT:
       return { ...state, amount: {...state.amount, ...action.payload} };
     case RESTORE_SELECTED:
-      return { initialState };
+      return initialState;
     default:
       return { ...state };
   }
