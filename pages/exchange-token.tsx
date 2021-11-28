@@ -1,13 +1,17 @@
-import type { NextPage } from "next";
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import store from "../redux/store";
 import styles from "../styles/Home.module.scss";
+import AmountInput from "../components/AmountInput";
+import BaseCard from "../components/BaseCard";
+import BuySellSummary from "../components/BuySellSummary";
 import SelectCurrency from "../components/SelectCurrency";
 import ToggleBuySellSwitch from "../components/ToggleBuySellSwitch";
-import AmountInput from "../components/AmountInput";
-import BuySellSummary from "../components/BuySellSummary";
-import store from '../redux/store';
-import { clearSelected, setExchangeSell } from '../redux/actions/selectedActions';
+import {
+  clearSelected,
+  setExchangeSell,
+} from "../redux/actions/selectedActions";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import type { NextPage } from "next";
 
 const ExchangeToken: NextPage = (props: {
   clearSelected: Function;
@@ -15,10 +19,11 @@ const ExchangeToken: NextPage = (props: {
 }) => {
   useEffect(() => {
     store.dispatch(clearSelected());
-  }, [])
+  }, []);
 
   return (
     <main className={styles.main}>
+      <BaseCard title="Test" subtitle="Test2" />
       <h1 className={styles.title}>Exchange Token</h1>
       <p className={styles.description}>
         Placeholder for Exchange Token description.
@@ -50,7 +55,7 @@ const ExchangeToken: NextPage = (props: {
 const mapDispatchToProps = () => {
   return {
     clearSelected,
-    setExchangeSell
+    setExchangeSell,
   };
 };
 

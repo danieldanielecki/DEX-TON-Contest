@@ -28,37 +28,35 @@ const BaseDialog = (props: {
     useToggleAlert(false);
 
   return (
-    <div>
-      <div className={styles.dialog}>
-        <div className={styles.menu}>
-          <Fragment>
-            {/* TODO: It works on second click, dunno why */}
-            <button
-              className={styles.link_to_open_dialog}
-              onClick={setIsOpenedSettingsDialog}
-            ></button>
-            {isOpenedSettingsDialog && (
-              <SettingsDialog
-                onOpenSettingsDialog={isOpenedSettingsDialog}
-                subtitle="Align your Transaction Settings"
-                title="Settings"
-              />
-            )}
-          </Fragment>
-        </div>
-        <div className={styles.header}>
-          <h2>{title}</h2>
-        </div>
-        <span className={styles.subtitle}>{subtitle}</span>
-        <section>
-          {AmountInputA}
-          {SelectCurrencyA}
-          {AmountInputB}
-          {SelectCurrencyB}
-          <p>{summary}</p>
-          <div className={styles.button}>{BaseButton}</div>
-        </section>
+    <div className={styles.dialog}>
+      <div className={styles.menu}>
+        <Fragment>
+          {/* TODO: It works on second click, dunno why */}
+          <button
+            className={styles.link_to_open_dialog}
+            onClick={setIsOpenedSettingsDialog}
+          ></button>
+          {isOpenedSettingsDialog && (
+            <SettingsDialog
+              onOpenSettingsDialog={isOpenedSettingsDialog}
+              subtitle="Align your Transaction Settings"
+              title="Settings"
+            />
+          )}
+        </Fragment>
       </div>
+      <div className={styles.header}>
+        <h2>{title}</h2>
+      </div>
+      <span className={styles.subtitle}>{subtitle}</span>
+      <section>
+        {AmountInputA}
+        {SelectCurrencyA}
+        {AmountInputB}
+        {SelectCurrencyB}
+        <p>{summary}</p>
+        <div className={styles.button}>{BaseButton}</div>
+      </section>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 
 .dialog {
   border-radius: 3rem;
-  box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
+  border: 0.1rem solid $lochmara;
   font-family: $mulish;
   overflow: hidden;
   position: fixed;
@@ -21,6 +21,11 @@
       margin: 0 auto;
       text-align: center;
     }
+  }
+
+  &:hover {
+    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
+    cursor: pointer;
   }
 }
 
