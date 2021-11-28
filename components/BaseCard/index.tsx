@@ -1,8 +1,11 @@
 import styles from "./styles.module.scss";
+import useToggleAlert from "../../hooks/useToggleAlert";
 import PropTypes from "prop-types";
-import { ReactElement } from "react";
+import SettingsDialog from "../SettingsDialog";
+import { Fragment, ReactElement } from "react";
 
 const BaseCard = (props: {
+  displaySettings?: boolean;
   subtitle: string;
   title: string;
   AmountInputA?: ReactElement<any, any>;
@@ -13,6 +16,7 @@ const BaseCard = (props: {
   ToggleAction?: ReactElement<any, any>;
 }) => {
   const {
+    displaySettings,
     subtitle,
     title,
     AmountInputA,
@@ -22,10 +26,29 @@ const BaseCard = (props: {
     SelectCurrencyB,
     ToggleAction,
   } = props;
+  const [isOpenedSettingsDialog, setIsOpenedSettingsDialog] =
+    useToggleAlert(false);
 
   return (
     <div className={styles.card}>
-      <div className={styles.menu}></div>
+      <div className={styles.menu}>
+        {displaySettings && (
+          <Fragment>
+            {/* TODO: It works on second click, dunno why */}
+            <button
+              className={styles.link_to_open_dialog}
+              onClick={setIsOpenedSettingsDialog}
+            ></button>
+            {isOpenedSettingsDialog && (
+              <SettingsDialog
+                onOpenSettingsDialog={isOpenedSettingsDialog}
+                subtitle="Align your Transaction Settings"
+                title="Settings"
+              />
+            )}
+          </Fragment>
+        )}
+      </div>
       <div className={styles.header}>
         <h2>{title}</h2>
       </div>
@@ -43,6 +66,7 @@ const BaseCard = (props: {
 };
 
 BaseCard.propTypes = {
+  displaySettings: PropTypes.string,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   AmountInputA: PropTypes.element,

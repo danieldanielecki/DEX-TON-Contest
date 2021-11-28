@@ -29,6 +29,33 @@
     width: 40%;
   }
 
+  .link_to_open_dialog {
+    align-items: center;
+    border: 1px solid $pickled-bluewood;
+    border-radius: 3rem;
+    color: $pickled-bluewood;
+    display: flex;
+    font-size: 2.2rem;
+    height: 3rem;
+    justify-content: center;
+    position: absolute;
+    transition: 0.5s;
+    width: 3rem;
+
+    &:before {
+      content: "⚙️";
+      font-size: 2rem;
+      transform: translateX(0.07rem) translateY(-0.15rem);
+    }
+
+    &:focus,
+    &:hover {
+      border: 1px solid $lochmara;
+      color: $lochmara;
+      transform: translateY(-0.1rem);
+    }
+  }
+
   .menu {
     display: flex;
     justify-content: flex-end;

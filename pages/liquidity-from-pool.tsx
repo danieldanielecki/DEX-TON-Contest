@@ -23,6 +23,7 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
   return (
     <main className={styles.main}>
       <BaseCard
+        displaySettings={true}
         subtitle="Add/Remove Liquidity"
         title="Liquidity"
         AmountInputA={<AmountInput amountOf="liquidityA" />}
