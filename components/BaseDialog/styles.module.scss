@@ -1,16 +1,20 @@
 @import "/styles/main.scss";
 
-.dialog {
-  border-radius: 3rem;
-  border: 0.1rem solid $lochmara;
-  overflow: hidden;
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100vh;
+  left: 0;
   position: fixed;
-  top: 20vh;
-  width: 80%;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+
+  &:hover {
+    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
+    cursor: pointer;
+  }
 
   section {
-    padding: 4rem;
-
     p {
       padding-top: 0.75rem;
       text-align: center;
@@ -21,11 +25,17 @@
       text-align: center;
     }
   }
+}
 
-  &:hover {
-    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
-    cursor: pointer;
-  }
+.dialog {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0rem 0rem 1rem 0.1rem $white;
+  overflow: hidden;
+  position: fixed;
+  top: 20vh;
+  width: 80%;
+  z-index: 5;
 }
 
 .header {
@@ -33,10 +43,10 @@
   color: $lochmara;
   margin: 0 auto;
   text-align: center;
-  width: 15%;
+  width: 25%;
 }
 
-.link_to_open_dialog {
+.link_to_close_dialog {
   align-items: center;
   border: 1px solid $pickled-bluewood;
   border-radius: 3rem;
@@ -50,7 +60,7 @@
   width: 3rem;
 
   &:before {
-    content: "⚙️";
+    content: "x";
     font-size: 2rem;
     transform: translateX(0.07rem) translateY(-0.15rem);
   }
@@ -67,13 +77,6 @@
   display: flex;
   justify-content: flex-end;
   padding: 1rem;
-}
-
-.subtitle {
-  padding-top: 0.25rem;
-  position: absolute;
-  text-align: center;
-  width: 100%;
 }
 
 @media (min-width: 768px) {

@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.scss";
 import store from "../redux/store";
+import useToggleAlert from "../hooks/useToggleAlert";
 import AmountInput from "../components/AmountInput";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
@@ -17,6 +18,7 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
   }, []);
 
   const cardButtonTitle: string = "Connect";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
     <main className={styles.main}>
@@ -25,7 +27,9 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
         title="Liquidity"
         AmountInputA={<AmountInput amountOf="liquidityA" />}
         AmountInputB={<AmountInput amountOf="liquidityB" />}
-        BaseButton={<BaseButton title={cardButtonTitle} />}
+        BaseButton={
+          <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
+        }
         SelectCurrencyA={
           <SelectCurrency
             isOne={false}
@@ -42,6 +46,14 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
         }
         ToggleAction={<ToggleBuySellSwitch />}
       />
+      {isOpened && (
+        <BaseDialog
+          onOpenDialog={true}
+          summary="In order to proceed further please confirm the operation."
+          title="Confirm"
+          BaseButton={<BaseButton title="Confirm" />}
+        />
+      )}
     </main>
   );
 };

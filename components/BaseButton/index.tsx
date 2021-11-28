@@ -1,10 +1,11 @@
 import styles from "./styles.module.scss";
 import PropTypes from "prop-types";
+import { MouseEventHandler } from "react";
 
 const BaseButton = (props: {
   additionalStyleClasses?: string;
   disabled?: boolean;
-  onClick?: any;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   title: string;
 }) => {
   const { additionalStyleClasses, disabled, onClick, title } = props;

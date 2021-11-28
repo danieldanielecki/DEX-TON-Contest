@@ -1,8 +1,10 @@
 import store from "../redux/store";
 import styles from "../styles/Home.module.scss";
+import useToggleAlert from "../hooks/useToggleAlert";
 import AmountInput from "../components/AmountInput";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
+import BaseDialog from "../components/BaseDialog";
 import BuySellSummary from "../components/BuySellSummary";
 import SelectCurrency from "../components/SelectCurrency";
 import ToggleBuySellSwitch from "../components/ToggleBuySellSwitch";
@@ -22,6 +24,7 @@ const ExchangeToken: NextPage = (props: {
     store.dispatch(clearSelected());
   }, []);
   const cardButtonTitle: string = "Exchange";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
     <main className={styles.main}>
@@ -30,7 +33,9 @@ const ExchangeToken: NextPage = (props: {
         title="Exchange"
         AmountInputA={<AmountInput amountOf="liquidityA" />}
         AmountInputB={<AmountInput amountOf="liquidityB" />}
-        BaseButton={<BaseButton title={cardButtonTitle} />}
+        BaseButton={
+          <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
+        }
         SelectCurrencyA={
           <SelectCurrency
             isOne={false}
@@ -49,6 +54,14 @@ const ExchangeToken: NextPage = (props: {
       />
       <h2>Summary</h2>
       <BuySellSummary />
+      {isOpened && (
+        <BaseDialog
+          onOpenDialog={true}
+          summary="In order to proceed further please confirm the operation."
+          title="Confirm"
+          BaseButton={<BaseButton title="Confirm" />}
+        />
+      )}
     </main>
   );
 };

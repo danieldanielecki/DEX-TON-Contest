@@ -1,7 +1,9 @@
 import store from "../redux/store";
 import styles from "../styles/Home.module.scss";
+import useToggleAlert from "../hooks/useToggleAlert";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
+import BaseDialog from "../components/BaseDialog";
 import SelectCurrency from "../components/SelectCurrency";
 import ShowCreatedPool from "../components/ShowCreatedPool";
 import { clearSelected } from "../redux/actions/selectedActions";
@@ -14,13 +16,16 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
     store.dispatch(clearSelected());
   }, []);
   const cardButtonTitle: string = "Create";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
     <main className={styles.main}>
       <BaseCard
         subtitle="Create new pair of tokens"
         title="New Pool"
-        BaseButton={<BaseButton title={cardButtonTitle} />}
+        BaseButton={
+          <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
+        }
         SelectCurrencyA={
           <SelectCurrency
             isOne={false}
@@ -37,6 +42,14 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
         }
       />
       <ShowCreatedPool />
+      {isOpened && (
+        <BaseDialog
+          onOpenDialog={true}
+          summary="In order to proceed further please confirm the operation."
+          title="Confirm"
+          BaseButton={<BaseButton title="Confirm" />}
+        />
+      )}
     </main>
   );
 };
