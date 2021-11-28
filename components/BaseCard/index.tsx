@@ -31,10 +31,10 @@ const BaseCard = (props: {
       </div>
       <p className={styles.subtitle}>{subtitle}</p>
       <section>
-        {AmountInputA}
         {SelectCurrencyA}
-        {AmountInputB}
+        {AmountInputA}
         {SelectCurrencyB}
+        {AmountInputB}
         {ToggleAction}
         <div className={styles.button}>{BaseButton}</div>
       </section>
