@@ -1,49 +1,30 @@
-import BaseIcon from "./BaseIcon";
-import Image from "next/image";
-import PropTypes from "prop-types";
-import Select, { components } from "react-select";
 import { useState, useEffect } from "react";
-import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
+import Select, { components } from "react-select";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
 import store from "../redux/store";
-
-const mapDispatchToProps = () => {
-  return {
-    setCurrencyA,
-    setCurrencyB,
-  };
-};
-
-const connector = connect(null, mapDispatchToProps);
+import BaseIcon from "./BaseIcon";
 
 const { Option } = components;
 const IconOption = (props: any) => (
   <Option {...props}>
-    {props.data.symbol === "ton" ? (
-      <Image src="/ton/darkBgTon.svg" alt="Ton Logo" width={64} height={64} />
-    ) : (
-      <BaseIcon
-        key={props.data.symbol}
-        name={props.data.symbol}
-        image={props.data.image}
-      />
-    )}
+    <BaseIcon
+      key={props.data.symbol}
+      image={props.data.image}
+    />
     {props.data.name}
   </Option>
 );
 
-// TODO Katarzyna: cleanup of these props what's needed / what's not.
 const SelectCurrency = (props: {
-  isOne?: boolean;
-  onSelectCurrency?: Function;
   optionVal?: string;
   setCurrencyA?: any;
   setCurrencyB?: any;
   startCurrency?: string;
 }) => {
-  const { isOne, startCurrency, optionVal, setCurrencyA, setCurrencyB } = props;
+  const { startCurrency, optionVal, setCurrencyA, setCurrencyB } = props;
   const [selectedOption, setSelectedOption] = useState(startCurrency);
-  let filteredCurrencies: any[];
 
   const [currencies, setCurrencies] = useState([]);
 
@@ -65,31 +46,31 @@ const SelectCurrency = (props: {
     setSelectedOption(event.name);
   };
 
-  if (isOne) {
-    filteredCurrencies = currencies.filter(
-      (currency: { symbol: string }) => currency.symbol !== "TUSD"
-    );
-  } else {
-    filteredCurrencies = currencies;
-  }
   return (
     <Select
+      instanceId={`currency-select-${optionVal}`}
       components={{ Option: IconOption }}
       onChange={handleChange}
-      options={filteredCurrencies}
+      options={currencies}
       value={{ label: selectedOption }}
     />
   );
 };
 
-// TODO Katarzyna: cleanup of these props what's needed / what's not.
 SelectCurrency.propTypes = {
-  isOne: PropTypes.bool,
-  onSelectCurrency: PropTypes.func,
   optionVal: PropTypes.string,
   setCurrencyA: PropTypes.func,
   setCurrencyB: PropTypes.func,
   startCurrency: PropTypes.string,
 };
+
+const mapDispatchToProps = () => {
+  return {
+    setCurrencyA,
+    setCurrencyB,
+  };
+};
+
+const connector = connect(null, mapDispatchToProps);
 
 export default connector(SelectCurrency);

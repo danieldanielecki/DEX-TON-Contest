@@ -6,7 +6,7 @@ const initialState = {
   currencies: getCurrencies(),
 }
 
-const fetched = (state = initialState, action) => {
+const fetched = (state = initialState, action: { type: String}) => {
   switch (action.type) {
     case FETCH_CRYPTO:
       return { ...state, currencies: getCurrencies()};

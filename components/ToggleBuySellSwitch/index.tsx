@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import store from '../../redux/store';
 
 const ToggleBuySellSwitch = () => {
   const [checked, setChecked] = useState(false);
+
   const handleChange = (event: {
     target: { id: String };
     preventDefault: Function;
@@ -15,9 +16,6 @@ const ToggleBuySellSwitch = () => {
       store.dispatch({ type: "SET_EXCHANGESELL" });
     }
   };
-  useEffect(() => {
-    store.dispatch({ type: "SET_EXCHANGEBUY" });
-  }, [])
 
   return (
     <div className={`${styles.switch_button_wrapper} d-flex align-items-center justify-content-center pb-3`}>

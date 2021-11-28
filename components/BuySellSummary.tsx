@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import BaseIcon from "./BaseIcon";
 
 const BuySellSummary = (props: {
@@ -19,11 +20,11 @@ const BuySellSummary = (props: {
   amount: { exchangeToken: string };
 }) => {
 
-  const [amountCalc, setAmountCalc] = useState(0);
+  const [amountCalc, setAmountCalc] = useState('');
   const { currencyA, currencyB, method, amount } = props;
 
   useEffect(() => {
-    let value: number = 0;
+    let value: Number = 0;
     if (!!method && !!currencyA && !!currencyB && !!amount) {
       if (method.type === "sell") {
         value = currencyA.current_price / currencyB.current_price * +amount.exchangeToken;
@@ -37,7 +38,7 @@ const BuySellSummary = (props: {
   return (
     <div className="form-control w-50 mt-3">
       <div className="w-500 d-flex justify-content-evenly pt-4">
-        {!!currencyA
+        {!!currencyA.name
           ? (
             <div>
               <BaseIcon image={currencyA.image} />
@@ -53,10 +54,10 @@ const BuySellSummary = (props: {
           ) : ''}
         <div className="d-flex flex-column align-items-center">
           <BaseIcon image="swap-icon.svg" size={48}/>
-          {!!amount
+          {!!amount.exchangeToken
             && !!method
-            && !!currencyA
-            && !!currencyB
+            && !!currencyA.name
+            && !!currencyB.name
             ? (
               <p className="d-flex flex-column align-items-center">
                 <span>Pay with</span>
@@ -68,7 +69,7 @@ const BuySellSummary = (props: {
               </p>)
             : ''}
         </div>
-        {!!currencyB
+        {!!currencyB.name
           ? (
             <div>
               <BaseIcon image={currencyB.image} />
@@ -100,6 +101,13 @@ const mapStateToProps = (state: {
   method: state.selected.method,
   amount: state.selected.amount,
 });
+
+BuySellSummary.propTypes = {
+  currencyA: PropTypes.object,
+  currencyB: PropTypes.object,
+  method: PropTypes.object,
+  amount: PropTypes.object,
+};
 
 const connector = connect(mapStateToProps);
 export default connector(BuySellSummary);

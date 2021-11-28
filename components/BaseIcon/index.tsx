@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const BaseIcon = (props: { image: string, size: number }) => {
+const BaseIcon = (props: { image: string, size?: number }) => {
   const { image, size } = props;
 
   return (

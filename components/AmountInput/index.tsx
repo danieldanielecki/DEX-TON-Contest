@@ -6,7 +6,8 @@ import { setExchangeAmount } from "../../redux/actions/selectedActions";
 
 const AmountInput = (props: { setExchangeAmount?: any; amountOf: string }) => {
   const { setExchangeAmount, amountOf } = props;
-  const [amountValue, setAmountValue] = useState();
+  const [amountValue, setAmountValue] = useState(0);
+  
   const handleAmount = (event: MouseEvent<HTMLInputElement>) => {
     setAmountValue(event.target.value);
     setExchangeAmount({ [amountOf]: event.target.value });
