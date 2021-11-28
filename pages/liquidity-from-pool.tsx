@@ -1,7 +1,9 @@
 import styles from "../styles/Home.module.scss";
 import store from "../redux/store";
+import useToggleAlert from "../hooks/useToggleAlert";
 import AmountInput from "../components/AmountInput";
 import BaseButton from "../components/BaseButton";
+import BaseCard from "../components/BaseCard";
 import BaseDialog from "../components/BaseDialog";
 import SelectCurrency from "../components/SelectCurrency";
 import ToggleBuySellSwitch from "../components/ToggleBuySellSwitch";
@@ -15,37 +17,48 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
     store.dispatch(clearSelected());
   }, []);
 
+  const cardButtonTitle: string = "Connect";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
+
   return (
-    <div>
-      <ToggleBuySellSwitch />
-      <main className={styles.main}>
-        <div />
+    <main className={styles.main}>
+      <BaseCard
+        displaySettings={true}
+        subtitle="Add/Remove Liquidity"
+        title="Liquidity"
+        AmountInputA={<AmountInput amountOf="liquidityA" />}
+        AmountInputB={<AmountInput amountOf="liquidityB" />}
+        BaseButton={
+          <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
+        }
+        SelectCurrencyA={
+          <SelectCurrency
+            isOne={false}
+            optionVal="A"
+            startCurrency="Select..."
+          />
+        }
+        SelectCurrencyB={
+          <SelectCurrency
+            isOne={false}
+            optionVal="B"
+            startCurrency="Select..."
+          />
+        }
+        ToggleAction={<ToggleBuySellSwitch />}
+      />
+      {isOpened && (
         <BaseDialog
-          subtitle="Add liquidity to receive tokens"
-          summary="Prices and pool share"
-          title="Title"
-          AmountInputA={<AmountInput amountOf="liquidityA" />}
-          AmountInputB={<AmountInput amountOf="liquidityB" />}
-          BaseButton={<BaseButton title="Connect" />}
-          SelectCurrencyA={
-            <SelectCurrency
-              isOne={false}
-              optionVal="A"
-              startCurrency="Bitcoin"
-            />
-          }
-          SelectCurrencyB={
-            <SelectCurrency
-              isOne={false}
-              optionVal="B"
-              startCurrency="Ethereum"
-            />
-          }
+          onOpenDialog={true}
+          summary="In order to proceed further please confirm the operation."
+          title="Confirm"
+          BaseButton={<BaseButton title="Confirm" />}
         />
-      </main>
-    </div>
+      )}
+    </main>
   );
 };
+
 const mapDispatchToProps = () => {
   return {
     clearSelected,

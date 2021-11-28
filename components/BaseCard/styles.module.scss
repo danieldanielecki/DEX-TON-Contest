@@ -1,0 +1,75 @@
+@import "/styles/main.scss";
+
+.card {
+  border-radius: 2rem;
+  border: 0.1rem solid $lochmara;
+  transition: 1s;
+  width: 30rem;
+
+  &:hover {
+    border-radius: 3rem;
+    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
+    cursor: pointer;
+  }
+
+  section {
+    padding: 4rem;
+  }
+
+  .button {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .header {
+    border-bottom: 0.1rem solid $lochmara;
+    color: $lochmara;
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+  }
+
+  .link_to_open_dialog {
+    align-items: center;
+    border: 1px solid $pickled-bluewood;
+    border-radius: 3rem;
+    color: $pickled-bluewood;
+    display: flex;
+    font-size: 2.2rem;
+    height: 3rem;
+    justify-content: center;
+    position: absolute;
+    transition: 0.5s;
+    width: 3rem;
+
+    &:before {
+      content: "⚙️";
+      font-size: 2rem;
+      transform: translateX(0.07rem) translateY(-0.15rem);
+    }
+
+    &:focus,
+    &:hover {
+      border: 1px solid $lochmara;
+      color: $lochmara;
+      transform: translateY(-0.1rem);
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .subtitle {
+    padding-top: 0.25rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 80%;
+  }
+}

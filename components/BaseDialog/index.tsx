@@ -1,76 +1,49 @@
 import styles from "./styles.module.scss";
 import useToggleAlert from "../../hooks/useToggleAlert";
 import PropTypes from "prop-types";
-import SettingsDialog from "../SettingsDialog";
-import { Fragment } from "react";
 
 const BaseDialog = (props: {
-  subtitle: string;
+  onOpenDialog: boolean;
   summary: string;
   title: string;
-  AmountInputA?: any;
-  AmountInputB?: any;
   BaseButton: any;
-  SelectCurrencyA?: any;
-  SelectCurrencyB?: any;
 }) => {
-  const {
-    subtitle,
-    summary,
-    title,
-    AmountInputA,
-    AmountInputB,
-    BaseButton,
-    SelectCurrencyA,
-    SelectCurrencyB,
-  } = props;
-  const [isOpenedSettingsDialog, setIsOpenedSettingsDialog] =
-    useToggleAlert(false);
+  const { onOpenDialog, summary, title, BaseButton } = props;
+  const [isOpened, setIsOpened] = useToggleAlert(onOpenDialog);
 
   return (
     <div>
-      <div className={styles.dialog}>
-        <div className={styles.menu}>
-          <Fragment>
-            {/* TODO: It works on second click, dunno why */}
-            <button
-              className={styles.link_to_open_dialog}
-              onClick={setIsOpenedSettingsDialog}
-            ></button>
-            {isOpenedSettingsDialog && (
-              <SettingsDialog
-                onOpenSettingsDialog={isOpenedSettingsDialog}
-                subtitle="Align your Transaction Settings"
-                title="Settings"
-              />
-            )}
-          </Fragment>
+      {isOpened && (
+        <div className={styles.backdrop}>
+          <div className={styles.dialog}>
+            <div className={styles.menu}>
+              <a
+                href="#modal-closed"
+                className={styles.link_to_close_dialog}
+                onClick={() => setIsOpened(false)}
+              ></a>
+            </div>
+            <div className={styles.header}>
+              <h2>{title}</h2>
+            </div>
+            <section>
+              <p>{summary}</p>
+              <div className={styles.button} onClick={() => setIsOpened(false)}>
+                {BaseButton}
+              </div>
+            </section>
+          </div>
         </div>
-        <div className={styles.header}>
-          <h2>{title}</h2>
-        </div>
-        <span className={styles.subtitle}>{subtitle}</span>
-        <section>
-          {AmountInputA}
-          {SelectCurrencyA}
-          {AmountInputB}
-          {SelectCurrencyB}
-          <p>{summary}</p>
-          <div className={styles.button}>{BaseButton}</div>
-        </section>
-      </div>
+      )}
     </div>
   );
 };
 
 BaseDialog.propTypes = {
-  subtitle: PropTypes.string.isRequired,
+  onOpenDialog: PropTypes.bool.isRequired,
+  summary: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  AmountInputA: PropTypes.object,
-  AmountInputB: PropTypes.object,
   BaseButton: PropTypes.object,
-  SelectCurrencyA: PropTypes.object,
-  SelectCurrencyB: PropTypes.object,
 };
 
 export default BaseDialog;

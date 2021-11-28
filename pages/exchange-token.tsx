@@ -1,13 +1,20 @@
-import type { NextPage } from "next";
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import store from "../redux/store";
 import styles from "../styles/Home.module.scss";
+import useToggleAlert from "../hooks/useToggleAlert";
+import AmountInput from "../components/AmountInput";
+import BaseButton from "../components/BaseButton";
+import BaseCard from "../components/BaseCard";
+import BaseDialog from "../components/BaseDialog";
+import BuySellSummary from "../components/BuySellSummary";
 import SelectCurrency from "../components/SelectCurrency";
 import ToggleBuySellSwitch from "../components/ToggleBuySellSwitch";
-import AmountInput from "../components/AmountInput";
-import BuySellSummary from "../components/BuySellSummary";
-import store from '../redux/store';
-import { clearSelected, setExchangeSell } from '../redux/actions/selectedActions';
+import {
+  clearSelected,
+  setExchangeSell,
+} from "../redux/actions/selectedActions";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import type { NextPage } from "next";
 
 const ExchangeToken: NextPage = (props: {
   clearSelected: Function;
@@ -15,34 +22,46 @@ const ExchangeToken: NextPage = (props: {
 }) => {
   useEffect(() => {
     store.dispatch(clearSelected());
-  }, [])
+  }, []);
+  const cardButtonTitle: string = "Exchange";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Exchange Token</h1>
-      <p className={styles.description}>
-        Placeholder for Exchange Token description.
-      </p>
-      <div className="form-control w-50 p-3">
-        <ToggleBuySellSwitch />
-        <div className="pb-3">
+      <BaseCard
+        subtitle="Here you can exchange tokens"
+        title="Exchange"
+        AmountInputA={<AmountInput amountOf="liquidityA" />}
+        AmountInputB={<AmountInput amountOf="liquidityB" />}
+        BaseButton={
+          <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
+        }
+        SelectCurrencyA={
           <SelectCurrency
             isOne={false}
             optionVal="A"
             startCurrency="Select..."
           />
-        </div>
-        <div className="flex-column pb-3">
-          <label> With: </label>
+        }
+        SelectCurrencyB={
           <SelectCurrency
             isOne={false}
             optionVal="B"
             startCurrency="Select..."
           />
-        </div>
-        <AmountInput amountOf="exchangeToken" />
-      </div>
+        }
+        ToggleAction={<ToggleBuySellSwitch />}
+      />
+      <h2>Summary</h2>
       <BuySellSummary />
+      {isOpened && (
+        <BaseDialog
+          onOpenDialog={true}
+          summary="In order to proceed further please confirm the operation."
+          title="Confirm"
+          BaseButton={<BaseButton title="Confirm" />}
+        />
+      )}
     </main>
   );
 };
@@ -50,7 +69,7 @@ const ExchangeToken: NextPage = (props: {
 const mapDispatchToProps = () => {
   return {
     clearSelected,
-    setExchangeSell
+    setExchangeSell,
   };
 };
 
