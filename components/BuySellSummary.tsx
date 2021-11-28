@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import BaseIcon from "./BaseIcon";
-import store from "../redux/store";
 
 const BuySellSummary = (props: {
   currencyA: {
@@ -20,11 +20,11 @@ const BuySellSummary = (props: {
   amount: { exchangeToken: string };
 }) => {
 
-  const [amountCalc, setAmountCalc] = useState(0);
+  const [amountCalc, setAmountCalc] = useState('');
   const { currencyA, currencyB, method, amount } = props;
 
   useEffect(() => {
-    let value: Number;
+    let value: Number = 0;
     if (!!method && !!currencyA && !!currencyB && !!amount) {
       if (method.type === "sell") {
         value = currencyA.current_price / currencyB.current_price * +amount.exchangeToken;
@@ -101,6 +101,13 @@ const mapStateToProps = (state: {
   method: state.selected.method,
   amount: state.selected.amount,
 });
+
+BuySellSummary.propTypes = {
+  currencyA: PropTypes.object,
+  currencyB: PropTypes.object,
+  method: PropTypes.object,
+  amount: PropTypes.object,
+};
 
 const connector = connect(mapStateToProps);
 export default connector(BuySellSummary);
