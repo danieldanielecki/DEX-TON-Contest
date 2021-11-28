@@ -5,7 +5,6 @@ import SettingsDialog from "../SettingsDialog";
 import { Fragment } from "react";
 
 const BaseDialog = (props: {
-  onOpenDialog: any;
   subtitle: string;
   summary: string;
   title: string;
@@ -16,7 +15,6 @@ const BaseDialog = (props: {
   SelectCurrencyB?: any;
 }) => {
   const {
-    onOpenDialog,
     subtitle,
     summary,
     title,
@@ -26,55 +24,46 @@ const BaseDialog = (props: {
     SelectCurrencyA,
     SelectCurrencyB,
   } = props;
-  const [isOpened, setIsOpened] = useToggleAlert(onOpenDialog);
   const [isOpenedSettingsDialog, setIsOpenedSettingsDialog] =
     useToggleAlert(false);
 
   return (
     <div>
-      {isOpened && (
-        <div className={styles.backdrop}>
-          <div className={styles.dialog}>
-            <div className={styles.menu}>
-              <a
-                href="#modal-closed"
-                className={styles.link_to_close_dialog}
-                onClick={() => setIsOpened(false)}
-              ></a>
-            </div>
-            <div className={styles.header}>
-              <h2>{title}</h2>
-            </div>
-            <span className={styles.subtitle}>{subtitle}</span>
-            <section>
-              {AmountInputA}
-              {SelectCurrencyA}
-              {AmountInputB}
-              {SelectCurrencyB}
-              <p>{summary}</p>
-              <div className={styles.button} onClick={() => setIsOpened(false)}>
-                {BaseButton}
-              </div>
-            </section>
-            <Fragment>
-              <button onClick={setIsOpenedSettingsDialog}>Settings</button>
-              {isOpenedSettingsDialog && (
-                <SettingsDialog
-                  onOpenSettingsDialog={isOpenedSettingsDialog}
-                  subtitle="Align your Transaction Settings"
-                  title="Settings"
-                />
-              )}
-            </Fragment>
-          </div>
+      <div className={styles.dialog}>
+        <div className={styles.menu}>
+          <Fragment>
+            {/* TODO: It works on second click, dunno why */}
+            <button
+              className={styles.link_to_open_dialog}
+              onClick={setIsOpenedSettingsDialog}
+            ></button>
+            {isOpenedSettingsDialog && (
+              <SettingsDialog
+                onOpenSettingsDialog={isOpenedSettingsDialog}
+                subtitle="Align your Transaction Settings"
+                title="Settings"
+              />
+            )}
+          </Fragment>
         </div>
-      )}
+        <div className={styles.header}>
+          <h2>{title}</h2>
+        </div>
+        <span className={styles.subtitle}>{subtitle}</span>
+        <section>
+          {AmountInputA}
+          {SelectCurrencyA}
+          {AmountInputB}
+          {SelectCurrencyB}
+          <p>{summary}</p>
+          <div className={styles.button}>{BaseButton}</div>
+        </section>
+      </div>
     </div>
   );
 };
 
 BaseDialog.propTypes = {
-  onOpenDialog: PropTypes.func.isRequired,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   AmountInputA: PropTypes.object,
