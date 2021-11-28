@@ -1,0 +1,31 @@
+@import "/styles/main.scss";
+
+.form {
+  display: block;
+  margin: 0 auto 1rem;
+  max-width: 5rem;
+
+  input {
+    border: 0.1rem solid $lochmara;
+    border-radius: 3rem;
+    color: $pickled-bluewood;
+    display: inline-block;
+    font-family: $mulish;
+    max-width: 5rem;
+    padding: 0.5rem 0 0.5rem 2rem;
+
+    &::placeholder {
+      font-family: $mulish;
+    }
+    &:focus {
+      color: $lochmara;
+    }
+  }
+
+  label {
+    display: block;
+    padding: 1.5rem 0 0.25rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
