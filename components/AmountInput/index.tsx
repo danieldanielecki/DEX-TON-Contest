@@ -1,21 +1,18 @@
-import store from "../../redux/store";
-import React, { MouseEvent, useState } from 'react';
+import styles from "./styles.module.scss";
+import React, { MouseEvent, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setExchangeAmount } from "../../redux/actions/selectedActions";
 
-const AmountInput = (props: { 
-  setExchangeAmount?: any;
-  amountOf: string;
-}) => {
+const AmountInput = (props: { setExchangeAmount?: any; amountOf: string }) => {
   const { setExchangeAmount, amountOf } = props;
   const [amountValue, setAmountValue] = useState();
   const handleAmount = (event: MouseEvent<HTMLInputElement>) => {
     setAmountValue(event.target.value);
-    setExchangeAmount({[amountOf]: event.target.value})
-  }
+    setExchangeAmount({ [amountOf]: event.target.value });
+  };
   return (
-    <div className="flex-column">
+    <form className={`${styles.form} flex-column`}>
       <label htmlFor="exchange-amount-input">Amount</label>
       <input
         aria-describedby="exchange-amount-input"
@@ -26,7 +23,7 @@ const AmountInput = (props: {
         type="number"
         value={amountValue}
       />
-    </div>
+    </form>
   );
 };
 

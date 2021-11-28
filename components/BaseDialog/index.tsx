@@ -47,10 +47,16 @@ const BaseDialog = (props: {
             </div>
             <span className={styles.subtitle}>{subtitle}</span>
             <section>
-              {AmountInputA}
-              {SelectCurrencyA}
-              {AmountInputB}
-              {SelectCurrencyB}
+              {/* TODO: Make it proper structure */}
+              <div style={{ display: "inline-flex" }}>
+                {SelectCurrencyA}
+                {AmountInputA}
+              </div>
+              <div></div>
+              <div style={{ display: "inline-flex" }}>
+                {SelectCurrencyB}
+                {AmountInputB}
+              </div>
               <p>{summary}</p>
               <div className={styles.button} onClick={() => setIsOpened(false)}>
                 {BaseButton}
