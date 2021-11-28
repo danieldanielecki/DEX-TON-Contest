@@ -1,6 +1,7 @@
 import store from "../redux/store";
 import styles from "../styles/Home.module.scss";
 import AmountInput from "../components/AmountInput";
+import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
 import BuySellSummary from "../components/BuySellSummary";
 import SelectCurrency from "../components/SelectCurrency";
@@ -20,33 +21,33 @@ const ExchangeToken: NextPage = (props: {
   useEffect(() => {
     store.dispatch(clearSelected());
   }, []);
+  const cardButtonTitle: string = "Exchange";
 
   return (
     <main className={styles.main}>
-      <BaseCard title="Test" subtitle="Test2" />
-      <h1 className={styles.title}>Exchange Token</h1>
-      <p className={styles.description}>
-        Placeholder for Exchange Token description.
-      </p>
-      <div className="form-control w-50 p-3">
-        <ToggleBuySellSwitch />
-        <div className="pb-3">
+      <BaseCard
+        subtitle="Here you can exchange tokens"
+        title="Exchange"
+        AmountInputA={<AmountInput amountOf="liquidityA" />}
+        AmountInputB={<AmountInput amountOf="liquidityB" />}
+        BaseButton={<BaseButton title={cardButtonTitle} />}
+        SelectCurrencyA={
           <SelectCurrency
             isOne={false}
             optionVal="A"
             startCurrency="Select..."
           />
-        </div>
-        <div className="flex-column pb-3">
-          <label> With: </label>
+        }
+        SelectCurrencyB={
           <SelectCurrency
             isOne={false}
             optionVal="B"
             startCurrency="Select..."
           />
-        </div>
-        <AmountInput amountOf="exchangeToken" />
-      </div>
+        }
+        ToggleAction={<ToggleBuySellSwitch />}
+      />
+      <h2>Summary</h2>
       <BuySellSummary />
     </main>
   );

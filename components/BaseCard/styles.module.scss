@@ -1,48 +1,49 @@
 @import "/styles/main.scss";
 
-.dialog {
-  border-radius: 3rem;
+.card {
+  border-radius: 2rem;
   border: 0.1rem solid $lochmara;
   font-family: $mulish;
-  //   overflow: hidden;
-  //   position: fixed;
-  //   top: 20vh;
-  width: 30rem;
   transition: 1s;
+  width: 30rem;
+
+  &:hover {
+    border-radius: 3rem;
+    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
+    cursor: pointer;
+  }
 
   section {
     padding: 4rem;
   }
 
-  &:hover {
-    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
-    cursor: pointer;
+  .button {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .header {
+    border-bottom: 0.1rem solid $lochmara;
+    color: $lochmara;
+    margin: 0 auto;
+    text-align: center;
+    width: 40%;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .subtitle {
+    padding-top: 0.25rem;
+    text-align: center;
   }
 }
 
-.header {
-  border-bottom: 0.1rem solid $lochmara;
-  color: $lochmara;
-  margin: 0 auto;
-  text-align: center;
-  width: 15%;
-}
-
-.menu {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
-}
-
-.subtitle {
-  padding-top: 0.25rem;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-
 @media (max-width: 767px) {
-  .dialog {
+  .card {
     width: 80%;
   }
 }
