@@ -52,27 +52,30 @@
 }
 
 @mixin burger {
-  z-index: 100;
-  width: 40px;
-  height: 35px;
   border: 0;
-  outline: none;
-  border-top: 5px solid #ffffff;
-  background: transparent;
-  position: absolute;
-  right: 40px;
-  top: 25px;
-  transition: 0.3s transform linear;
+  border-top: 0.1rem solid $lochmara;
   cursor: crosshair;
+  height: 2rem;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  transition: 0.5s transform linear;
+  width: 2rem;
+  z-index: 100;
 
-  &::before,
   &::after {
+    transform: rotate(-90deg);
+  }
+
+  &::after,
+  &::before {
+    border-top: 0.1rem solid $lochmara;
     content: "";
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
+    transition: 0.5s transform linear;
     width: 100%;
-    border-top: 5px solid #ffffff;
     z-index: 100;
   }
 }

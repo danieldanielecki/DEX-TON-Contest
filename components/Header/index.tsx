@@ -15,95 +15,97 @@ const Header = () => {
 
   return (
     <header>
-      <nav className={`${styles.navbar} navbar navbar-expand-lg`}>
+      <nav
+        className={`${styles.navbar} navbar navbar-expand-lg ${
+          burgerVisible ? styles.open : ""
+        }`}
+      >
         <button
-          onClick={handleMenu}
           className={
             burgerVisible ? styles.main_burger_focus : styles.main_burger
           }
+          onClick={handleMenu}
         />
         <div className="container">
-          <a className="navbar-brand" href="https://ton.org/" target="_blank">
-            <Image
-              src="/ton/darkBgTon.svg"
-              alt="Ton Logo"
-              width={200}
-              height={50}
-            />
-          </a>
-
+          <Link href="/">
+            <a
+              className={`navbar-brand ${
+                burgerVisible ? styles.open_logo : ""
+              }`}
+            >
+              <Image
+                alt="The Open Network (TON)"
+                height={64}
+                src="/logo.svg"
+                title="The Open Network (TON)"
+                width={64}
+              />
+              <span>TON</span>
+            </a>
+          </Link>
           <div
-            className={`collapse navbar-collapse justify-content-end order-3 order-lg-2 ${
-              burgerVisible ? "collapse show" : ""
+            className={`collapse justify-content-end navbar-collapse ${
+              burgerVisible ? "show" : ""
             }`}
             id="navDefault"
           >
+            {/* TODO: This code repeats, make it for loop */}
             <ul className="navbar-nav">
-              <li className={`nav-item ${burgerVisible ? "dropdown" : ""}`}>
-                <Link href="/">
-                  <a
-                    className={
-                      router.pathname === "/"
-                        ? `${styles.highlighted}`
-                        : styles.nav_link
-                    }
-                  >
-                    Home
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/create-pool">
-                  <a
-                    className={
-                      router.pathname === "/create-pool"
-                        ? `${styles.highlighted}`
-                        : styles.nav_link
-                    }
-                  >
-                    Create Pool
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/exchange-token">
-                  <a
-                    className={
-                      router.pathname === "/exchange-token"
-                        ? `${styles.highlighted}`
-                        : styles.nav_link
-                    }
-                  >
-                    Exchange Token
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/liquidity-from-pool">
-                  <a
-                    className={
-                      router.pathname === "/liquidity-from-pool"
-                        ? `${styles.highlighted}`
-                        : styles.nav_link
-                    }
-                  >
-                    Liquidity from Pool
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/pool-statistics">
-                  <a
-                    className={
-                      router.pathname === "/pool-statistics"
-                        ? `${styles.highlighted}`
-                        : styles.nav_link
-                    }
-                  >
-                    Pool Statistics
-                  </a>
-                </Link>
-              </li>
+              <Link href="/">
+                <a
+                  className={
+                    router.pathname === "/"
+                      ? `${styles.highlighted}`
+                      : styles.nav_link
+                  }
+                >
+                  Home
+                </a>
+              </Link>
+              <Link href="/create-pool">
+                <a
+                  className={
+                    router.pathname === "/create-pool"
+                      ? `${styles.highlighted}`
+                      : styles.nav_link
+                  }
+                >
+                  Create Pool
+                </a>
+              </Link>
+              <Link href="/exchange-token">
+                <a
+                  className={
+                    router.pathname === "/exchange-token"
+                      ? `${styles.highlighted}`
+                      : styles.nav_link
+                  }
+                >
+                  Exchange Token
+                </a>
+              </Link>
+              <Link href="/liquidity-from-pool">
+                <a
+                  className={
+                    router.pathname === "/liquidity-from-pool"
+                      ? `${styles.highlighted}`
+                      : styles.nav_link
+                  }
+                >
+                  Liquidity from Pool
+                </a>
+              </Link>
+              <Link href="/pool-statistics">
+                <a
+                  className={
+                    router.pathname === "/pool-statistics"
+                      ? `${styles.highlighted}`
+                      : styles.nav_link
+                  }
+                >
+                  Pool Statistics
+                </a>
+              </Link>
             </ul>
           </div>
         </div>

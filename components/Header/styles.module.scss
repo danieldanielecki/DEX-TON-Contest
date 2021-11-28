@@ -1,88 +1,101 @@
-@import "/styles/abstract/_variables.scss";
-@import "/styles/abstract/_mixins.scss";
+@import "/styles/main.scss";
 
-.navbar {
-  background-color: $pickled-bluewood;
-}
+nav.navbar {
+  background-color: white;
+  font-family: $mulish;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
 
-.highlighted {
-  display: inline-block;
-  color: $lochmara;
-  pointer-events: none;
-  padding: 0.5rem 1rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.nav_link {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: $white;
-  text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out;
-
-  &:hover {
-    color: $lochmara;
+  a span {
+    font-weight: 600;
+    padding-left: 0.5rem;
+    vertical-align: middle;
   }
 
-  @media only screen and (min-device-width: 320px) and (max-device-width: $screen-change-max) {
-    margin: 2px 0px;
-    padding: 15px 20px;
-    font-size: 14px;
-    background-color: $pickled-bluewood;
+  a,
+  .nav_link {
+    padding: 0 0.5rem;
   }
-}
 
-.white {
-  color: $white;
-}
-
-.main_burger {
-  @media only screen and (min-device-width: 320px) and (max-device-width: $screen-change-max) {
-    @include burger;
-
-    &::before {
-      transform: translateY(10px);
-    }
-
-    &::after {
-      transform: translateY(25px);
-      transition: 0.3s transform linear;
-    }
+  .highlighted {
+    color: $pickled-bluewood;
+    display: inline-block;
 
     &:hover {
-      transform: scale(1.25);
+      color: $pickled-bluewood;
+      cursor: not-allowed;
     }
   }
 
-  @media only screen and (min-device-width: $screen-change-min) {
-    display: none;
+  .main_burger {
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
+
+  .nav_link {
+    color: $lochmara;
+    display: block;
+    transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+
+    &:hover {
+      color: $pickled-bluewood;
+    }
   }
 }
 
-.main_burger_focus {
-  @media only screen and (min-device-width: 320px) and (max-device-width: $screen-change-max) {
+.open {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.open_logo {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+
+  span {
+    display: block;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .highlighted,
+  .nav_link {
+    margin: 3rem;
+  }
+
+  .main_burger {
     @include burger;
-    transform: rotate(45deg) translateY(5px);
-    border: none;
 
     &::after {
-      transition: 0.3s transform linear;
-      transform: rotate(-90deg);
+      transform: translateY(1.25rem);
     }
 
     &::before {
-      transition: 0.3s transform linear;
+      transform: translateY(0.5rem);
     }
+  }
+
+  // TODO: Maybe show an animation when hamburger menu items pops up.
+  .main_burger_focus {
+    @include burger;
+
+    border: none;
+    transform: rotate(45deg) translateY(0.5rem);
   }
 }
 
-.navbar-collapse {
-  margin: 25px 0px;
-  border: 2px solid white;
-  border-left: none;
-  border-right: none;
-  max-height: 290px;
-  overflow: auto;
+@media (max-width: 767px) {
+  .highlighted,
+  .nav_link {
+    margin: 2rem;
+  }
 }
