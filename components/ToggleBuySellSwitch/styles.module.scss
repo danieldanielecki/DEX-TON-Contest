@@ -1,10 +1,10 @@
+@use "sass:math";
 @import "/styles/main.scss";
 
 $width_switch_button: 18rem;
 
 .switch_button_wrapper {
   padding: 1rem;
-
 }
 
 .switch_button {
@@ -13,7 +13,7 @@ $width_switch_button: 18rem;
   color: white;
   font-family: $mulish;
   font-size: 1.1rem;
-  padding-right: $width_switch_button / 2;
+  padding-right: math.div($width-switch-button, 2);
   position: relative;
   text-align: center;
   width: $width_switch_button;
@@ -28,7 +28,7 @@ $width_switch_button: 18rem;
     position: absolute;
     right: 0;
     top: 0;
-    width: $width_switch_button / 2;
+    width: math.div($width-switch-button, 2);
     z-index: 3;
   }
 
@@ -42,13 +42,13 @@ $width_switch_button: 18rem;
     top: 0;
     width: 100%;
 
-    &:checked+.switch_button_label:before {
+    &:checked + .switch_button_label:before {
       @include toggle_transition;
 
-      transform: translateX($width_switch_button / 2);
+      transform: translateX(math.div($width-switch-button, 2));
     }
 
-    &+.switch_button_label {
+    & + .switch_button_label {
       display: block;
       padding: 1rem;
       pointer-events: none;
