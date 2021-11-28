@@ -15,7 +15,7 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <main className={styles.main}>
       <BaseDialog
         subtitle="Add liquidity to receive tokens"
         summary="Prices and pool share"
@@ -34,7 +34,7 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
           />
         }
       />
-    </div>
+    </main>
   );
 };
 const mapDispatchToProps = () => {
