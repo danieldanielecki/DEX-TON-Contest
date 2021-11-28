@@ -2,19 +2,18 @@ import styles from "../styles/PoolStatistics.module.scss";
 // import PoolTable from "../components/PoolTable";
 import PoolsTable from "../components/table/PoolsTable";
 import { useEffect, useState } from "react";
-// import { POOLS } from "../config/data/pools/dummy-pools";
+// import { POOLS } from "../config/data/pools/dummy-pools"; // In case of working with this the dummy data has been removed, so please use the server-based pools data. The format is the case.
 import type { NextPage } from "next";
 import store from "../redux/store";
 import { setPools } from "../redux/actions/poolsActions";
 import createPools from "../redux/helpers/createPools";
 import { connect } from "react-redux";
-import { clearSelected } from '../redux/actions/selectedActions';
+import { clearSelected } from "../redux/actions/selectedActions";
 
 const PoolStatistics: NextPage = (props: {
-  setPools: Function,
-  clearSelected: Function
+  setPools: Function;
+  clearSelected: Function;
 }) => {
-
   // TODO: It might be deleted later, but first style table.
   // const [searchQuery, setSearchQuery] = useState("");
   const [items, setItems] = useState();
@@ -53,7 +52,7 @@ const PoolStatistics: NextPage = (props: {
 const mapDispatchToProps = () => {
   return {
     setPools,
-    clearSelected
+    clearSelected,
   };
 };
 
