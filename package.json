@@ -1,6 +1,7 @@
 {
   "name": "dex-ton",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "node ssr-server.js",
     "build": "next build",
