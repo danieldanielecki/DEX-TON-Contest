@@ -1,0 +1,14 @@
+@import "/styles/main.scss";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $lochmara;
+  margin-top: 1rem;
+  width: 100vw;
+}
+
+.logo {
+  color: $white;
+}

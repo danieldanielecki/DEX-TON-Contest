@@ -6,6 +6,7 @@ nav.navbar {
   font-weight: 600;
   text-align: center;
   vertical-align: middle;
+  width: 100vw;
 
   a span {
     font-weight: 600;
@@ -47,10 +48,12 @@ nav.navbar {
 
 .open {
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 10;
+  left: 0;
+  background-color: white;
 }
 
 .open_logo {
