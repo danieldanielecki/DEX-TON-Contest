@@ -45,7 +45,7 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
             startCurrency="Select..."
           />
         }
-        ToggleAction={<ToggleBuySellSwitch />}
+        ToggleAction={<ToggleBuySellSwitch leftText="Add" rightText="Remove" />}
       />
       {isOpened && (
         <BaseDialog

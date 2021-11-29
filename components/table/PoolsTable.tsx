@@ -40,12 +40,14 @@ const Table = (props: { pools: Pool[] }) => {
           className="text-center"
           style={{ display: "inline-block", marginLeft: 10 }}
         >
-          Number of records:
-          <Select
-            onChange={handleChange}
-            options={numberOfRecords}
-            value={tableSettings.pageSize}
-          />
+          <div className="d-flex align-items-center my-2">
+            <span style={{ marginRight: 10 }}>Number of records:</span>
+            <Select
+              onChange={handleChange}
+              options={numberOfRecords}
+              value={tableSettings.pageSize}
+            />
+          </div>
         </span>
         <thead>
           <tr className="text-center">
@@ -60,8 +62,14 @@ const Table = (props: { pools: Pool[] }) => {
           {tableSettings.headerGroups.map((headerGroup) => (
             <tr>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  title={`Sort ${column.render("Header")}`}
+                >
                   {column.render("Header")}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? " ⬆" : " ⬇") : ""}
+                  </span>
                 </th>
               ))}
             </tr>

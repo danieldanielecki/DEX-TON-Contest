@@ -7,14 +7,13 @@ import { setExchangeAmount } from "../../redux/actions/selectedActions";
 const AmountInput = (props: { setExchangeAmount?: any; amountOf: string }) => {
   const { setExchangeAmount, amountOf } = props;
   const [amountValue, setAmountValue] = useState(0);
-  
+
   const handleAmount = (event: MouseEvent<HTMLInputElement>) => {
     setAmountValue(event.target.value);
     setExchangeAmount({ [amountOf]: event.target.value });
   };
   return (
-    <form className={`${styles.form} flex-column`}>
-      <label htmlFor="exchange-amount-input">Amount</label>
+    <form className={`${styles.form}`}>
       <input
         aria-describedby="exchange-amount-input"
         className="form-control"

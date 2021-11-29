@@ -1,18 +1,15 @@
-import { useState, useEffect } from "react";
-import Select, { components } from "react-select";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
 import store from "../redux/store";
 import BaseIcon from "./BaseIcon";
+import PropTypes from "prop-types";
+import Select, { components } from "react-select";
+import { connect } from "react-redux";
+import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
+import { useEffect, useState } from "react";
 
 const { Option } = components;
 const IconOption = (props: any) => (
   <Option {...props}>
-    <BaseIcon
-      key={props.data.symbol}
-      image={props.data.image}
-    />
+    <BaseIcon image={props.data.image} key={props.data.symbol} />
     {props.data.name}
   </Option>
 );
@@ -24,9 +21,8 @@ const SelectCurrency = (props: {
   startCurrency?: string;
 }) => {
   const { startCurrency, optionVal, setCurrencyA, setCurrencyB } = props;
-  const [selectedOption, setSelectedOption] = useState(startCurrency);
-
   const [currencies, setCurrencies] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(startCurrency);
 
   useEffect(() => {
     async function loadCurrencies() {
@@ -48,8 +44,9 @@ const SelectCurrency = (props: {
 
   return (
     <Select
-      instanceId={`currency-select-${optionVal}`}
+      className="w-75"
       components={{ Option: IconOption }}
+      instanceId={`currency-select-${optionVal}`}
       onChange={handleChange}
       options={currencies}
       value={{ label: selectedOption }}

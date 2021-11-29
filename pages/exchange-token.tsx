@@ -49,7 +49,7 @@ const ExchangeToken: NextPage = (props: {
             startCurrency="Select..."
           />
         }
-        ToggleAction={<ToggleBuySellSwitch />}
+        ToggleAction={<ToggleBuySellSwitch leftText="Buy" rightText="Sell" />}
       />
       <h2>Summary</h2>
       <BuySellSummary />

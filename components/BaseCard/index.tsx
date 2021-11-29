@@ -54,11 +54,25 @@ const BaseCard = (props: {
       </div>
       <p className={styles.subtitle}>{subtitle}</p>
       <section>
-        {SelectCurrencyA}
-        {AmountInputA}
-        {SelectCurrencyB}
-        {AmountInputB}
+        <div className="d-flex align-items-center justify-content-between">
+          {SelectCurrencyA}
+          <span className={styles.amount}>{AmountInputA}</span>
+        </div>
+        <div className="d-flex align-items-center justify-content-center">
+          +
+        </div>
+        <div
+          className={`${
+            SelectCurrencyB
+              ? "d-flex align-items-center justify-content-between"
+              : ""
+          }`}
+        >
+          {SelectCurrencyB}
+          <span className={styles.amount}>{AmountInputB}</span>
+        </div>
         {ToggleAction}
+        <div className={styles.horizontal_line}></div>
         <div className={styles.button}>{BaseButton}</div>
       </section>
     </div>

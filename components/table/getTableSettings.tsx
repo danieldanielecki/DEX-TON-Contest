@@ -1,9 +1,9 @@
 import {
-  useTable,
-  usePagination,
   useFilters,
   useGlobalFilter,
+  usePagination,
   useSortBy,
+  useTable,
   FilterValue,
   HeaderGroup,
   Row,
@@ -17,29 +17,25 @@ import { Pool } from "../../interfaces/pool";
 
 const columnHeaders = [
   {
-    Header: "All Pools",
-    columns: [
-      {
-        Header: "#",
-        accessor: (_row: Row, index: number) => index + 1,
-      },
-      {
-        Header: "Pool",
-        accessor: "pair",
-      },
-      {
-        Header: "% 24h",
-        accessor: "priceChangePercentage24h",
-      },
-      {
-        Header: "Volume",
-        accessor: "volume",
-      },
-      {
-        Header: "Market Cap",
-        accessor: "marketCap",
-      },
-    ],
+    Header: "Position",
+    accessor: (_row: Row, index: number) => index + 1,
+  },
+  {
+    Header: "Pool",
+    accessor: "pair",
+  },
+  {
+    Header: "24H (%)",
+    accessor: "priceChangePercentage24h",
+    sortType: compareNumericString,
+  },
+  {
+    Header: "Volume [$M]",
+    accessor: "volume",
+  },
+  {
+    Header: "Market Cap [$M]",
+    accessor: "marketCap",
   },
 ];
 
@@ -92,5 +88,21 @@ const getTableSettings = (pools: Pool[]) => {
   ));
   return tableSettings;
 };
+
+function compareNumericString(rowA: Row, rowB: Row, id: number, desc: string) {
+  let a = Number.parseFloat(rowA.values[id]);
+  let b = Number.parseFloat(rowB.values[id]);
+
+  if (Number.isNaN(a)) {
+    // Blanks and non-numeric strings to bottom.
+    a = desc ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
+  }
+  if (Number.isNaN(b)) {
+    b = desc ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
+  }
+  if (a > b) return 1;
+  if (a < b) return -1;
+  return 0;
+}
 
 export default getTableSettings;
