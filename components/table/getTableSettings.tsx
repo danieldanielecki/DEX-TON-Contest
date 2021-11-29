@@ -15,7 +15,7 @@ import {
 } from "react-table";
 import { Pool } from "../../interfaces/pool";
 
-const columnHeaders = [
+const columnHeaders: any = [
   {
     Header: "Position",
     accessor: (_row: Row, index: number) => index + 1,
@@ -42,17 +42,19 @@ const columnHeaders = [
 const getTableSettings = (pools: Pool[]) => {
   let canPreviousPage: boolean;
   let canNextPage: boolean;
-  let getTableProps: (propGetter?: TablePropGetter<Pool>) => TableProps;
+  let getTableProps: (
+    propGetter?: TablePropGetter<Pool> | undefined
+  ) => TableProps;
   let getTableBodyProps: (
-    propGetter?: TableBodyPropGetter<Pool>
+    propGetter?: TableBodyPropGetter<Pool> | undefined
   ) => TableBodyProps;
   let gotoPage: (updater: ((pageIndex: number) => number) | number) => void;
   let headerGroups: HeaderGroup<Pool>[];
   let nextPage: () => void;
-  let page: Array<Row<Pool>>;
+  let page: Row<Pool>[];
   let pageCount: number;
   let pageOptions: number[];
-  let preGlobalFilteredRows: Array<Row<Pool>>;
+  let preGlobalFilteredRows: Row<Pool>[];
   let prepareRow: (row: Row<any>) => void;
   let previousPage: () => void;
   let setGlobalFilter: (filterValue: FilterValue) => void;

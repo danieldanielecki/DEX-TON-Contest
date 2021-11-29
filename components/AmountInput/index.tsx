@@ -1,8 +1,8 @@
 import styles from "./styles.module.scss";
-import React, { MouseEvent, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setExchangeAmount } from "../../redux/actions/selectedActions";
+import { useState } from "react";
 
 const AmountInput = (props: { setExchangeAmount?: any; amountOf: string }) => {
   const { setExchangeAmount, amountOf } = props;

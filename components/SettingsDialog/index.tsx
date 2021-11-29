@@ -7,7 +7,7 @@ import ToggleOnOffSwitch from "../ToggleOnOffSwitch";
 import { useState } from "react";
 
 const SettingsDialog = (props: {
-  onOpenSettingsDialog: boolean;
+  onOpenSettingsDialog: any;
   subtitle: string;
   title: string;
 }) => {
@@ -53,7 +53,7 @@ const SettingsDialog = (props: {
                   Slippage Tolerance (seconds)
                 </span>
                 <div>
-                  <AmountInput />
+                  <AmountInput amountOf="" />
                 </div>
               </div>
               <div className="d-flex align-items-center justify-content-evenly">
@@ -61,7 +61,7 @@ const SettingsDialog = (props: {
                   Transaction Deadline (minutes)
                 </span>
                 <div>
-                  <AmountInput />
+                  <AmountInput amountOf="" />
                 </div>
               </div>
               <div className={styles.toggles}>
