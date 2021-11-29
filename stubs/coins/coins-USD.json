@@ -1,8 +1,8 @@
-[
-  {
+[{
     "id": "bitcoin",
     "symbol": "btc",
-    "name": "Bitcoin",
+    "value": "bitcoin",
+    "label": "Bitcoin",
     "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
     "current_price": 56794,
     "market_cap": 1077259143125,
@@ -30,7 +30,8 @@
   {
     "id": "ethereum",
     "symbol": "eth",
-    "name": "Ethereum",
+    "value": "ethereum",
+    "label": "Ethereum",
     "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
     "current_price": 4237.37,
     "market_cap": 503667108466,
@@ -62,7 +63,8 @@
   {
     "id": "binancecoin",
     "symbol": "bnb",
-    "name": "Binance Coin",
+    "value": "binance-coin",
+    "label": "Binance Coin",
     "image": "https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png?1547034615",
     "current_price": 585.81,
     "market_cap": 98794399559,
@@ -90,7 +92,8 @@
   {
     "id": "chainlink",
     "symbol": "link",
-    "name": "Chainlink",
+    "value": "chainlink",
+    "label": "Chainlink",
     "image": "https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png?1547034700",
     "current_price": 25.65,
     "market_cap": 12003644198,
@@ -118,7 +121,8 @@
   {
     "id": "stellar",
     "symbol": "xlm",
-    "name": "Stellar",
+    "value": "stellar",
+    "label": "Stellar",
     "image": "https://assets.coingecko.com/coins/images/100/large/Stellar_symbol_black_RGB.png?1552356157",
     "current_price": 0.323887,
     "market_cap": 7922188442,
@@ -146,7 +150,8 @@
   {
     "id": "yearn-finance",
     "symbol": "yfi",
-    "name": "yearn.finance",
+    "value": "yearn-finance",
+    "label": "yearn.finance",
     "image": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png?1598325330",
     "current_price": 30739,
     "market_cap": 1101942262,
@@ -174,7 +179,8 @@
   {
     "id": "polker",
     "symbol": "pkr",
-    "name": "Polker",
+    "value": "polker",
+    "label": "Polker",
     "image": "https://assets.coingecko.com/coins/images/16803/large/200x200-PKR_Chip.png?1625589565",
     "current_price": 0.281131,
     "market_cap": 16574798,
@@ -202,7 +208,8 @@
   {
     "id": "terra-world-token",
     "symbol": "twd",
-    "name": "Terra World Token",
+    "value": "terra-world-token",
+    "label": "Terra World Token",
     "image": "https://assets.coingecko.com/coins/images/19715/large/twd.png?1635925424",
     "current_price": 0.132348,
     "market_cap": 6114326,
@@ -230,7 +237,8 @@
   {
     "id": "polkalokr",
     "symbol": "lkr",
-    "name": "Polkalokr",
+    "value": "polkalokr",
+    "label": "Polkalokr",
     "image": "https://assets.coingecko.com/coins/images/14692/large/coingeckoLogo.png?1617809622",
     "current_price": 0.124997,
     "market_cap": 3449954,
@@ -258,7 +266,8 @@
   {
     "id": "krown",
     "symbol": "krw",
-    "name": "KROWN",
+    "value": "krown",
+    "label": "KROWN",
     "image": "https://assets.coingecko.com/coins/images/16530/large/KRW_token_logo_200x200.png?1624343058",
     "current_price": 0.00034893,
     "market_cap": 1397489,
@@ -286,7 +295,8 @@
   {
     "id": "block-duelers",
     "symbol": "bdt",
-    "name": "Block Duelers",
+    "value": "block-duelers",
+    "label": "Block Duelers",
     "image": "https://assets.coingecko.com/coins/images/13757/large/block_duelers.png?1611567700",
     "current_price": 39.38,
     "market_cap": 550455,
@@ -314,7 +324,8 @@
   {
     "id": "binance-peg-polkadot",
     "symbol": "dot",
-    "name": "Binance-Peg Polkadot",
+    "value": "binance-peg-polkadot",
+    "label": "Binance-Peg Polkadot",
     "image": "https://assets.coingecko.com/coins/images/15457/large/-Tj2WF_6_400x400.jpg?1620895613",
     "current_price": 38.59,
     "market_cap": 0,
@@ -342,7 +353,8 @@
   {
     "id": "candy-protocol",
     "symbol": "cad",
-    "name": "Candy Protocol",
+    "value": "candy-protocol",
+    "label": "Candy Protocol",
     "image": "https://assets.coingecko.com/coins/images/14071/large/YMXZkwwS_400x400.png?1614149796",
     "current_price": 0.00000922,
     "market_cap": 0,
@@ -370,7 +382,8 @@
   {
     "id": "binance-peg-bitcoin-cash",
     "symbol": "bch",
-    "name": "Binance-Peg Bitcoin Cash",
+    "value": "binance-peg-bitcoin-cash",
+    "label": "Binance-Peg Bitcoin Cash",
     "image": "https://assets.coingecko.com/coins/images/15774/large/bitcoin-cash-circle.png?1621834955",
     "current_price": 596.39,
     "market_cap": 0,
@@ -398,7 +411,8 @@
   {
     "id": "xrpalike-gene",
     "symbol": "xag",
-    "name": "Xrpalike Gene",
+    "value": "xrpalike-gene",
+    "label": "Xrpalike Gene",
     "image": "https://assets.coingecko.com/coins/images/9445/large/zI2ZpY3j_400x400.jpg?1567549046",
     "current_price": 0.01135791,
     "market_cap": 0,
@@ -426,7 +440,8 @@
   {
     "id": "bitcoinus",
     "symbol": "bits",
-    "name": "Bitcoinus",
+    "value": "bitcoinus",
+    "label": "Bitcoinus",
     "image": "https://assets.coingecko.com/coins/images/6294/large/bitcoinus.png?1547042337",
     "current_price": 2.0325e-8,
     "market_cap": 0,
@@ -454,7 +469,8 @@
   {
     "id": "baby-satoshi",
     "symbol": "sats",
-    "name": "Baby Satoshi",
+    "value": "baby-satoshi",
+    "label": "Baby Satoshi",
     "image": "https://assets.coingecko.com/coins/images/17382/large/vR68Iyq.png?1628170659",
     "current_price": 0.00056681,
     "market_cap": 0,
@@ -482,7 +498,8 @@
   {
     "id": "try-finance",
     "symbol": "try",
-    "name": "Try.Finance",
+    "value": "try-finance",
+    "label": "Try.Finance",
     "image": "https://assets.coingecko.com/coins/images/13865/large/try-logo.png?1612420128",
     "current_price": 33.23,
     "market_cap": 0,
@@ -510,7 +527,8 @@
   {
     "id": "bitcoin-hd",
     "symbol": "bhd",
-    "name": "Bitcoin HD",
+    "value": "bitcoin-hd",
+    "label": "Bitcoin HD",
     "image": "https://assets.coingecko.com/coins/images/6902/large/CtohuWOU_400x400.jpg?1547043262",
     "current_price": 0.995677,
     "market_cap": 0,
@@ -538,7 +556,8 @@
   {
     "id": "uniswap-state-dollar",
     "symbol": "usd",
-    "name": "unified Stable Dollar",
+    "value": "uniswap-state-dollar",
+    "label": "unified Stable Dollar",
     "image": "https://assets.coingecko.com/coins/images/12259/large/Uniswap_State_Dollar.png?1598550804",
     "current_price": 0.781611,
     "market_cap": 0,
@@ -566,7 +585,8 @@
   {
     "id": "binance-peg-xrp",
     "symbol": "xrp",
-    "name": "Binance-Peg XRP",
+    "value": "binance-peg-xrp",
+    "label": "Binance-Peg XRP",
     "image": "https://assets.coingecko.com/coins/images/15458/large/ryyrCapt_400x400.jpg?1620895978",
     "current_price": 1.02,
     "market_cap": 0,
@@ -594,7 +614,8 @@
   {
     "id": "binance-peg-litecoin",
     "symbol": "ltc",
-    "name": "Binance-Peg Litecoin",
+    "value": "binance-peg-litecoin",
+    "label": "Binance-Peg Litecoin",
     "image": "https://assets.coingecko.com/coins/images/15456/large/LrysCc5Q_400x400.jpg?1620895206",
     "current_price": 217.07,
     "market_cap": 0,
@@ -622,7 +643,8 @@
   {
     "id": "binance-peg-eos",
     "symbol": "eos",
-    "name": "Binance-Peg EOS",
+    "value": "binance-peg-eos",
+    "label": "Binance-Peg EOS",
     "image": "https://assets.coingecko.com/coins/images/15771/large/eos-eos-logo.png?1621834238",
     "current_price": 4.05,
     "market_cap": 0,
@@ -650,7 +672,8 @@
   {
     "id": "saren",
     "symbol": "sar",
-    "name": "Saren",
+    "value": "saren",
+    "label": "Saren",
     "image": "https://assets.coingecko.com/coins/images/14779/large/68887475.png?1618386459",
     "current_price": 0.00841228,
     "market_cap": 0,
@@ -678,7 +701,8 @@
   {
     "id": "bkex-taihe-stable-b",
     "symbol": "thb",
-    "name": "BKEX Taihe Stable B",
+    "value": "bkex-taihe-stable-b",
+    "label": "BKEX Taihe Stable B",
     "image": "https://assets.coingecko.com/coins/images/16800/large/bkex.jpeg?1625060473",
     "current_price": null,
     "market_cap": null,

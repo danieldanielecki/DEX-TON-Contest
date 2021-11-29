@@ -1,16 +1,47 @@
 import store from "../redux/store";
 import BaseIcon from "./BaseIcon";
 import PropTypes from "prop-types";
-import Select, { components } from "react-select";
+import Select, { components, StylesConfig } from "react-select";
 import { connect } from "react-redux";
 import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
 import { useEffect, useState } from "react";
 
+const colourStyles: StylesConfig<ColourOption> = {
+  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
+  option: (styles, { isDisabled, isFocused, isSelected }) => {
+    return {
+      ...styles,
+      backgroundColor: isDisabled
+        ? undefined
+        : isSelected
+          ? '#0088cc'
+          : isFocused
+            ? '#0088cc'
+            : 'white',
+      color: isDisabled
+        ? '#ccc'
+        : isSelected
+          ? 'black'
+          : isFocused
+            ? 'white'
+            : 'black',
+      cursor: isDisabled ? 'not-allowed' : 'default',
+
+      ':active': {
+        ...styles[':active'],
+        backgroundColor: !isDisabled
+          ? isSelected
+            ? '#0088cc'
+            : '#303757'
+          : 'white',
+      },
+    };
+  },
+}
 const { Option } = components;
 const IconOption = (props: any) => (
   <Option {...props}>
-    <BaseIcon image={props.data.image} key={props.data.symbol} />
-    {props.data.name}
+    <BaseIcon image={props.data.image} key={props.data.symbol} size={30} title={props.data.label} />
   </Option>
 );
 
@@ -20,9 +51,8 @@ const SelectCurrency = (props: {
   setCurrencyB?: any;
   startCurrency?: string;
 }) => {
-  const { startCurrency, optionVal, setCurrencyA, setCurrencyB } = props;
+  const { optionVal, setCurrencyA, setCurrencyB } = props;
   const [currencies, setCurrencies] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(startCurrency);
 
   useEffect(() => {
     async function loadCurrencies() {
@@ -33,23 +63,26 @@ const SelectCurrency = (props: {
   }, []);
 
   const handleChange = (event: any) => {
+    console.log(event);
+
     if (optionVal === "A") {
       store.dispatch(setCurrencyA(event));
     }
     if (optionVal === "B") {
       store.dispatch(setCurrencyB(event));
     }
-    setSelectedOption(event.name);
   };
 
   return (
     <Select
       className="w-75"
+      classNamePrefix="select"
+      defaultValue={currencies[0]}
       components={{ Option: IconOption }}
       instanceId={`currency-select-${optionVal}`}
       onChange={handleChange}
       options={currencies}
-      value={{ label: selectedOption }}
+      styles={colourStyles}
     />
   );
 };

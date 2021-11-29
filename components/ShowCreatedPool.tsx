@@ -31,24 +31,24 @@ const ShowCreatedPool = (props: {
   return (
     <div>
       <div className="w-500 d-flex">
-        {!!currencyA.name
+        {!!currencyA.label
           ? (
             <div>
               <BaseIcon image={currencyA.image} />
               <p className="d-flex flex-column">
                 <span>
-                  {currencyA.name}
+                  {currencyA.label}
                 </span>
               </p>
             </div>
           ) : ''}
-        {!!currencyB.name
+        {!!currencyB.label
           ? (
             <div>
               <BaseIcon image={currencyB.image} />
               <p className="d-flex flex-column">
                 <span>
-                  {currencyB.name}
+                  {currencyB.label}
                 </span>
               </p>
             </div>)
