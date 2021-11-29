@@ -20,17 +20,20 @@ const BuySellSummary = (props: {
   method: { type: string };
   amount: { exchangeToken: string };
 }) => {
-
-  const [amountCalc, setAmountCalc] = useState('');
+  const [amountCalc, setAmountCalc] = useState("");
   const { currencyA, currencyB, method, amount } = props;
 
   useEffect(() => {
     let value: Number = 0;
     if (!!method && !!currencyA && !!currencyB && !!amount) {
       if (method.type === "sell") {
-        value = currencyA.current_price / currencyB.current_price * +amount.exchangeToken;
+        value =
+          (currencyA.current_price / currencyB.current_price) *
+          +amount.exchangeToken;
       } else if (method.type === "buy") {
-        value = currencyB.current_price / currencyA.current_price * +amount.exchangeToken;
+        value =
+          (currencyB.current_price / currencyA.current_price) *
+          +amount.exchangeToken;
       }
       setAmountCalc(value.toFixed(4));
     }
@@ -107,4 +110,5 @@ BuySellSummary.propTypes = {
 };
 
 const connector = connect(mapStateToProps);
+// @ts-ignore
 export default connector(BuySellSummary);

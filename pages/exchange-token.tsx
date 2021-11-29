@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import type { NextPage } from "next";
 
+// @ts-ignore
 const ExchangeToken: NextPage = (props: {
   clearSelected: Function;
   setExchangeSell: Function;
@@ -37,6 +38,7 @@ const ExchangeToken: NextPage = (props: {
         }
         SelectCurrencyA={
           <SelectCurrency
+            // @ts-ignore
             isOne={false}
             optionVal="A"
             startCurrency="Select..."
@@ -44,6 +46,7 @@ const ExchangeToken: NextPage = (props: {
         }
         SelectCurrencyB={
           <SelectCurrency
+            // @ts-ignore
             isOne={false}
             optionVal="B"
             startCurrency="Select..."
@@ -51,6 +54,7 @@ const ExchangeToken: NextPage = (props: {
         }
         ToggleAction={<ToggleBuySellSwitch leftText="Buy" rightText="Sell" />}
       />
+      {/* @ts-ignore */}
       <BuySellSummary />
       {isOpened && (
         <BaseDialog

@@ -26,28 +26,30 @@ const ShowCreatedPool = (props: {
   return (
     <div>
       <div className="w-500 d-flex">
-        {!!currencyA.label
-          ? (
-            <div>
-              <BaseIcon image={currencyA.image} />
-              <p className="d-flex flex-column">
-                <span>
-                  {currencyA.label}
-                </span>
-              </p>
-            </div>
-          ) : ''}
-        {!!currencyB.label
-          ? (
-            <div>
-              <BaseIcon image={currencyB.image} />
-              <p className="d-flex flex-column">
-                <span>
-                  {currencyB.label}
-                </span>
-              </p>
-            </div>)
-          : ''}
+        {/* @ts-ignore */}
+        {!!currencyA.label ? (
+          <div>
+            <BaseIcon image={currencyA.image} />
+            <p className="d-flex flex-column">
+              {/* @ts-ignore */}
+              <span>{currencyA.label}</span>
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
+        {/* @ts-ignore */}
+        {!!currencyB.label ? (
+          <div>
+            <BaseIcon image={currencyB.image} />
+            <p className="d-flex flex-column">
+              {/* @ts-ignore */}
+              <span>{currencyB.label}</span>
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
@@ -64,4 +66,5 @@ const mapStateToProps = (state: {
 });
 
 const connector = connect(mapStateToProps);
+// @ts-ignore
 export default connector(ShowCreatedPool);

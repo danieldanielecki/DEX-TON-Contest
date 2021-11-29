@@ -8,6 +8,7 @@ import { setPools } from "../redux/actions/poolsActions";
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 
+// @ts-ignore
 const PoolStatistics: NextPage = (props: {
   setPools: Function;
   clearSelected: Function;

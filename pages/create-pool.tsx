@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import type { NextPage } from "next";
 
+// @ts-ignore
 const CreatePool: NextPage = (props: { clearSelected: Function }) => {
   useEffect(() => {
     store.dispatch(clearSelected());
@@ -28,6 +29,7 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
         }
         SelectCurrencyA={
           <SelectCurrency
+            // @ts-ignore
             isOne={false}
             optionVal="A"
             startCurrency="Select..."
@@ -35,6 +37,7 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
         }
         SelectCurrencyB={
           <SelectCurrency
+            // @ts-ignore
             isOne={false}
             optionVal="B"
             startCurrency="Select..."
