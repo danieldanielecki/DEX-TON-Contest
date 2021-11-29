@@ -28,15 +28,15 @@ const columnHeaders = [
         accessor: "pair",
       },
       {
-        Header: "% 24h",
+        Header: "24H (%)",
         accessor: "priceChangePercentage24h",
       },
       {
-        Header: "Volume",
+        Header: "Volume [$M]",
         accessor: "volume",
       },
       {
-        Header: "Market Cap",
+        Header: "Market Cap [$M]",
         accessor: "marketCap",
       },
     ],
