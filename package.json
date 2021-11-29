@@ -1,7 +1,7 @@
 {
   "name": "dex-ton",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "private": true,
   "license": "MIT",
