@@ -2,6 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react/jsx-key": "off",
-    "react/no-unknown-property": "off"
+    "react/no-unknown-property": "off",
+    "react-hooks/rules-of-hooks": "off"
   }
 }
