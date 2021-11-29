@@ -33,6 +33,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## Deploy on Netlify
+https://elegant-shirley-765c8d.netlify.app/pool-statistics
+
 ## Pool Statistics page
 
 Take a look on https://info.uniswap.org/#/pools
