@@ -10,23 +10,69 @@
   z-index: 14;
 
   section {
-    margin: 0 auto;
-    padding: 4rem;
-
-    div {
-      margin: 0.5rem 0;
-      text-align: left;
-    }
-
-    p {
-      padding-top: 0.75rem;
-      text-align: center;
-    }
+    margin-top: 2rem;
+    padding: 0 6rem;
 
     .button {
       margin: 0 auto;
       text-align: center;
     }
+
+    .option {
+      margin-top: 1.65rem;
+      width: 45%;
+    }
+  }
+
+  .header {
+    border-bottom: 0.1rem solid $lochmara;
+    color: $lochmara;
+    margin: 0 auto;
+    text-align: center;
+    width: 25%;
+  }
+
+  .link_to_close_dialog {
+    align-items: center;
+    border: 0.1rem solid $pickled-bluewood;
+    border-radius: 3rem;
+    color: $pickled-bluewood;
+    display: flex;
+    font-size: 2.2rem;
+    height: 3rem;
+    justify-content: center;
+    position: absolute;
+    transition: 0.5s;
+    width: 3rem;
+
+    &:before {
+      content: "×";
+      transform: translateX(0.07rem) translateY(-0.15rem);
+    }
+
+    &:focus,
+    &:hover {
+      border: 0.1rem solid $lochmara;
+      color: $lochmara;
+      transform: translateY(-0.1rem);
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .subtitle {
+    padding-top: 0.25rem;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+
+  .toggles > div {
+    margin: 1.5rem 0 1.5rem 3.75rem;
   }
 }
 
@@ -39,53 +85,6 @@
   top: 20vh;
   width: 80%;
   z-index: 101;
-}
-
-.header {
-  border-bottom: 0.1rem solid $lochmara;
-  color: $lochmara;
-  margin: 0 auto;
-  text-align: center;
-  width: 25%;
-}
-
-.link_to_close_dialog {
-  align-items: center;
-  border: 0.1rem solid $pickled-bluewood;
-  border-radius: 3rem;
-  color: $pickled-bluewood;
-  display: flex;
-  font-size: 2.2rem;
-  height: 3rem;
-  justify-content: center;
-  position: absolute;
-  transition: 0.5s;
-  width: 3rem;
-
-  &:before {
-    content: "×";
-    transform: translateX(0.07rem) translateY(-0.15rem);
-  }
-
-  &:focus,
-  &:hover {
-    border: 0.1rem solid $lochmara;
-    color: $lochmara;
-    transform: translateY(-0.1rem);
-  }
-}
-
-.menu {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
-}
-
-.subtitle {
-  padding-top: 0.25rem;
-  position: absolute;
-  text-align: center;
-  width: 100%;
 }
 
 @media (min-width: 768px) {

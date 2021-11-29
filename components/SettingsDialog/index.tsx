@@ -44,35 +44,51 @@ const SettingsDialog = (props: {
             <div className={styles.header}>
               <h2>{title}</h2>
             </div>
-            <span className={styles.subtitle}>{subtitle}</span>
+            <div className={styles.subtitle}>
+              <span>{subtitle}</span>
+            </div>
             <section>
-              <p>Slippage Tolerance</p>
-              <AmountInput />
-              <p>Transaction Deadline</p>
-              <AmountInput />
-              <div>
-                <ToggleOnOffSwitch
-                  checked={autoRouter}
-                  id="auto_router"
-                  onChange={onAutoRouterChange}
-                  title="Auto Router"
-                />
+              <div className="d-flex align-items-center justify-content-evenly">
+                <span className={styles.option}>
+                  Slippage Tolerance (seconds)
+                </span>
+                <div>
+                  <AmountInput />
+                </div>
               </div>
-              <div>
-                <ToggleOnOffSwitch
-                  checked={disableMultihops}
-                  id="disable_multihops"
-                  onChange={onDisableMultihopsChange}
-                  title="Disable Multihops"
-                />
+              <div className="d-flex align-items-center justify-content-evenly">
+                <span className={styles.option}>
+                  Transaction Deadline (minutes)
+                </span>
+                <div>
+                  <AmountInput />
+                </div>
               </div>
-              <div>
-                <ToggleOnOffSwitch
-                  checked={expertMode}
-                  id="expert_mode"
-                  onChange={onExpertModeChange}
-                  title="Expert Mode"
-                />
+              <div className={styles.toggles}>
+                <div>
+                  <ToggleOnOffSwitch
+                    checked={autoRouter}
+                    id="auto_router"
+                    onChange={onAutoRouterChange}
+                    title="Auto Router"
+                  />
+                </div>
+                <div>
+                  <ToggleOnOffSwitch
+                    checked={disableMultihops}
+                    id="disable_multihops"
+                    onChange={onDisableMultihopsChange}
+                    title="Disable Multihops"
+                  />
+                </div>
+                <div>
+                  <ToggleOnOffSwitch
+                    checked={expertMode}
+                    id="expert_mode"
+                    onChange={onExpertModeChange}
+                    title="Expert Mode"
+                  />
+                </div>
               </div>
               {/* TODO: Align BaseButton to listen to onClick event listener. */}
               <div
