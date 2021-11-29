@@ -13,7 +13,7 @@ const HeadPage = () => {
 
   return (
     <Head>
-      <title>DEX of TON - {returnTitle()}</title>
+      <title>DEX of TON: {returnTitle()}</title>
       <meta
         name="description"
         content="Decentralized Exchange (DEX) of The Open Network (TON)"
