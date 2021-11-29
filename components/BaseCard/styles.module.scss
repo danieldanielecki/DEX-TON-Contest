@@ -13,7 +13,11 @@
   }
 
   section {
-    padding: 4rem;
+    padding: 1rem 4rem 2rem;
+  }
+
+  .amount {
+    margin: 0 0 1.65rem 2rem;
   }
 
   .button {
@@ -29,29 +33,23 @@
     width: 40%;
   }
 
+  .horizontal_line {
+    border-top: 0.1rem solid $lochmara;
+    margin: 2rem auto 1.5rem;
+    text-align: center;
+    width: 90%;
+  }
+
   .link_to_open_dialog {
-    align-items: center;
-    border: 0.2rem solid $pickled-bluewood;
-    border-radius: 3rem;
-    color: $pickled-bluewood;
-    display: flex;
-    font-size: 2.2rem;
-    height: 3rem;
-    justify-content: center;
-    position: absolute;
+    border: none;
     transition: 0.5s;
-    width: 3rem;
 
     &:before {
-      content: "⚙️";
-      font-size: 1.7rem;
-      transform: translateX(0.07rem) translateY(-0.15rem);
+      content: url("/settings.svg");
     }
 
     &:focus,
     &:hover {
-      border: 0.2rem solid $lochmara;
-      color: $lochmara;
       transform: translateY(-0.1rem);
     }
   }

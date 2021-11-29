@@ -2,7 +2,7 @@
 
 .form {
   display: block;
-  margin: 0 auto 1rem;
+  margin: 1.75rem auto 0;
   max-width: 5rem;
 
   input {
@@ -10,18 +10,11 @@
     border-radius: 3rem;
     color: $pickled-bluewood;
     display: inline-block;
-    max-width: 5rem;
-    padding: 0.5rem 0 0.5rem 2rem;
+    max-width: 4rem;
+    padding: 0.5rem 0 0.5rem 1.65rem;
 
     &:focus {
       color: $lochmara;
     }
-  }
-
-  label {
-    display: block;
-    padding: 1.5rem 0 0.25rem;
-    font-size: 0.75rem;
-    text-align: center;
   }
 }
