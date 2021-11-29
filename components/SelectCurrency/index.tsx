@@ -1,43 +1,12 @@
-import store from "../redux/store";
-import BaseIcon from "./BaseIcon";
+import store from "../../redux/store";
+import BaseIcon from "../BaseIcon";
 import PropTypes from "prop-types";
-import Select, { components, StylesConfig } from "react-select";
+import Select, { components } from "react-select";
 import { connect } from "react-redux";
-import { setCurrencyA, setCurrencyB } from "../redux/actions/selectedActions";
+import { setCurrencyA, setCurrencyB } from "../../redux/actions/selectedActions";
 import { useEffect, useState } from "react";
+import colourStyles from './styles'
 
-const colourStyles: StylesConfig<ColourOption> = {
-  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: isDisabled
-        ? undefined
-        : isSelected
-          ? '#0088cc'
-          : isFocused
-            ? '#0088cc'
-            : 'white',
-      color: isDisabled
-        ? '#ccc'
-        : isSelected
-          ? 'black'
-          : isFocused
-            ? 'white'
-            : 'black',
-      cursor: isDisabled ? 'not-allowed' : 'pointer',
-
-      ':active': {
-        ...styles[':active'],
-        backgroundColor: !isDisabled
-          ? isSelected
-            ? '#0088cc'
-            : '#303757'
-          : 'white',
-      },
-    };
-  },
-}
 const { Option } = components;
 const IconOption = (props: any) => (
   <Option {...props}>
@@ -63,8 +32,6 @@ const SelectCurrency = (props: {
   }, []);
 
   const handleChange = (event: any) => {
-    console.log(event);
-
     if (optionVal === "A") {
       store.dispatch(setCurrencyA(event));
     }
