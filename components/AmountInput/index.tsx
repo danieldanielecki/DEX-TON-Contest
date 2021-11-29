@@ -8,7 +8,7 @@ const AmountInput = (props: { setExchangeAmount?: any; amountOf: string }) => {
   const { setExchangeAmount, amountOf } = props;
   const [amountValue, setAmountValue] = useState(0);
 
-  const handleAmount = (event: MouseEvent<HTMLInputElement>) => {
+  const handleAmount = (event: any) => {
     setAmountValue(event.target.value);
     setExchangeAmount({ [amountOf]: event.target.value });
   };
