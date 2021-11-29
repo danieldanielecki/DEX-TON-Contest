@@ -32,7 +32,6 @@ const ExchangeToken: NextPage = (props: {
         subtitle="Here you can exchange tokens"
         title="Exchange"
         AmountInputA={<AmountInput amountOf="liquidityA" />}
-        AmountInputB={<AmountInput amountOf="liquidityB" />}
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
         }
