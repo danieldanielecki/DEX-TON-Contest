@@ -51,7 +51,6 @@ const ExchangeToken: NextPage = (props: {
         }
         ToggleAction={<ToggleBuySellSwitch leftText="Buy" rightText="Sell" />}
       />
-      <h2>Summary</h2>
       <BuySellSummary />
       {isOpened && (
         <BaseDialog

@@ -1,0 +1,26 @@
+@import "/styles/main.scss";
+
+.card {
+  border-radius: 2rem;
+  border: 0.1rem solid $lochmara;
+  transition: 1s;
+  width: 30rem;
+  margin-top: 1rem;
+  padding: 2rem;
+}
+
+.title {
+  border-bottom: 0.1rem solid #0088cc;
+  color: #0088cc;
+  margin: 0 auto;
+  text-align: center;
+  width: 40%;
+}
+
+.block {
+  display: block;
+}
+
+.hidden {
+  visibility: hidden;
+}

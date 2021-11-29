@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import BaseIcon from "./BaseIcon";
+import BaseIcon from "../BaseIcon";
+import styles from './styles.module.scss'
 
 const BuySellSummary = (props: {
   currencyA: {
@@ -36,24 +37,23 @@ const BuySellSummary = (props: {
   });
 
   return (
-    <div className="form-control w-50 mt-3">
+    <div className={styles.card}>
+      <h2 className={styles.title}>Summary</h2>
       <div className="w-500 d-flex justify-content-evenly pt-4">
-        {!!currencyA.label
-          ? (
-            <div>
-              <BaseIcon image={currencyA.image} />
-              <p className="d-flex flex-column">
-                <span>
-                  {currencyA.label}
-                </span>
-                <span>
-                  {currencyA.current_price} USD
-                </span>
-              </p>
-            </div>
-          ) : ''}
+        <div className={!!currencyA.label ? styles.block : styles.hidden}>
+          <BaseIcon image={currencyA.image} />
+          <p className="d-flex flex-column">
+            <span>
+              {currencyA.label}
+            </span>
+            <span>
+              {currencyA.current_price} USD
+            </span>
+          </p>
+        </div>
+        {/* ) : ''} */}
         <div className="d-flex flex-column align-items-center">
-          <BaseIcon image="swap-icon.svg" size={48}/>
+          <BaseIcon image="swap-icon.svg" size={48} />
           {!!amount.exchangeToken
             && !!method
             && !!currencyA.label
@@ -69,20 +69,17 @@ const BuySellSummary = (props: {
               </p>)
             : ''}
         </div>
-        {!!currencyB.label
-          ? (
-            <div>
-              <BaseIcon image={currencyB.image} />
-              <p className="d-flex flex-column">
-                <span>
-                  {currencyB.label}
-                </span>
-                <span>
-                  {currencyB.current_price} USD
-                </span>
-              </p>
-            </div>)
-          : ''}
+        <div className={!!currencyB.label ? styles.block : styles.hidden}>
+          <BaseIcon image={currencyB.image} />
+          <p className="d-flex flex-column">
+            <span>
+              {currencyB.label}
+            </span>
+            <span>
+              {currencyB.current_price} USD
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );
