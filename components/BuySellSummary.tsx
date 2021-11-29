@@ -5,13 +5,13 @@ import BaseIcon from "./BaseIcon";
 
 const BuySellSummary = (props: {
   currencyA: {
-    name: string;
+    label: string;
     symbol: string;
     image: string;
     current_price: number;
   };
   currencyB: {
-    name: string;
+    label: string;
     symbol: string;
     image: string;
     current_price: number;
@@ -38,13 +38,13 @@ const BuySellSummary = (props: {
   return (
     <div className="form-control w-50 mt-3">
       <div className="w-500 d-flex justify-content-evenly pt-4">
-        {!!currencyA.name
+        {!!currencyA.label
           ? (
             <div>
               <BaseIcon image={currencyA.image} />
               <p className="d-flex flex-column">
                 <span>
-                  {currencyA.name}
+                  {currencyA.label}
                 </span>
                 <span>
                   {currencyA.current_price} USD
@@ -56,26 +56,26 @@ const BuySellSummary = (props: {
           <BaseIcon image="swap-icon.svg" size={48}/>
           {!!amount.exchangeToken
             && !!method
-            && !!currencyA.name
-            && !!currencyB.name
+            && !!currencyA.label
+            && !!currencyB.label
             ? (
               <p className="d-flex flex-column align-items-center">
                 <span>Pay with</span>
                 <span>{amountCalc}</span>
                 {method.type === "buy"
-                  ? <span>{currencyA.name}</span>
-                  : <span>{currencyB.name}</span>
+                  ? <span>{currencyA.label}</span>
+                  : <span>{currencyB.label}</span>
                 }
               </p>)
             : ''}
         </div>
-        {!!currencyB.name
+        {!!currencyB.label
           ? (
             <div>
               <BaseIcon image={currencyB.image} />
               <p className="d-flex flex-column">
                 <span>
-                  {currencyB.name}
+                  {currencyB.label}
                 </span>
                 <span>
                   {currencyB.current_price} USD

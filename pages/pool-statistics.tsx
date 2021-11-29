@@ -28,7 +28,7 @@ const PoolStatistics: NextPage = (props: {
       <main className={styles.main}>
         <div className="container-fluid">
           <div className={`${styles.pools_info} text-center`}>
-            <h1 className={styles.name}>Pools</h1>
+            <h1 className={styles.label}>Pools</h1>
             <p>Trading</p>
           </div>
           <div className={styles.pools_responsive_table_wrapper}>
