@@ -31,7 +31,7 @@
 
   .link_to_open_dialog {
     align-items: center;
-    border: 1px solid $pickled-bluewood;
+    border: 0.2rem solid $pickled-bluewood;
     border-radius: 3rem;
     color: $pickled-bluewood;
     display: flex;
@@ -44,13 +44,13 @@
 
     &:before {
       content: "⚙️";
-      font-size: 2rem;
+      font-size: 1.7rem;
       transform: translateX(0.07rem) translateY(-0.15rem);
     }
 
     &:focus,
     &:hover {
-      border: 1px solid $lochmara;
+      border: 0.2rem solid $lochmara;
       color: $lochmara;
       transform: translateY(-0.1rem);
     }

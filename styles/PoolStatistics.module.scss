@@ -1,16 +1,5 @@
 @import "./main.scss";
-@import "./next_starter.scss";
-
-.pool_name {
-  margin-left: 1rem;
-
-  p {
-    color: $white;
-
-    font-weight: 600;
-    line-height: 1.667;
-  }
-}
+@import "/styles/Home.module.scss";
 
 .pools_info {
   p {
@@ -27,17 +16,16 @@
 
 .pool_search_tab_wrapper {
   input {
-    border: 1px solid $lochmara;
+    border: 0.1rem solid $lochmara;
     border-radius: 3rem;
     color: $white;
-
     padding: 1rem 12rem 1rem 2rem;
 
     &::placeholder {
       color: $lochmara;
     }
     &:focus {
-      border: 1px solid $pickled-bluewood;
+      border: 0.1rem solid $pickled-bluewood;
       color: $lochmara;
     }
   }
@@ -110,16 +98,8 @@
     max-width: 5rem;
     padding: 0.5rem 0 0.5rem 2rem;
 
-    &::placeholder {
-    }
     &:focus {
       color: $lochmara;
     }
-  }
-}
-
-.wrapper {
-  img {
-    max-width: 55px;
   }
 }

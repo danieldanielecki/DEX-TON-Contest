@@ -48,7 +48,7 @@
 
 .link_to_close_dialog {
   align-items: center;
-  border: 1px solid $pickled-bluewood;
+  border: 0.1rem solid $pickled-bluewood;
   border-radius: 3rem;
   color: $pickled-bluewood;
   display: flex;
@@ -67,7 +67,7 @@
 
   &:focus,
   &:hover {
-    border: 1px solid $lochmara;
+    border: 0.1rem solid $lochmara;
     color: $lochmara;
     transform: translateY(-0.1rem);
   }
