@@ -66,7 +66,7 @@ const BaseCard = (props: {
 };
 
 BaseCard.propTypes = {
-  displaySettings: PropTypes.string,
+  displaySettings: PropTypes.bool,
   subtitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   AmountInputA: PropTypes.element,
