@@ -17,30 +17,25 @@ import { Pool } from "../../interfaces/pool";
 
 const columnHeaders = [
   {
-    Header: "All Pools",
-    columns: [
-      {
-        Header: "Position",
-        accessor: (_row: Row, index: number) => index + 1,
-      },
-      {
-        Header: "Pool",
-        accessor: "pair",
-      },
-      {
-        Header: "24H (%)",
-        accessor: "priceChangePercentage24h",
-        sortType: compareNumericString,
-      },
-      {
-        Header: "Volume [$M]",
-        accessor: "volume",
-      },
-      {
-        Header: "Market Cap [$M]",
-        accessor: "marketCap",
-      },
-    ],
+    Header: "Position",
+    accessor: (_row: Row, index: number) => index + 1,
+  },
+  {
+    Header: "Pool",
+    accessor: "pair",
+  },
+  {
+    Header: "24H (%)",
+    accessor: "priceChangePercentage24h",
+    sortType: compareNumericString,
+  },
+  {
+    Header: "Volume [$M]",
+    accessor: "volume",
+  },
+  {
+    Header: "Market Cap [$M]",
+    accessor: "marketCap",
   },
 ];
 
