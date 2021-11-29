@@ -62,7 +62,10 @@ const Table = (props: { pools: Pool[] }) => {
           {tableSettings.headerGroups.map((headerGroup) => (
             <tr>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  title={`Sort ${column.render("Header")}`}
+                >
                   {column.render("Header")}
                   <span>
                     {column.isSorted ? (column.isSortedDesc ? " ⬆" : " ⬇") : ""}

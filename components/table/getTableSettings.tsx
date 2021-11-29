@@ -20,7 +20,7 @@ const columnHeaders = [
     Header: "All Pools",
     columns: [
       {
-        Header: "#",
+        Header: "Position",
         accessor: (_row: Row, index: number) => index + 1,
       },
       {
