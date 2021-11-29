@@ -25,7 +25,7 @@ const colourStyles: StylesConfig<ColourOption> = {
           : isFocused
             ? 'white'
             : 'black',
-      cursor: isDisabled ? 'not-allowed' : 'default',
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
 
       ':active': {
         ...styles[':active'],
