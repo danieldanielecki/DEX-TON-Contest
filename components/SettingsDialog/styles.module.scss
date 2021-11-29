@@ -93,3 +93,71 @@
     width: 40rem;
   }
 }
+
+.tooltip {
+  margin-bottom: 1rem;
+  position: absolute;
+  left: 52.5%;
+}
+.tooltip:hover {
+  cursor: help;
+}
+.tooltip_text {
+  content: url("/question.svg");
+}
+
+.popup_bg {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.23));
+  position: absolute;
+  left: 10rem;
+  top: 200px;
+}
+.popup_outline {
+  position: absolute;
+  left: 10rem;
+  top: 200px;
+}
+.popup_text {
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  left: 10rem;
+  opacity: 0;
+  padding: 12px 16px;
+  position: absolute;
+  top: 200px;
+  transition: opacity 240ms 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 292px;
+}
+.popup_bg {
+  opacity: 0;
+  transition: opacity 240ms 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.popup_outline_left {
+  stroke-dasharray: 0 426px;
+  stroke-dashoffset: 1px;
+  transition: stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.popup_outline_right {
+  stroke-dasharray: 352px 352px;
+  stroke-dashoffset: -352px;
+  transition: stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tooltip:hover ~ .popup_text {
+  opacity: 1;
+}
+.tooltip:hover ~ .popup_bg {
+  opacity: 1;
+  transition: opacity 240ms 120ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tooltip:hover ~ .popup_outline .popup_outline_left {
+  stroke-dasharray: 426px 426px;
+  transition: stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tooltip:hover ~ .popup_outline .popup_outline_right {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
