@@ -1,9 +1,9 @@
 import {
-  useTable,
-  usePagination,
   useFilters,
   useGlobalFilter,
+  usePagination,
   useSortBy,
+  useTable,
   FilterValue,
   HeaderGroup,
   Row,
@@ -30,6 +30,7 @@ const columnHeaders = [
       {
         Header: "24H (%)",
         accessor: "priceChangePercentage24h",
+        sortType: compareNumericString,
       },
       {
         Header: "Volume [$M]",
@@ -92,5 +93,21 @@ const getTableSettings = (pools: Pool[]) => {
   ));
   return tableSettings;
 };
+
+function compareNumericString(rowA: Row, rowB: Row, id: number, desc: string) {
+  let a = Number.parseFloat(rowA.values[id]);
+  let b = Number.parseFloat(rowB.values[id]);
+
+  if (Number.isNaN(a)) {
+    // Blanks and non-numeric strings to bottom.
+    a = desc ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
+  }
+  if (Number.isNaN(b)) {
+    b = desc ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
+  }
+  if (a > b) return 1;
+  if (a < b) return -1;
+  return 0;
+}
 
 export default getTableSettings;
