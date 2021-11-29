@@ -1,36 +1,36 @@
-import Select, { components, StylesConfig } from "react-select";
+import { StylesConfig } from "react-select";
 
-const colourStyles: StylesConfig<ColourOption> = {
-  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
+const colourStyles: StylesConfig<any> = {
+  control: (styles) => ({ ...styles, backgroundColor: "white" }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
       ...styles,
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-          ? '#0088cc'
-          : isFocused
-            ? '#0088cc'
-            : 'white',
+        ? "#0088cc"
+        : isFocused
+        ? "#0088cc"
+        : "white",
       color: isDisabled
-        ? '#ccc'
+        ? "#ccc"
         : isSelected
-          ? 'black'
-          : isFocused
-            ? 'white'
-            : 'black',
-      cursor: isDisabled ? 'not-allowed' : 'pointer',
+        ? "black"
+        : isFocused
+        ? "white"
+        : "black",
+      cursor: isDisabled ? "not-allowed" : "pointer",
 
-      ':active': {
-        ...styles[':active'],
+      ":active": {
+        ...styles[":active"],
         backgroundColor: !isDisabled
           ? isSelected
-            ? '#0088cc'
-            : '#303757'
-          : 'white',
+            ? "#0088cc"
+            : "#303757"
+          : "white",
       },
     };
   },
-}
+};
 
 export default colourStyles;

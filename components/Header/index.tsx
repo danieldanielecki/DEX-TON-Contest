@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 const Header = () => {
@@ -19,15 +19,15 @@ const Header = () => {
     if (router.pathname !== currenctPath) {
       toggleburgerVisible(false);
     }
-  })
+  });
 
   const routes = [
     {
-      name: 'Home',
+      name: "Home",
       pathname: "/",
     },
     {
-      name: 'Create Pool',
+      name: "Create Pool",
       pathname: "/create-pool",
     },
     {
@@ -42,13 +42,14 @@ const Header = () => {
       name: "Pool Statistics",
       pathname: "/pool-statistics",
     },
-  ]
+  ];
 
   return (
     <header>
       <nav
-        className={`${styles.navbar} navbar navbar-expand-lg ${burgerVisible ? styles.open : ""
-          }`}
+        className={`${styles.navbar} navbar navbar-expand-lg ${
+          burgerVisible ? styles.open : ""
+        }`}
       >
         <button
           className={
@@ -57,10 +58,11 @@ const Header = () => {
           onClick={handleMenu}
         />
         <div className="container">
-          <Link href="/" >
+          <Link href="/">
             <a
-              className={`navbar-brand ${burgerVisible ? styles.open_logo : ""
-                }`}
+              className={`navbar-brand ${
+                burgerVisible ? styles.open_logo : ""
+              }`}
             >
               <Image
                 alt="The Open Network (TON)"
@@ -73,12 +75,14 @@ const Header = () => {
             </a>
           </Link>
           <div
-            className={`collapse justify-content-end navbar-collapse ${burgerVisible ? "show" : ""
-              }`}
+            className={`collapse justify-content-end navbar-collapse ${
+              burgerVisible ? "show" : ""
+            }`}
             id="navDefault"
           >
             <ul className="navbar-nav">
-              {routes.map((route: { name: String, pathname: String }) => (
+              {routes.map((route: { name: String; pathname: String }) => (
+                // @ts-ignore
                 <Link href={route.pathname} key={`link-to-${route.pathname}`}>
                   <a
                     className={
