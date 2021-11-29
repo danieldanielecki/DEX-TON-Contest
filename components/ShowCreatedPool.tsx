@@ -4,24 +4,19 @@ import BaseIcon from "./BaseIcon";
 
 const ShowCreatedPool = (props: {
   currencyA: {
-    name: string;
+    label: string;
     symbol: string;
     image: string;
     current_price: number;
   };
   currencyB: {
-    name: string;
+    label: string;
     symbol: string;
     image: string;
     current_price: number;
   };
-  pools: {
-    pair: string;
-  };
 }) => {
-  // const [pool, setpool] = useState();
-  const { currencyA, currencyB, pools } = props;
-
+  const { currencyA, currencyB } = props;
   useEffect(() => {
     if (currencyA && currencyB) {
       //some logic to find the right pool and set it as created
@@ -62,16 +57,12 @@ const ShowCreatedPool = (props: {
 
 const mapStateToProps = (state: {
   selected: {
-    currencyA: Object;
-    currencyB: Object;
-  };
-  pools: {
-    pools: Object;
-  };
+    currencyA: any;
+    currencyB: any;
+  },
 }) => ({
   currencyA: state.selected.currencyA,
   currencyB: state.selected.currencyB,
-  pools: state.pools.pools,
 });
 
 const connector = connect(mapStateToProps);

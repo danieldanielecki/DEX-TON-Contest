@@ -47,9 +47,7 @@ const Header = () => {
   return (
     <header>
       <nav
-        className={`${styles.navbar} navbar navbar-expand-lg ${
-          burgerVisible ? styles.open : ""
-        }`}
+        className={`${styles.navbar} ${burgerVisible ? styles.open : `${styles.navbar} navbar navbar-expand-lg`}`}
       >
         <button
           className={
