@@ -42,7 +42,7 @@ const SelectCurrency = (props: {
 
   return (
     <Select
-      className="w-75"
+      className="w-100"
       classNamePrefix="select"
       defaultValue={currencies[0]}
       components={{ Option: IconOption }}

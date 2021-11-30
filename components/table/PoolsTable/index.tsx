@@ -1,15 +1,16 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
-import getTableSettings from "./getTableSettings";
-import styles from "../../styles/PoolsTable.module.scss";
-import styles2 from "../../styles/PoolStatistics.module.scss";
-import useToggleClassOnHover from "../../hooks/useToggleClassOnHover";
-import BaseButton from "../BaseButton";
-import GlobalFilter from "./GlobalFilter";
 import React from "react";
 import Select from "react-select";
 import { Cell, Row } from "react-table";
-import { ISelect } from "../../interfaces/select";
-import { Pool } from "../../interfaces/pool";
+import useToggleClassOnHover from "../../../hooks/useToggleClassOnHover";
+import getTableSettings from "../helpers/getTableSettings";
+import GlobalFilter from "../helpers//GlobalFilter";
+import { ISelect } from "../../../interfaces/select";
+import { Pool } from "../../../interfaces/pool";
+import TableHeadTr from "../TableHeadTr";
+import TableFootTr from "../TableFootTr";
+import styles2 from "../../../styles/PoolStatistics.module.scss";
+import styles from "./styles.module.scss";
 
 const Table = (props: { pools: Pool[] }) => {
   const { pools } = props;
@@ -23,7 +24,6 @@ const Table = (props: { pools: Pool[] }) => {
   ];
 
   const handleChange = (numberOfRecordsObject: ISelect) => {
-    console.log(Number(numberOfRecordsObject.value));
     tableSettings.setPageSize(Number(numberOfRecordsObject.value));
   };
 
@@ -36,19 +36,6 @@ const Table = (props: { pools: Pool[] }) => {
   return (
     <div>
       <table className={styles.styled_table} {...tableSettings.getTableProps}>
-        <span
-          className="text-center"
-          style={{ display: "inline-block", marginLeft: 10 }}
-        >
-          <div className="d-flex align-items-center my-2">
-            <span style={{ marginRight: 10 }}>Number of records:</span>
-            <Select
-              onChange={handleChange}
-              options={numberOfRecords}
-              value={tableSettings.pageSize}
-            />
-          </div>
-        </span>
         <thead>
           <tr className="text-center">
             <td colSpan={5}>
@@ -59,21 +46,17 @@ const Table = (props: { pools: Pool[] }) => {
               />
             </td>
           </tr>
-          {tableSettings.headerGroups.map((headerGroup) => (
-            <tr>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  title={`Sort ${column.render("Header")}`}
-                >
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? " ⬆" : " ⬇") : ""}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
+          <tr>
+            <td colSpan={2}>
+              <span style={{ marginRight: 10 }}>Number of records:</span>
+              <Select
+                onChange={handleChange}
+                options={numberOfRecords}
+                value={tableSettings.pageSize}
+              />
+            </td>
+          </tr>
+          {tableSettings.headerGroups.map((headerGroup) => <TableHeadTr headerGroup={headerGroup} />)}
         </thead>
         <tbody {...tableSettings.getTableBodyProps()}>
           {tableSettings.page.map((row: Row<Pool>, i: number) => {
@@ -95,46 +78,7 @@ const Table = (props: { pools: Pool[] }) => {
           })}
         </tbody>
         <tfoot>
-          <tr className="text-center">
-            <td colSpan={5}>
-              <BaseButton
-                disabled={!tableSettings.canPreviousPage}
-                onClick={() => tableSettings.gotoPage(0)}
-                title="First"
-              />
-              <BaseButton
-                disabled={!tableSettings.canPreviousPage}
-                onClick={() => tableSettings.previousPage()}
-                title="Previous"
-              />
-              <p
-                style={{
-                  display: "inline-block",
-                  margin: 20,
-                  verticalAlign: "bottom",
-                }}
-              >
-                Page{" "}
-                <strong>
-                  {`${tableSettings.state.pageIndex + 1} of ${
-                    tableSettings.pageOptions.length
-                  }`}
-                </strong>{" "}
-              </p>
-              <BaseButton
-                disabled={!tableSettings.canNextPage}
-                onClick={() => tableSettings.nextPage()}
-                title="Next"
-              />
-              <BaseButton
-                disabled={!tableSettings.canNextPage}
-                onClick={() =>
-                  tableSettings.gotoPage(tableSettings.pageCount - 1)
-                }
-                title="Last"
-              />
-            </td>
-          </tr>
+          <TableFootTr tableSettings={tableSettings} />
           <tr className="text-center">
             <td colSpan={5}>
               <div className={`${styles2.show_wrapper} align-items-center`}>
