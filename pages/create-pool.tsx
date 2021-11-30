@@ -12,12 +12,28 @@ import { useEffect } from "react";
 import type { NextPage } from "next";
 
 // @ts-ignore
-const CreatePool: NextPage = (props: { clearSelected: Function }) => {
+const CreatePool: NextPage = (props: {
+  clearSelected: Function,
+  currencyA: {
+    label: string;
+    symbol: string;
+    image: string;
+    current_price: number;
+  };
+  currencyB: {
+    label: string;
+    symbol: string;
+    image: string;
+    current_price: number;
+  };
+}) => {
+
+  const { currencyA, currencyB } = props;
+  const cardButtonTitle: string = "Create";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
   useEffect(() => {
     store.dispatch(clearSelected());
   }, []);
-  const cardButtonTitle: string = "Create";
-  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
     <main className={styles.main}>
@@ -27,24 +43,16 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
         }
-        IconCurrencyA={
-          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
-        }
-        IconCurrencyB={
-          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
-        }
+        IconCurrencyA={<BaseIcon image={currencyA.image} size={46}/>}
+        IconCurrencyB={<BaseIcon image={currencyB.image} size={46}/>}
         SelectCurrencyA={
           <SelectCurrency
-            // @ts-ignore
-            isOne={false}
             optionVal="A"
             startCurrency="Select..."
           />
         }
         SelectCurrencyB={
           <SelectCurrency
-            // @ts-ignore
-            isOne={false}
             optionVal="B"
             startCurrency="Select..."
           />
@@ -67,6 +75,15 @@ const mapDispatchToProps = () => {
     clearSelected,
   };
 };
+const mapStateToProps = (state: {
+  selected: {
+    currencyA: Object;
+    currencyB: Object;
+  };
+}) => ({
+  currencyA: state.selected.currencyA,
+  currencyB: state.selected.currencyB,
+});
 
-const connector = connect(null, mapDispatchToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 export default connector(CreatePool);
