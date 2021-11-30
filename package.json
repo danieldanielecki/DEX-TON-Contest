@@ -5,6 +5,7 @@
   },
   "private": true,
   "license": "MIT",
+  "version": "0.1.1",
   "scripts": {
     "dev": "node ssr-server.js",
     "build": "next build",
