@@ -3,6 +3,18 @@
 
 $width_switch_button: 18rem;
 
+.remove_content {
+  &:before {
+    content: "Remove";
+  }
+}
+
+.sell_content {
+  &:before {
+    content: "Sell";
+  }
+}
+
 .switch_button_wrapper {
   padding: 1rem;
 }
@@ -20,7 +32,6 @@ $width_switch_button: 18rem;
   &:before {
     align-items: center;
     bottom: 0;
-    content: "Sell";
     display: flex;
     justify-content: center;
     pointer-events: none;

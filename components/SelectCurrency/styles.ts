@@ -2,6 +2,7 @@ import { StylesConfig } from "react-select";
 
 const colourStyles: StylesConfig<any> = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),
+  menuPortal: (base) => ({ ...base, zIndex: 4 }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
       ...styles,

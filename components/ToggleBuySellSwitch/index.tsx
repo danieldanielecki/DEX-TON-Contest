@@ -25,7 +25,11 @@ const ToggleBuySellSwitch = (props: {
     <div
       className={`${styles.switch_button_wrapper} d-flex align-items-center justify-content-center pb-3`}
     >
-      <div className={styles.switch_button}>
+      <div
+        className={`${styles.switch_button} ${
+          rightText === "Remove" ? styles.remove_content : styles.sell_content
+        }`}
+      >
         <input
           checked={checked}
           onChange={handleChange}

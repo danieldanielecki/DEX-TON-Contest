@@ -4,20 +4,36 @@ import useToggleAlert from "../hooks/useToggleAlert";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
 import BaseDialog from "../components/BaseDialog";
+import BaseIcon from "../components/BaseIcon";
 import SelectCurrency from "../components/SelectCurrency";
-import ShowCreatedPool from "../components/ShowCreatedPool";
 import { clearSelected } from "../redux/actions/selectedActions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import type { NextPage } from "next";
 
 // @ts-ignore
-const CreatePool: NextPage = (props: { clearSelected: Function }) => {
+const CreatePool: NextPage = (props: {
+  clearSelected: Function,
+  currencyA: {
+    label: string;
+    symbol: string;
+    image: string;
+    current_price: number;
+  };
+  currencyB: {
+    label: string;
+    symbol: string;
+    image: string;
+    current_price: number;
+  };
+}) => {
+
+  const { currencyA, currencyB } = props;
+  const cardButtonTitle: string = "Create";
+  const [isOpened, setIsOpened] = useToggleAlert(false);
   useEffect(() => {
     store.dispatch(clearSelected());
   }, []);
-  const cardButtonTitle: string = "Create";
-  const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
     <main className={styles.main}>
@@ -27,24 +43,21 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
         }
+        IconCurrencyA={<BaseIcon image={currencyA.image} size={46}/>}
+        IconCurrencyB={<BaseIcon image={currencyB.image} size={46}/>}
         SelectCurrencyA={
           <SelectCurrency
-            // @ts-ignore
-            isOne={false}
             optionVal="A"
             startCurrency="Select..."
           />
         }
         SelectCurrencyB={
           <SelectCurrency
-            // @ts-ignore
-            isOne={false}
             optionVal="B"
             startCurrency="Select..."
           />
         }
       />
-      <ShowCreatedPool />
       {isOpened && (
         <BaseDialog
           onOpenDialog={true}
@@ -62,6 +75,15 @@ const mapDispatchToProps = () => {
     clearSelected,
   };
 };
+const mapStateToProps = (state: {
+  selected: {
+    currencyA: Object;
+    currencyB: Object;
+  };
+}) => ({
+  currencyA: state.selected.currencyA,
+  currencyB: state.selected.currencyB,
+});
 
-const connector = connect(null, mapDispatchToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 export default connector(CreatePool);
