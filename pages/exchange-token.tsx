@@ -1,5 +1,4 @@
 import store from "../redux/store";
-import styles from "../styles/Home.module.scss";
 import useToggleAlert from "../hooks/useToggleAlert";
 import AmountInput from "../components/AmountInput";
 import BaseButton from "../components/BaseButton";
@@ -36,7 +35,7 @@ const ExchangeToken: NextPage = (props: {
   const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
-    <main className={styles.main}>
+    <main>
       <BaseCard
         subtitle="Here you can exchange tokens"
         title="Exchange"

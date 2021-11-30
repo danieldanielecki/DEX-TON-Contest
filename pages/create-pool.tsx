@@ -1,5 +1,4 @@
 import store from "../redux/store";
-import styles from "../styles/Home.module.scss";
 import useToggleAlert from "../hooks/useToggleAlert";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
@@ -13,7 +12,7 @@ import type { NextPage } from "next";
 
 // @ts-ignore
 const CreatePool: NextPage = (props: {
-  clearSelected: Function,
+  clearSelected: Function;
   currencyA: {
     image: string;
   };
@@ -21,7 +20,6 @@ const CreatePool: NextPage = (props: {
     image: string;
   };
 }) => {
-
   const { currencyA, currencyB } = props;
   const cardButtonTitle: string = "Create";
   const [isOpened, setIsOpened] = useToggleAlert(false);
@@ -30,26 +28,20 @@ const CreatePool: NextPage = (props: {
   }, []);
 
   return (
-    <main className={styles.main}>
+    <main>
       <BaseCard
         subtitle="Create new pair of tokens"
         title="New Pool"
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
         }
-        IconCurrencyA={<BaseIcon image={currencyA.image} size={46}/>}
-        IconCurrencyB={<BaseIcon image={currencyB.image} size={46}/>}
+        IconCurrencyA={<BaseIcon image={currencyA.image} size={46} />}
+        IconCurrencyB={<BaseIcon image={currencyB.image} size={46} />}
         SelectCurrencyA={
-          <SelectCurrency
-            optionVal="A"
-            startCurrency="Select..."
-          />
+          <SelectCurrency optionVal="A" startCurrency="Select..." />
         }
         SelectCurrencyB={
-          <SelectCurrency
-            optionVal="B"
-            startCurrency="Select..."
-          />
+          <SelectCurrency optionVal="B" startCurrency="Select..." />
         }
       />
       {isOpened && (

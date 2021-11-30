@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.scss";
 import store from "../redux/store";
 import useToggleAlert from "../hooks/useToggleAlert";
 import AmountInput from "../components/AmountInput";
@@ -23,7 +22,7 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
   const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
-    <main className={styles.main}>
+    <main>
       <BaseCard
         displaySettings={true}
         subtitle="Add/Remove Liquidity"
