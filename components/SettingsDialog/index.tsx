@@ -113,7 +113,6 @@ const SettingsDialog = (props: {
                   />
                 </div>
               </div>
-              {/* TODO: Align BaseButton to listen to onClick event listener. */}
               <div
                 className={styles.button}
                 onClick={() => setIsOpenedSettingsDialog(false)}

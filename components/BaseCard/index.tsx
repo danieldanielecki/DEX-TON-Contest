@@ -16,6 +16,7 @@ const BaseCard = (props: {
   SelectCurrencyA?: ReactElement<any, any>;
   SelectCurrencyB?: ReactElement<any, any>;
   ToggleAction?: ReactElement<any, any>;
+  TransactionSummary?: ReactElement<any, any>;
 }) => {
   const {
     displaySettings,
@@ -29,6 +30,7 @@ const BaseCard = (props: {
     SelectCurrencyA,
     SelectCurrencyB,
     ToggleAction,
+    TransactionSummary,
   } = props;
   const [isOpenedSettingsDialog, setIsOpenedSettingsDialog] =
     useToggleAlert(false);
@@ -38,7 +40,6 @@ const BaseCard = (props: {
       <div className={styles.menu}>
         {displaySettings && (
           <Fragment>
-            {/* TODO: It works on second click, dunno why */}
             <button
               className={styles.link_to_open_dialog}
               onClick={setIsOpenedSettingsDialog}
@@ -78,6 +79,7 @@ const BaseCard = (props: {
           {AmountInputB}
         </div>
         {ToggleAction}
+        {TransactionSummary}
         <div className={styles.horizontal_line}></div>
         <div className={styles.button}>{BaseButton}</div>
       </section>
@@ -97,6 +99,7 @@ BaseCard.propTypes = {
   SelectCurrencyA: PropTypes.element,
   SelectCurrencyB: PropTypes.element,
   ToggleAction: PropTypes.element,
+  TransactionSummary: PropTypes.element,
 };
 
 export default BaseCard;
