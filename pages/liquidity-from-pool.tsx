@@ -5,6 +5,7 @@ import AmountInput from "../components/AmountInput";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
 import BaseDialog from "../components/BaseDialog";
+import BaseIcon from "../components/BaseIcon";
 import SelectCurrency from "../components/SelectCurrency";
 import ToggleBuySellSwitch from "../components/ToggleBuySellSwitch";
 import { clearSelected } from "../redux/actions/selectedActions";
@@ -31,6 +32,12 @@ const LiquidityFromPool: NextPage = (props: { clearSelected: Function }) => {
         AmountInputB={<AmountInput amountOf="liquidityB" />}
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
+        }
+        IconCurrencyA={
+          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
+        }
+        IconCurrencyB={
+          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
         }
         SelectCurrencyA={
           <SelectCurrency

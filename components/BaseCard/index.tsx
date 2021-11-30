@@ -11,6 +11,8 @@ const BaseCard = (props: {
   AmountInputA?: ReactElement<any, any>;
   AmountInputB?: ReactElement<any, any>;
   BaseButton: ReactElement<any, any>;
+  IconCurrencyA?: ReactElement<any, any>;
+  IconCurrencyB?: ReactElement<any, any>;
   SelectCurrencyA?: ReactElement<any, any>;
   SelectCurrencyB?: ReactElement<any, any>;
   ToggleAction?: ReactElement<any, any>;
@@ -22,6 +24,8 @@ const BaseCard = (props: {
     AmountInputA,
     AmountInputB,
     BaseButton,
+    IconCurrencyA,
+    IconCurrencyB,
     SelectCurrencyA,
     SelectCurrencyB,
     ToggleAction,
@@ -55,6 +59,7 @@ const BaseCard = (props: {
       <p className={styles.subtitle}>{subtitle}</p>
       <section>
         <div className="d-flex align-items-center justify-content-between">
+          {IconCurrencyA}
           {SelectCurrencyA}
           <span className={styles.amount}>{AmountInputA}</span>
         </div>
@@ -68,6 +73,7 @@ const BaseCard = (props: {
               : ""
           }`}
         >
+          {IconCurrencyB}
           {SelectCurrencyB}
           <span className={styles.amount}>{AmountInputB}</span>
         </div>
@@ -86,6 +92,8 @@ BaseCard.propTypes = {
   AmountInputA: PropTypes.element,
   AmountInputB: PropTypes.element,
   BaseButton: PropTypes.element,
+  IconCurrencyA: PropTypes.element,
+  IconCurrencyB: PropTypes.element,
   SelectCurrencyA: PropTypes.element,
   SelectCurrencyB: PropTypes.element,
   ToggleAction: PropTypes.element,

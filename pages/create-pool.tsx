@@ -4,8 +4,8 @@ import useToggleAlert from "../hooks/useToggleAlert";
 import BaseButton from "../components/BaseButton";
 import BaseCard from "../components/BaseCard";
 import BaseDialog from "../components/BaseDialog";
+import BaseIcon from "../components/BaseIcon";
 import SelectCurrency from "../components/SelectCurrency";
-import ShowCreatedPool from "../components/ShowCreatedPool";
 import { clearSelected } from "../redux/actions/selectedActions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
@@ -27,6 +27,12 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
         }
+        IconCurrencyA={
+          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
+        }
+        IconCurrencyB={
+          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
+        }
         SelectCurrencyA={
           <SelectCurrency
             // @ts-ignore
@@ -44,7 +50,6 @@ const CreatePool: NextPage = (props: { clearSelected: Function }) => {
           />
         }
       />
-      <ShowCreatedPool />
       {isOpened && (
         <BaseDialog
           onOpenDialog={true}
