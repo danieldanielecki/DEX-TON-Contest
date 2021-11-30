@@ -1,5 +1,7 @@
+import coins from '../stubs/coins.json'
+
 export default function getCurrencies() {
   return fetch('simple/price')
     .then(res => res.json())
-    .catch(error => error.message)
+    .catch(() => coins.json())
 }
