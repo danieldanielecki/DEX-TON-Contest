@@ -36,11 +36,8 @@ We desidned UI for exchanging one token for another token, a UI for creating a p
 
 We used Typescript+React+Redux stack with a small help of Bootstrap and Sass. Express was used to mock our data.
 
-When considering the design options, we focused on the ton.org site, UI of standard wallets and bridge.
+When considering the design options, we focused on the ton.org site, UI of standard wallets and bridge, as well as Responsive Web Design. 
 
-## Pool Statistics page
-
-Take a look on https://info.uniswap.org/#/pools
 
 ## Brand assets
 
