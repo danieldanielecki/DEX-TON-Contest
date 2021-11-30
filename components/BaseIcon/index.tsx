@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styles from './styles.module.scss';
 
-const BaseIcon = (props: { image: string, size?: number, title?: string }) => {
+const BaseIcon = (props: { image?: string, size?: number, title?: string }) => {
   const { image, size, title } = props;
 
   return (
@@ -17,7 +17,7 @@ const BaseIcon = (props: { image: string, size?: number, title?: string }) => {
 };
 
 BaseIcon.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   size: PropTypes.number,
   title: PropTypes.string,
 };
