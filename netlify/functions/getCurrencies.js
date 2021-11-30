@@ -5,6 +5,6 @@ const API_ENDPOINT = "/simple/price";
 
 exports.handler = async (event, context) => {
   return fetch(API_ENDPOINT, { headers: { Accept: "application/json" } })
-    .then((response) => response.json())
-    .catch((error) => ({ statusCode: 200, body: coins }));
+    .then(() => coins.json())
+    .catch(() => ({ statusCode: 200, body: coins }));
 };
