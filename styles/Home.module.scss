@@ -1,34 +1,5 @@
-// TOOD: That's a starter Next.js styles, transformed to SCSS. Later it should be deleted, after we'll stop using them.
+@import "./main.scss";
 
-.container {
-  padding: 0 2rem;
-
-  @media (max-width: 767px) {
-    padding: 0 0.1rem;
-    width: 100%;
-  }
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  a {
-    color: #0088cc;
-    text-decoration: none;
-  }
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.main a {
+  color: $lochmara;
 }
