@@ -47,13 +47,18 @@ const PoolsTable = (props: { pools: Pool[] }) => {
         <table className={styles.styled_table} {...tableSettings.getTableProps}>
           <thead>
             <tr>
-              <td colSpan={2}>
-                <span>Number of records:</span>
-                <Select
-                  onChange={handleChange}
-                  options={numberOfRecords}
-                  value={tableSettings.pageSize}
-                />
+              <td colSpan={5}>
+                <div>
+                  <span className="d-flex text-center align-items-center justify-content-center my-2">
+                    Number of records:
+                  </span>
+                  <Select
+                    className="d-flex text-center align-items-center justify-content-center"
+                    onChange={handleChange}
+                    options={numberOfRecords}
+                    value={tableSettings.pageSize}
+                  />
+                </div>
               </td>
             </tr>
             {tableSettings.headerGroups.map((headerGroup) => (

@@ -39,10 +39,6 @@
       }
     }
 
-    &:first-child {
-      border-top: 0.01rem solid $lochmara;
-    }
-
     &:nth-of-type(odd) {
       background-color: rgba(0, 136, 204, 0.2);
     }
