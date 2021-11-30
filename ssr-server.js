@@ -5,8 +5,6 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const coinsList = require('./stubs/coins/coins-list.json');
-const currenciesList = require('./stubs/currencies/currencies-list.json');
 const pricesUSD = require('./stubs/coins/coins-USD.json');
 
 app.prepare()
