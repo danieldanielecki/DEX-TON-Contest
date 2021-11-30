@@ -1,9 +1,10 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
-import React from "react";
 import BaseButton from "../../BaseButton";
+import React from "react";
 
 const TableFooter = (props: { tableSettings: any }) => {
   const { tableSettings } = props;
+
   return (
     <tr className="text-center">
       <td colSpan={5}>

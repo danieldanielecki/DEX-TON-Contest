@@ -17,7 +17,9 @@ const GlobalFilter = (props: {
   }, 200);
 
   return (
-    <div className={styles.pools_tab_wrapper}>
+    <div
+      className={`${styles.pools_tab_wrapper} d-flex justify-content-center`}
+    >
       <div className={styles.pool_search_tab_wrapper}>
         <input
           aria-describedby="poolSearch"
