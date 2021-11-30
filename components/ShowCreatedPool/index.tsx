@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import styles from "./styles.module.scss";
+import BaseIcon from "../BaseIcon";
 import { connect } from "react-redux";
-import BaseIcon from "./BaseIcon";
+import { useEffect } from "react";
 
 const ShowCreatedPool = (props: {
   currencyA: {
@@ -30,7 +31,7 @@ const ShowCreatedPool = (props: {
         {!!currencyA.label ? (
           <div>
             <BaseIcon image={currencyA.image} />
-            <p className="d-flex flex-column">
+            <p className="d-flex flex-column text-center">
               {/* @ts-ignore */}
               <span>{currencyA.label}</span>
             </p>
@@ -42,7 +43,7 @@ const ShowCreatedPool = (props: {
         {!!currencyB.label ? (
           <div>
             <BaseIcon image={currencyB.image} />
-            <p className="d-flex flex-column">
+            <p className="d-flex flex-column text-center">
               {/* @ts-ignore */}
               <span>{currencyB.label}</span>
             </p>
@@ -59,7 +60,7 @@ const mapStateToProps = (state: {
   selected: {
     currencyA: any;
     currencyB: any;
-  },
+  };
 }) => ({
   currencyA: state.selected.currencyA,
   currencyB: state.selected.currencyB,
