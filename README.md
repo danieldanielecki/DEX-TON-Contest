@@ -6,11 +6,11 @@
 
 **Tech Stack**
 
-- Typescript
-- React + Next
-- Redux
-- NodeJS v16 + Express (stubs)
-- Bootstrap + Sass
+- `TypeScript`
+- `React` + `Next.js`
+- `Redux`
+- `Node.js` v16 (**important, otherwise `replaceAll` might complain from `HeadPage.tsx`)** + `Express` (for pseudorandom numbers generators stubs to pools and coins)
+- `Bootstrap` + `Sass`
 
 ## Getting Started
 
@@ -34,12 +34,15 @@ yarn dev
 Asynchronous calls to smart contracts have been mocked up.
 We designed UI for exchanging one token for another token, a UI for creating a pool with two tokens, a UI for adding and removing liquidity from a pool, and a UI with a list of pools and pool statistics.
 
-We used Typescript+React+Redux stack with some help from Bootstrap and Sass. Express was used to mock up our data.
+We used `TypeScript` + `React` + `Redux` stack with some help from `Bootstrap` and `Sass`. `Express` was used to mock up our data.
 
 When considering the design options, we focused on the ton.org site, the UI of standard wallets and bridge, and Responsive Web Design.
 
-This application is rich in animation, uses brand styles, and has a minimalistic design in Telegram-like style. The only two external dependencies that we are using are 'react-table' and 'react-select'. Bootstraap was minimally used for spacing, alignment, and position (no pre-defined classes for the blocks of code).
+This application is rich in animation, uses brand styles, and has a minimalistic design in `Telegram`-like style. The only two external dependencies that we are using are `react-table` and `react-select`. `Bootstraap` was minimally used for spacing, alignment, and position (no pre-defined classes for the blocks of code).
 
+## Final Release
+
+Please use the version [`v1.0.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.0.0) for testing & review.
 
 ## Brand assets
 
@@ -47,5 +50,5 @@ https://ton.org/brand-assets
 
 ## Personal Githubs
 
-[`Kasia Janiszewska`](https://github.com/kappa3-3](https://github.com/kappa3-3 "kappa3-3").
-[`Daniel Danielecki`](https://github.com/danieldanielecki](https://github.com/danieldanielecki "danieldanielecki").
+[`Kasia Janiszewska`](https://github.com/kappa3-3 "kappa3-3").
+[`Daniel Danielecki`](https://github.com/danieldanielecki "danieldanielecki").
