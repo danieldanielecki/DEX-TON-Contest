@@ -45,20 +45,13 @@ const ExchangeToken: NextPage = (props: {
         }
         IconCurrencyA={<BaseIcon image={currencyA.image} size={46} />}
         IconCurrencyB={<BaseIcon image={currencyB.image} size={46} />}
-        SelectCurrencyA={
-          <SelectCurrency
-            optionVal="A"
-          />
-        }
-        SelectCurrencyB={
-          <SelectCurrency
-            optionVal="B"
-          />
-        }
+        SelectCurrencyA={<SelectCurrency optionVal="A" />}
+        SelectCurrencyB={<SelectCurrency optionVal="B" />}
         ToggleAction={<ToggleBuySellSwitch leftText="Buy" rightText="Sell" />}
+        // @ts-ignore
+        TransactionSummary={<BuySellSummary />}
       />
       {/* @ts-ignore */}
-      <BuySellSummary />
       {isOpened && (
         <BaseDialog
           onOpenDialog={true}
