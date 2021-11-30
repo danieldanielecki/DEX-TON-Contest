@@ -4,7 +4,7 @@
   border-radius: 2rem;
   border: 0.1rem solid $lochmara;
   transition: 1s;
-  width: 30rem;
+  min-width: 30vw;
 
   &:hover {
     border-radius: 3rem;
@@ -66,6 +66,6 @@
 
 @media (max-width: 767px) {
   .card {
-    width: 80%;
+    width: 90vw;
   }
 }

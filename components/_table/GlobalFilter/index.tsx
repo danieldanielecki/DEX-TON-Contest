@@ -1,7 +1,7 @@
-import styles from "../../styles/PoolStatistics.module.scss";
+import styles from "./styles.module.scss";
 import React from "react";
 import { useAsyncDebounce, Row } from "react-table";
-import { Pool } from "../../interfaces/pool";
+import { Pool } from "../../../interfaces/pool";
 
 const GlobalFilter = (props: {
   globalFilter: any;

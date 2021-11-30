@@ -13,7 +13,7 @@ import {
   TableProps,
   TableState,
 } from "react-table";
-import { Pool } from "../../interfaces/pool";
+import { Pool } from "../../../interfaces/pool";
 
 const columnHeaders: any = [
   {
