@@ -23,7 +23,7 @@ const ToggleBuySellSwitch = (props: {
 
   return (
     <div
-      className={`${styles.switch_button_wrapper} d-flex align-items-center justify-content-center pb-3`}
+      className={`${styles.switch_button_wrapper} d-flex align-items-center justify-content-center pb-3 mt-3`}
     >
       <div
         className={`${styles.switch_button} ${

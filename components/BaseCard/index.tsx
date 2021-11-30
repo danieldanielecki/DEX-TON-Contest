@@ -64,9 +64,7 @@ const BaseCard = (props: {
           {SelectCurrencyA}
           {AmountInputA}
         </div>
-        <div className="d-flex align-items-center justify-content-center">
-          +
-        </div>
+        <p className="text-center my-2">with</p>
         <div
           className={`${
             SelectCurrencyB
