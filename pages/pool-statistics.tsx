@@ -1,7 +1,7 @@
 import createPools from "../redux/helpers/createPools";
 import store from "../redux/store";
 import styles from "../styles/PoolStatistics.module.scss";
-import PoolsTable from "../components/table/PoolsTable";
+import PoolsTable from "../components/_table/PoolsTable";
 import { clearSelected } from "../redux/actions/selectedActions";
 import { connect } from "react-redux";
 import { setPools } from "../redux/actions/poolsActions";

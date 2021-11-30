@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRunti
 import React from "react";
 import BaseButton from "../../BaseButton";
 
-const TableFootTr = (props: { tableSettings: any }) => {
+const TableFooter = (props: { tableSettings: any }) => {
   const { tableSettings } = props;
   return (
     <tr className="text-center">
@@ -26,8 +26,9 @@ const TableFootTr = (props: { tableSettings: any }) => {
         >
           Page{" "}
           <strong>
-            {`${tableSettings.state.pageIndex + 1} of ${tableSettings.pageOptions.length
-              }`}
+            {`${tableSettings.state.pageIndex + 1} of ${
+              tableSettings.pageOptions.length
+            }`}
           </strong>{" "}
         </p>
         <BaseButton
@@ -37,9 +38,7 @@ const TableFootTr = (props: { tableSettings: any }) => {
         />
         <BaseButton
           disabled={!tableSettings.canNextPage}
-          onClick={() =>
-            tableSettings.gotoPage(tableSettings.pageCount - 1)
-          }
+          onClick={() => tableSettings.gotoPage(tableSettings.pageCount - 1)}
           title="Last"
         />
       </td>
@@ -47,4 +46,4 @@ const TableFootTr = (props: { tableSettings: any }) => {
   );
 };
 
-export default TableFootTr;
+export default TableFooter;

@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
 import React from "react";
 
-const TableHeadTr = (props: { headerGroup: any }) => {
+const TableHeader = (props: { headerGroup: any }) => {
   const { headerGroup } = props;
 
   return (
@@ -21,4 +21,4 @@ const TableHeadTr = (props: { headerGroup: any }) => {
   );
 };
 
-export default TableHeadTr;
+export default TableHeader;

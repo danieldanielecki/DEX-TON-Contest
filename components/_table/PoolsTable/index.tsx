@@ -1,16 +1,15 @@
 import "regenerator-runtime/runtime"; // Fixes "ReferenceError: regeneratorRuntime is not defined".
+import getTableSettings from "../_helpers/getTableSettings";
+import useToggleClassOnHover from "../../../hooks/useToggleClassOnHover";
+import styles from "./styles.module.scss";
+import GlobalFilter from "../GlobalFilter";
 import React from "react";
 import Select from "react-select";
+import TableFooter from "../TableFooter";
+import TableHeader from "../TableHeader";
 import { Cell, Row } from "react-table";
-import useToggleClassOnHover from "../../../hooks/useToggleClassOnHover";
-import getTableSettings from "../helpers/getTableSettings";
-import GlobalFilter from "../helpers//GlobalFilter";
 import { ISelect } from "../../../interfaces/select";
 import { Pool } from "../../../interfaces/pool";
-import TableHeadTr from "../TableHeadTr";
-import TableFootTr from "../TableFootTr";
-import styles2 from "../../../styles/PoolStatistics.module.scss";
-import styles from "./styles.module.scss";
 
 const Table = (props: { pools: Pool[] }) => {
   const { pools } = props;
@@ -34,7 +33,7 @@ const Table = (props: { pools: Pool[] }) => {
     return [isToggleClassOnHover(i), setIsToggleClassOnHover(i)];
   });
   return (
-    <div>
+    <div style={{ overflowX: "auto" }}>
       <table className={styles.styled_table} {...tableSettings.getTableProps}>
         <thead>
           <tr className="text-center">
@@ -56,7 +55,9 @@ const Table = (props: { pools: Pool[] }) => {
               />
             </td>
           </tr>
-          {tableSettings.headerGroups.map((headerGroup) => <TableHeadTr headerGroup={headerGroup} />)}
+          {tableSettings.headerGroups.map((headerGroup) => (
+            <TableHeader headerGroup={headerGroup} />
+          ))}
         </thead>
         <tbody {...tableSettings.getTableBodyProps()}>
           {tableSettings.page.map((row: Row<Pool>, i: number) => {
@@ -78,14 +79,13 @@ const Table = (props: { pools: Pool[] }) => {
           })}
         </tbody>
         <tfoot>
-          <TableFootTr tableSettings={tableSettings} />
+          <TableFooter tableSettings={tableSettings} />
           <tr className="text-center">
             <td colSpan={5}>
-              <div className={`${styles2.show_wrapper} align-items-center`}>
+              <div className={`${styles.show_wrapper} align-items-center`}>
                 <p>Page number</p>
                 <input
                   aria-describedby="pageSearch"
-                  className={styles2.form_control}
                   id="pageSearch"
                   name="pageSearch"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

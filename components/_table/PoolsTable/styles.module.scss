@@ -1,4 +1,4 @@
-@import "../../../styles/main.scss";
+@import "/styles/main.scss";
 
 .styled_table {
   border-radius: 2rem;
@@ -45,6 +45,24 @@
 
     &:nth-of-type(odd) {
       background-color: rgba(0, 136, 204, 0.2);
+    }
+  }
+
+  .show_wrapper {
+    display: inline-block;
+
+    input {
+      border: 0.1rem solid $lochmara;
+      border-radius: 3rem;
+      color: $pickled-bluewood;
+      display: inline-block;
+
+      max-width: 5rem;
+      padding: 0.5rem 0 0.5rem 2rem;
+
+      &:focus {
+        color: $lochmara;
+      }
     }
   }
 
