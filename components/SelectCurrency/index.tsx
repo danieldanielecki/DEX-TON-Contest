@@ -55,7 +55,6 @@ const SelectCurrency = (props: {
       defaultValue={currencies[0]}
       components={{ Option: IconOption }}
       instanceId={`currency-select-${optionVal}`}
-      menuPortalTarget={document.body}
       menuPosition={"fixed"}
       onChange={handleChange}
       options={currencies}
