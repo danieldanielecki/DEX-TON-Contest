@@ -15,16 +15,10 @@ import type { NextPage } from "next";
 const CreatePool: NextPage = (props: {
   clearSelected: Function,
   currencyA: {
-    label: string;
-    symbol: string;
     image: string;
-    current_price: number;
   };
   currencyB: {
-    label: string;
-    symbol: string;
     image: string;
-    current_price: number;
   };
 }) => {
 

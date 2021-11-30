@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import BaseIcon from "../BaseIcon";
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss";
 
 const BuySellSummary = (props: {
   currencyA: {
@@ -35,52 +35,48 @@ const BuySellSummary = (props: {
           (currencyB.current_price / currencyA.current_price) *
           +amount.exchangeToken;
       }
-      setAmountCalc(value.toFixed(4));
+      setAmountCalc(value.toFixed(3));
     }
   });
 
   return (
     <div className={styles.card}>
-      <h2 className={styles.title}>Summary</h2>
-      <div className="w-500 d-flex justify-content-evenly pt-4">
+      <div className={styles.title}>
+        <h2>Summary</h2>
+      </div>
+      <div className="w-500 d-flex justify-content-between pt-4">
         <div className={!!currencyA.label ? styles.block : styles.hidden}>
           <BaseIcon image={currencyA.image} />
           <p className="d-flex flex-column">
-            <span>
-              {currencyA.label}
-            </span>
-            <span>
-              {currencyA.current_price} USD
-            </span>
+            <span>{currencyA.label}</span>
+            <span>{currencyA.current_price} USD</span>
           </p>
         </div>
         {/* ) : ''} */}
         <div className="d-flex flex-column align-items-center">
           <BaseIcon image="swap-icon.svg" size={48} />
-          {!!amount.exchangeToken
-            && !!method
-            && !!currencyA.label
-            && !!currencyB.label
-            ? (
-              <p className="d-flex flex-column align-items-center">
-                <span>Pay with</span>
-                <span>{amountCalc}</span>
-                {method.type === "buy"
-                  ? <span>{currencyA.label}</span>
-                  : <span>{currencyB.label}</span>
-                }
-              </p>)
-            : ''}
+          {!!amount.exchangeToken &&
+          !!method &&
+          !!currencyA.label &&
+          !!currencyB.label ? (
+            <p className="d-flex flex-column align-items-center">
+              <span>Pay with</span>
+              <span>{amountCalc}</span>
+              {method.type === "buy" ? (
+                <span>{currencyA.label}</span>
+              ) : (
+                <span>{currencyB.label}</span>
+              )}
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className={!!currencyB.label ? styles.block : styles.hidden}>
           <BaseIcon image={currencyB.image} />
           <p className="d-flex flex-column">
-            <span>
-              {currencyB.label}
-            </span>
-            <span>
-              {currencyB.current_price} USD
-            </span>
+            <span>{currencyB.label}</span>
+            <span>{currencyB.current_price} USD</span>
           </p>
         </div>
       </div>
