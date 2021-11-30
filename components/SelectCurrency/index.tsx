@@ -3,14 +3,22 @@ import BaseIcon from "../BaseIcon";
 import PropTypes from "prop-types";
 import Select, { components } from "react-select";
 import { connect } from "react-redux";
-import { setCurrencyA, setCurrencyB } from "../../redux/actions/selectedActions";
+import {
+  setCurrencyA,
+  setCurrencyB,
+} from "../../redux/actions/selectedActions";
 import { useEffect, useState } from "react";
-import colourStyles from './styles'
+import colourStyles from "./styles";
 
 const { Option } = components;
 const IconOption = (props: any) => (
   <Option {...props}>
-    <BaseIcon image={props.data.image} key={props.data.symbol} size={30} title={props.data.label} />
+    <BaseIcon
+      image={props.data.image}
+      key={props.data.symbol}
+      size={30}
+      title={props.data.label}
+    />
   </Option>
 );
 
@@ -47,6 +55,8 @@ const SelectCurrency = (props: {
       defaultValue={currencies[0]}
       components={{ Option: IconOption }}
       instanceId={`currency-select-${optionVal}`}
+      menuPortalTarget={document.body}
+      menuPosition={"fixed"}
       onChange={handleChange}
       options={currencies}
       styles={colourStyles}
