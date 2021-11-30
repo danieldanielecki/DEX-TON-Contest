@@ -4,11 +4,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $lochmara;
   margin-top: 1rem;
-  width: 100vw;
-}
 
-.logo {
-  color: $white;
+  width: 100vw;
+
+  span {
+    border-top: 0.1rem solid $lochmara;
+    color: $lochmara;
+    padding: 1rem 0;
+    text-align: center;
+    width: 60%;
+
+    @media (max-width: 767px) {
+      width: 90%;
+    }
+  }
 }
