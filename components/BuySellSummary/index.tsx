@@ -35,14 +35,16 @@ const BuySellSummary = (props: {
           (currencyB.current_price / currencyA.current_price) *
           +amount.exchangeToken;
       }
-      setAmountCalc(value.toFixed(4));
+      setAmountCalc(value.toFixed(3));
     }
   });
 
   return (
     <div className={styles.card}>
-      <h2 className={styles.title}>Summary</h2>
-      <div className="w-500 d-flex justify-content-evenly pt-4">
+      <div className={styles.title}>
+        <h2>Summary</h2>
+      </div>
+      <div className="w-500 d-flex justify-content-between pt-4">
         <div className={!!currencyA.label ? styles.block : styles.hidden}>
           <BaseIcon image={currencyA.image} />
           <p className="d-flex flex-column">
@@ -50,7 +52,7 @@ const BuySellSummary = (props: {
               {currencyA.label}
             </span>
             <span>
-              {currencyA.current_price} USD
+              {currencyA.current_price.toFixed(3)} USD
             </span>
           </p>
         </div>
@@ -79,7 +81,7 @@ const BuySellSummary = (props: {
               {currencyB.label}
             </span>
             <span>
-              {currencyB.current_price} USD
+              {currencyB.current_price.toFixed(3)} USD
             </span>
           </p>
         </div>

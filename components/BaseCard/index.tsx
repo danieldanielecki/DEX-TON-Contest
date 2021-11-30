@@ -61,7 +61,7 @@ const BaseCard = (props: {
         <div className="d-flex align-items-center justify-content-between">
           {IconCurrencyA}
           {SelectCurrencyA}
-          <span className={styles.amount}>{AmountInputA}</span>
+          {AmountInputA}
         </div>
         <div className="d-flex align-items-center justify-content-center">
           +
@@ -75,7 +75,7 @@ const BaseCard = (props: {
         >
           {IconCurrencyB}
           {SelectCurrencyB}
-          <span className={styles.amount}>{AmountInputB}</span>
+          {AmountInputB}
         </div>
         {ToggleAction}
         <div className={styles.horizontal_line}></div>

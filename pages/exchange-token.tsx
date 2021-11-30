@@ -19,6 +19,12 @@ import type { NextPage } from "next";
 
 // @ts-ignore
 const ExchangeToken: NextPage = (props: {
+  currencyA: {
+    image: string;
+  };
+  currencyB: {
+    image: string;
+  };
   clearSelected: Function;
   setExchangeSell: Function;
 }) => {
@@ -26,6 +32,7 @@ const ExchangeToken: NextPage = (props: {
     store.dispatch(clearSelected());
   }, []);
   const cardButtonTitle: string = "Exchange";
+  const { currencyA, currencyB } = props;
   const [isOpened, setIsOpened] = useToggleAlert(false);
 
   return (
@@ -37,26 +44,16 @@ const ExchangeToken: NextPage = (props: {
         BaseButton={
           <BaseButton onClick={setIsOpened} title={cardButtonTitle} />
         }
-        IconCurrencyA={
-          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
-        }
-        IconCurrencyB={
-          <BaseIcon image="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880" />
-        }
+        IconCurrencyA={<BaseIcon image={currencyA.image} size={46} />}
+        IconCurrencyB={<BaseIcon image={currencyB.image} size={46} />}
         SelectCurrencyA={
           <SelectCurrency
-            // @ts-ignore
-            isOne={false}
             optionVal="A"
-            startCurrency="Select..."
           />
         }
         SelectCurrencyB={
           <SelectCurrency
-            // @ts-ignore
-            isOne={false}
             optionVal="B"
-            startCurrency="Select..."
           />
         }
         ToggleAction={<ToggleBuySellSwitch leftText="Buy" rightText="Sell" />}
@@ -81,6 +78,15 @@ const mapDispatchToProps = () => {
     setExchangeSell,
   };
 };
+const mapStateToProps = (state: {
+  selected: {
+    currencyA: Object;
+    currencyB: Object;
+  };
+}) => ({
+  currencyA: state.selected.currencyA,
+  currencyB: state.selected.currencyB,
+});
 
-const connector = connect(null, mapDispatchToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
 export default connector(ExchangeToken);

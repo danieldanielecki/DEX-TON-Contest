@@ -2,16 +2,14 @@
 
 .form {
   display: block;
-  margin: 1.75rem auto 0;
-  max-width: 5rem;
+  padding-left: 0.5rem;
 
   input {
     border: 0.1rem solid $lochmara;
     border-radius: 3rem;
     color: $pickled-bluewood;
     display: inline-block;
-    max-width: 4rem;
-    padding: 0.5rem 0 0.5rem 1.65rem;
+    width: 5rem;
 
     &:focus {
       color: $lochmara;

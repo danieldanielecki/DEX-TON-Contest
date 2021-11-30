@@ -18,6 +18,8 @@ const AmountInput = (props: { setExchangeAmount?: any; amountOf: string }) => {
         aria-describedby="exchange-amount-input"
         className="form-control"
         id="exchange-amount-input"
+        max={100}
+        min={0}
         onChange={handleAmount}
         pattern="\d\.\d{2}"
         type="number"
