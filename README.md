@@ -1,5 +1,5 @@
 # Frontend of DEX with liquidity pools
-
+![alt text](https://raw.githubusercontent.com/danieldanielecki/DEX-TON-Contest/master/public/example_page.png?token=ANAOK6SP2UPASK6KENZAYN3BUZOT2)
 
 > This page allows users to create a pool, add or remove liquidity, browse through the pools and exchange two tokens. Created for the competition purposes https://github.com/newton-blockchain/TIPs/issues/42
 
@@ -9,7 +9,7 @@
 - Typescript
 - React + Next
 - Redux
-- NodeJS / Express (stubs)
+- NodeJS v16 + Express (stubs)
 - Bootstrap + Sass
 
 ## Getting Started
