@@ -1,8 +1,8 @@
 # Frontend of DEX with liquidity pools
+
 ![alt text](https://raw.githubusercontent.com/danieldanielecki/DEX-TON-Contest/master/public/example_page.png?token=ANAOK6SP2UPASK6KENZAYN3BUZOT2)
 
 > This page allows users to create a pool, add or remove liquidity, browse through the pools, and exchange two tokens. It was created for the purposes of the competition posted here: https://github.com/newton-blockchain/TIPs/issues/42
-
 
 **Tech Stack**
 
@@ -15,6 +15,7 @@
 ## Getting Started
 
 First, install the packages:
+
 ```bash
 npm i
 # or
@@ -42,7 +43,7 @@ This application is rich in animation, uses brand styles, and has a minimalistic
 
 ## Final Release
 
-Please use the version [`v1.0.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.0.0) for testing & review.
+Please use the version [`v1.0.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.0.0) for testing & review. Please ignore commits after that tag for contest-purposes. The extra contribution is solely due to our ambition to improve the project.
 
 ## Brand assets
 

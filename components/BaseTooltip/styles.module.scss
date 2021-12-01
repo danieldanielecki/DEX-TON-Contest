@@ -2,7 +2,7 @@
 
 .tooltip {
   content: url("/question.svg");
-  margin: 0 4rem 0.5rem 0;
+  margin: 0 3.25rem 0.5rem 0;
   z-index: 5;
 
   &:hover {
@@ -22,6 +22,10 @@
       stroke-dasharray: 0;
       transition: stroke-dasharray 0.5s cubic-bezier(1, 0.2, 0.2, 1);
     }
+  }
+
+  @media (max-width: 767px) {
+    margin-right: 1.5rem;
   }
 }
 
