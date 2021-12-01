@@ -46,7 +46,7 @@ const BaseTooltip = (props: {
             : { top: "18rem" }
         }
       >
-        <g stroke-width="2" stroke-linecap="round">
+        <g strokeWidth="2" stroke-linecap="round">
           <path
             className={styles.popup_outline_left}
             d="M233.5 129s-1.992-7.686-32.218-14c-17.933-5.043-118.204 3.687-163.51-2.544-21.317-2.932-33.706-8.26-34.228-27.022L2.272 39.717c-.46-16.58 12.34-23.718 34.23-27.022 15.897-2.4 32.554-4.284 82.975-3.815"
