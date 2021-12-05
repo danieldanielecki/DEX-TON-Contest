@@ -3,8 +3,14 @@
 .card {
   border-radius: 2rem;
   border: 0.1rem solid $lochmara;
+  left: calc(50% - 20rem);
   transition: 1s;
-  min-width: 30vw;
+  width: 40rem;
+
+  @media (max-width: 767px) {
+    margin: 0 auto;
+    width: 90%;
+  }
 
   &:hover {
     border-radius: 3rem;
@@ -12,6 +18,10 @@
 
   section {
     padding: 1rem 4rem 2rem;
+
+    @media (max-width: 767px) {
+      padding: 1rem 0.25rem 1rem;
+    }
   }
 
   .button {
@@ -57,12 +67,5 @@
   .subtitle {
     padding-top: 0.25rem;
     text-align: center;
-  }
-}
-
-@media (max-width: 767px) {
-  .card {
-    margin: 0 auto;
-    width: 95%;
   }
 }
