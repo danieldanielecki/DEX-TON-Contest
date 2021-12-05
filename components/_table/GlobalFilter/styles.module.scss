@@ -1,18 +1,86 @@
 @import "/styles/main.scss";
 
+$search-time: 1000ms;
+$reset-time: 360ms;
+
 .pool_search_tab_wrapper {
-  input {
-    border: 0.1rem solid $lochmara;
+  border: 0.2rem solid $lochmara;
+  border-radius: 2rem;
+  display: inline-block;
+  position: relative;
+
+  input[type="text"] {
+    border: none;
     border-radius: 3rem;
     color: $lochmara;
-    padding: 1rem 12rem 1rem 2rem;
+    height: 3rem;
+    padding: 0.25rem 2.5rem 0.25rem 0.5rem;
+    transition: width $search-time cubic-bezier(0, -0.1, 0.1, 1.3) $reset-time;
+    width: 3rem;
+
+    &:focus {
+      outline: none;
+      transition: width $search-time cubic-bezier(0, -0.1, 0.1, 1.3);
+      width: 37.5rem;
+
+      + button[type="reset"] {
+        bottom: 0.75rem;
+        right: 0.6rem;
+        transition: bottom $reset-time ease-out $search-time,
+          right $reset-time ease-out $search-time;
+
+        &:after {
+          right: 0.6rem;
+          opacity: 1;
+          top: 0;
+          transition: top $reset-time ease-out ($search-time + $reset-time),
+            right $reset-time ease-out ($search-time + $reset-time),
+            opacity $reset-time ease ($search-time + $reset-time);
+        }
+      }
+
+      @media (max-width: 767px) {
+        width: 21rem;
+      }
+    }
 
     &::placeholder {
       color: $lochmara;
     }
-    &:focus {
-      border: 0.1rem solid $pickled-bluewood;
-      color: $lochmara;
+  }
+
+  button[type="reset"] {
+    background-color: transparent;
+    border: 0;
+    bottom: -1rem;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;
+    padding: 0;
+    position: absolute;
+    right: -1rem;
+    transition: bottom $reset-time ease-out $reset-time,
+      right $reset-time ease-out $reset-time;
+    width: 1.5rem;
+
+    &:after,
+    &:before {
+      border-left: 0.25rem solid $lochmara;
+      content: "";
+      height: 1.55rem;
+      position: absolute;
+      transform: rotate(-45deg);
     }
+
+    &:after {
+      opacity: 0;
+      transform: rotate(45deg);
+      transition: top $reset-time ease-out, right $reset-time ease-out,
+        opacity $reset-time ease-out;
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 1rem;
   }
 }
