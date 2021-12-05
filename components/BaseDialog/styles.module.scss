@@ -9,11 +9,6 @@
   width: 100%;
   z-index: 4;
 
-  &:hover {
-    box-shadow: 0rem 0rem 0.1rem 0.1rem $lochmara;
-    cursor: pointer;
-  }
-
   section {
     p {
       padding-top: 0.75rem;
@@ -25,63 +20,60 @@
       text-align: center;
     }
   }
-}
 
-.dialog {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0rem 0rem 1rem 0.1rem $white;
-  overflow: hidden;
-  position: fixed;
-  top: 20vh;
-  width: 80%;
-  z-index: 5;
-}
-
-.header {
-  border-bottom: 0.1rem solid $lochmara;
-  color: $lochmara;
-  margin: 0 auto;
-  text-align: center;
-  width: 25%;
-}
-
-.link_to_close_dialog {
-  align-items: center;
-  border: 0.1rem solid $pickled-bluewood;
-  border-radius: 3rem;
-  color: $pickled-bluewood;
-  display: flex;
-  font-size: 2.2rem;
-  height: 3rem;
-  justify-content: center;
-  position: absolute;
-  transition: 0.5s;
-  width: 3rem;
-
-  &:before {
-    content: "x";
-    font-size: 2rem;
-    transform: translateX(0.07rem) translateY(-0.15rem);
-  }
-
-  &:focus,
-  &:hover {
-    border: 0.1rem solid $lochmara;
-    color: $lochmara;
-    transform: translateY(-0.1rem);
-  }
-}
-
-.menu {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem;
-}
-
-@media (min-width: 768px) {
   .dialog {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0rem 0rem 1rem 0.1rem $white;
     left: calc(50% - 20rem);
+    position: fixed;
+    top: 20vh;
     width: 40rem;
+    z-index: 5;
+
+    @media (max-width: 767px) {
+      left: calc(50% - 10rem);
+      width: 20rem;
+    }
+  }
+
+  .header {
+    border-bottom: 0.1rem solid $lochmara;
+    color: $lochmara;
+    margin: 0 auto;
+    text-align: center;
+    width: 25%;
+  }
+
+  .link_to_close_dialog {
+    align-items: center;
+    border: 0.1rem solid $pickled-bluewood;
+    border-radius: 3rem;
+    color: $pickled-bluewood;
+    display: flex;
+    font-size: 2.2rem;
+    height: 3rem;
+    justify-content: center;
+    position: absolute;
+    transition: 0.5s;
+    width: 3rem;
+
+    &:before {
+      content: "x";
+      transform: translateX(0.07rem) translateY(-0.15rem);
+    }
+
+    &:focus,
+    &:hover {
+      border: 0.1rem solid $lochmara;
+      color: $lochmara;
+      transform: translateY(-0.1rem);
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
   }
 }
