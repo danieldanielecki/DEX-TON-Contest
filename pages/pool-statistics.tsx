@@ -31,9 +31,7 @@ const PoolStatistics: NextPage = (props: {
           <h1 className={styles.label}>Pools</h1>
           <p>Trading</p>
         </div>
-        <div className={styles.pools_responsive_table_wrapper}>
-          <div>{items && <PoolsTable pools={items!} />}</div>
-        </div>
+        <div>{items && <PoolsTable pools={items!} />}</div>
       </div>
     </main>
   );
