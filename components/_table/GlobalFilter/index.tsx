@@ -31,7 +31,13 @@ const GlobalFilter = (props: {
         type="text"
         value={value || ""}
       />
-      <button type="reset" />
+      <button
+        onClick={() => {
+          setValue("");
+          onChange("");
+        }}
+        type="reset"
+      />
     </form>
   );
 };
