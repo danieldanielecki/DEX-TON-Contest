@@ -17,25 +17,28 @@ const GlobalFilter = (props: {
   }, 200);
 
   return (
-    <div
-      className={`${styles.pools_tab_wrapper} d-flex justify-content-center`}
-    >
-      <div className={styles.pool_search_tab_wrapper}>
-        <input
-          aria-describedby="poolSearch"
-          className={styles.form_control}
-          id="poolSearch"
-          name="poolSearch"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setValue(e.target.value);
-            onChange(e.target.value);
-          }}
-          placeholder={`Search ${count} pools...`}
-          type="text"
-          value={value || ""}
-        />
-      </div>
-    </div>
+    <form className={`${styles.pool_search_tab_wrapper}`}>
+      <input
+        aria-describedby="poolSearch"
+        className={styles.form_control}
+        id="poolSearch"
+        name="poolSearch"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
+        placeholder={`Search ${count} pools...`}
+        type="text"
+        value={value || ""}
+      />
+      <button
+        onClick={() => {
+          setValue("");
+          onChange("");
+        }}
+        type="reset"
+      />
+    </form>
   );
 };
 
