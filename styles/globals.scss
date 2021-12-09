@@ -11,6 +11,11 @@ html {
   font-family: $mulish;
   padding: 0;
   margin: 0;
+
+  &.dark {
+    background-color: $pickled-bluewood;
+    color: white;
+  }
 }
 
 a {

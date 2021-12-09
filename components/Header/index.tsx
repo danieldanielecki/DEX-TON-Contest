@@ -1,13 +1,19 @@
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import ToggleOnOffSwitch from "../ToggleOnOffSwitch";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const Header = () => {
-  const [burgerVisible, toggleburgerVisible] = useState(false);
   const router = useRouter();
+  const [burgerVisible, toggleburgerVisible] = useState(false);
   const [currenctPath, setCurrentPath] = useState(router.pathname);
+  const [isDark, setIsDark] = useState<boolean>(true);
+
+  const onToggleTheme = (checked: boolean) => {
+    setIsDark(checked);
+  };
 
   function handleMenu(event: { preventDefault: Function }) {
     event.preventDefault();
@@ -18,6 +24,14 @@ const Header = () => {
     setCurrentPath(router.pathname);
     if (router.pathname !== currenctPath) {
       toggleburgerVisible(false);
+    }
+  });
+
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
     }
   });
 
@@ -47,7 +61,11 @@ const Header = () => {
   return (
     <header>
       <nav
-        className={`${styles.navbar} ${burgerVisible ? styles.open : `${styles.navbar} navbar navbar-expand-lg`}`}
+        className={`${styles.navbar} ${
+          burgerVisible
+            ? styles.open
+            : `${styles.navbar} navbar navbar-expand-lg`
+        }`}
       >
         <button
           className={
@@ -93,6 +111,13 @@ const Header = () => {
                   </a>
                 </Link>
               ))}
+              <ToggleOnOffSwitch
+                aria-label="Toggle Dark/Light Theme"
+                checked={isDark}
+                id="toggle_theme"
+                onChange={onToggleTheme}
+                title="Toggle"
+              />
             </ul>
           </div>
         </div>
