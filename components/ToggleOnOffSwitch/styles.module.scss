@@ -40,7 +40,7 @@
 
     &:after {
       background-color: #cacaca;
-      color: $white;
+      color: white;
       content: "";
       padding-right: 0.5rem;
       text-transform: uppercase;
@@ -49,7 +49,7 @@
 
     &:before {
       background-color: $lochmara;
-      color: $white;
+      color: white;
       content: "";
       padding-left: 0.5rem;
       text-transform: uppercase;
@@ -59,7 +59,7 @@
   &_switch {
     @include toggle_transition;
 
-    background: $white;
+    background: white;
     border-radius: 2rem;
     bottom: 0;
     margin: 0.25rem;
