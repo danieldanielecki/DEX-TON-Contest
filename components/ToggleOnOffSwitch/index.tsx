@@ -26,8 +26,8 @@ const ToggleOnOffSwitch = (props: {
         <label className={styles.toggle_switch_label} htmlFor={id}>
           <span
             className={styles.toggle_switch_inner}
-            data-yes={optionLabels ? optionLabels![0] : ""}
-            data-no={optionLabels ? optionLabels![1] : ""}
+            data-dark={optionLabels ? optionLabels![0] : ""}
+            data-light={optionLabels ? optionLabels![1] : ""}
           />
           <span className={styles.toggle_switch_switch} />
         </label>
