@@ -13,6 +13,28 @@ html {
   margin: 0;
 
   &.dark {
+    .styles_backdrop__3O4_r .styles_dialog__rloxE, // SettingsDialog's alert class to avoid white spaces due to margins.
+    .styles_dialog__gJfsO, // BaseDialog's alert class to avoid white spaces due to margins.
+    nav.styles_navbar__iBXHV .styles_nav_link__2HELw, // Navbar links.
+    button,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    header,
+    input,
+    input:focus,
+    nav,
+    p,
+    section,
+    span,
+    table {
+      background-color: $pickled-bluewood;
+      color: white;
+    }
     background-color: $pickled-bluewood;
     color: white;
   }
