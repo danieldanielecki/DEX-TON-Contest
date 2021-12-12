@@ -6,9 +6,10 @@ const ToggleOnOffSwitch = (props: {
   checked: boolean;
   id: string;
   onChange: Function;
+  optionLabels?: string[];
   title?: string;
 }) => {
-  const { checked, id, onChange, title } = props;
+  const { checked, id, onChange, optionLabels, title } = props;
 
   return (
     <div>
@@ -23,7 +24,11 @@ const ToggleOnOffSwitch = (props: {
           type="checkbox"
         />
         <label className={styles.toggle_switch_label} htmlFor={id}>
-          <span className={styles.toggle_switch_inner} />
+          <span
+            className={styles.toggle_switch_inner}
+            data-yes={optionLabels ? optionLabels![0] : ""}
+            data-no={optionLabels ? optionLabels![1] : ""}
+          />
           <span className={styles.toggle_switch_switch} />
         </label>
       </div>
@@ -38,6 +43,7 @@ ToggleOnOffSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  optionLabels: PropTypes.array,
   title: PropTypes.string,
 };
 

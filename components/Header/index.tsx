@@ -115,6 +115,7 @@ const Header = () => {
                 checked={isDark}
                 id="toggle_theme"
                 onChange={onToggleTheme}
+                optionLabels={["🌙", "🔆"]}
               />
             </ul>
           </div>
