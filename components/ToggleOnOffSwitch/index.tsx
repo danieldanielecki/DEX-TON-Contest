@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
 
-const ToggleSwitch = (props: {
+const ToggleOnOffSwitch = (props: {
   checked: boolean;
   id: string;
   onChange: Function;
@@ -34,11 +34,11 @@ const ToggleSwitch = (props: {
   );
 };
 
-ToggleSwitch.propTypes = {
+ToggleOnOffSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default ToggleSwitch;
+export default ToggleOnOffSwitch;
