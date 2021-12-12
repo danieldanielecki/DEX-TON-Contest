@@ -41,7 +41,7 @@
     &:after {
       background-color: #cacaca;
       color: $white;
-      content: attr(data-no);
+      content: "";
       padding-right: 0.5rem;
       text-transform: uppercase;
       text-align: right;
@@ -50,7 +50,7 @@
     &:before {
       background-color: $lochmara;
       color: $white;
-      content: attr(data-yes);
+      content: "";
       padding-left: 0.5rem;
       text-transform: uppercase;
     }
