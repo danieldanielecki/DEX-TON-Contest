@@ -6,7 +6,7 @@ const ToggleOnOffSwitch = (props: {
   checked: boolean;
   id: string;
   onChange: Function;
-  title: string;
+  title?: string;
 }) => {
   const { checked, id, onChange, title } = props;
 
@@ -38,7 +38,7 @@ ToggleOnOffSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default ToggleOnOffSwitch;

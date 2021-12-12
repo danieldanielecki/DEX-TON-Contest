@@ -112,11 +112,9 @@ const Header = () => {
                 </Link>
               ))}
               <ToggleOnOffSwitch
-                aria-label="Toggle Dark/Light Theme"
                 checked={isDark}
                 id="toggle_theme"
                 onChange={onToggleTheme}
-                title="Toggle"
               />
             </ul>
           </div>
