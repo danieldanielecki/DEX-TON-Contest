@@ -9,7 +9,7 @@ const Header = () => {
   const router = useRouter();
   const [burgerVisible, toggleburgerVisible] = useState(false);
   const [currenctPath, setCurrentPath] = useState(router.pathname);
-  const [isDark, setIsDark] = useState<boolean>(true);
+  const [isDark, setIsDark] = useState<boolean>(false);
 
   const onToggleTheme = (checked: boolean) => {
     setIsDark(checked);
@@ -34,6 +34,16 @@ const Header = () => {
       document.body.classList.remove("dark");
     }
   });
+
+  useEffect(() => {
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (prefersDark) {
+      setIsDark(true);
+    }
+  }, []);
 
   const routes = [
     {
