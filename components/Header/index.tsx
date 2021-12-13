@@ -25,7 +25,7 @@ const Header = () => {
     if (router.pathname !== currenctPath) {
       toggleburgerVisible(false);
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (isDark) {
@@ -33,7 +33,7 @@ const Header = () => {
     } else {
       document.body.classList.remove("dark");
     }
-  });
+  }, [isDark]);
 
   useEffect(() => {
     const prefersDark = window.matchMedia(
