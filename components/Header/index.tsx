@@ -1,4 +1,5 @@
 import styles from "./styles.module.scss";
+import useLocalStorageState from "../../hooks/useLocalStorageState";
 import Image from "next/image";
 import Link from "next/link";
 import ToggleOnOffSwitch from "../ToggleOnOffSwitch";
@@ -9,7 +10,7 @@ const Header = () => {
   const router = useRouter();
   const [burgerVisible, toggleburgerVisible] = useState(false);
   const [currenctPath, setCurrentPath] = useState(router.pathname);
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const [isDark, setIsDark] = useLocalStorageState(true, "isDark");
 
   const onToggleTheme = (checked: boolean) => {
     setIsDark(checked);
@@ -122,9 +123,9 @@ const Header = () => {
                 </Link>
               ))}
               <ToggleOnOffSwitch
-                checked={isDark}
+                checked={!!isDark}
                 id="toggle_theme"
-                onChange={onToggleTheme}
+                onClick={onToggleTheme}
                 optionLabels={["🌙", "🔆"]}
               />
             </ul>

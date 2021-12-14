@@ -5,11 +5,11 @@ import styles from "./styles.module.scss";
 const ToggleOnOffSwitch = (props: {
   checked: boolean;
   id: string;
-  onChange: Function;
+  onClick: Function;
   optionLabels?: string[];
   title?: string;
 }) => {
-  const { checked, id, onChange, optionLabels, title } = props;
+  const { checked, id, onClick, optionLabels, title } = props;
 
   return (
     <div>
@@ -20,7 +20,7 @@ const ToggleOnOffSwitch = (props: {
           className={styles.toggle_switch_checkbox}
           id={id}
           name={title}
-          onChange={(e) => onChange(e.target.checked)}
+          onClick={(e: any) => onClick(e.target.checked)}
           type="checkbox"
         />
         <label className={styles.toggle_switch_label} htmlFor={id}>
@@ -42,7 +42,7 @@ const ToggleOnOffSwitch = (props: {
 ToggleOnOffSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   optionLabels: PropTypes.array,
   title: PropTypes.string,
 };
