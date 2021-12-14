@@ -21,6 +21,7 @@ const ToggleOnOffSwitch = (props: {
           id={id}
           name={title}
           onClick={(e: any) => onClick(e.target.checked)}
+          readOnly
           type="checkbox"
         />
         <label className={styles.toggle_switch_label} htmlFor={id}>
