@@ -13,6 +13,8 @@ html {
   margin: 0;
 
   &.dark {
+    .styles_link_to_close_dialog__1qFJH, // SettingsDialog top right corner icon.
+    .styles_link_to_close_dialog__3Iueu, // BaseDialog top right corner icon.
     .styles_backdrop__3O4_r .styles_dialog__rloxE, // SettingsDialog's alert class to avoid white spaces due to margins.
     .styles_dialog__gJfsO, // BaseDialog's alert class to avoid white spaces due to margins.
     nav.styles_navbar__iBXHV .styles_nav_link__2HELw, // Navbar links.
@@ -35,6 +37,12 @@ html {
       background-color: $pickled-bluewood;
       color: white;
     }
+
+    .styles_link_to_close_dialog__1qFJH,
+    .styles_link_to_close_dialog__3Iueu {
+      border-color: white;
+    }
+
     background-color: $pickled-bluewood;
     color: white;
   }
