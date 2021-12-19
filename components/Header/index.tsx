@@ -12,14 +12,14 @@ const Header = () => {
   const [currenctPath, setCurrentPath] = useState(router.pathname);
   const [isDark, setIsDark] = useLocalStorageState(false, "isDark");
 
+  const handleMenu = (event: { preventDefault: Function }) => {
+    event.preventDefault();
+    toggleburgerVisible(!burgerVisible);
+  };
+
   const onToggleTheme = (checked: boolean) => {
     setIsDark(checked);
   };
-
-  function handleMenu(event: { preventDefault: Function }) {
-    event.preventDefault();
-    toggleburgerVisible(!burgerVisible);
-  }
 
   useEffect(() => {
     setCurrentPath(router.pathname);

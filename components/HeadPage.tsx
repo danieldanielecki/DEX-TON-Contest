@@ -2,14 +2,14 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 const HeadPage = () => {
-  function returnTitle() {
+  const returnTitle = () => {
     const router = useRouter();
     const pageTitle = router.pathname.replaceAll("-", " ").substring(1);
     if (pageTitle.length > 1) {
       return ` This is the ${pageTitle} page.`;
     }
     return "";
-  }
+  };
 
   return (
     <Head>
