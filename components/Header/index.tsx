@@ -10,7 +10,7 @@ const Header = () => {
   const router = useRouter();
   const [burgerVisible, toggleburgerVisible] = useState(false);
   const [currenctPath, setCurrentPath] = useState(router.pathname);
-  const [isDark, setIsDark] = useLocalStorageState(true, "isDark");
+  const [isDark, setIsDark] = useLocalStorageState(false, "isDark");
 
   const onToggleTheme = (checked: boolean) => {
     setIsDark(checked);
@@ -37,11 +37,18 @@ const Header = () => {
   }, [isDark]);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia(
+    const isDarkChosen: string | null = localStorage.getItem("isDark");
+    const prefersDark: boolean = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
 
-    if (prefersDark) {
+    // TODO: Almost working 100% with choice & system preference, but missing case when localStorage is empty. It just doesn't want to be empty in the isDarkChosen for some reason.
+    if (
+      (isDarkChosen === "false" && prefersDark) ||
+      (isDarkChosen === "false" && !prefersDark)
+    ) {
+      setIsDark(false);
+    } else {
       setIsDark(true);
     }
   }, []);
