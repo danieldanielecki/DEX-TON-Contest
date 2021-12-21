@@ -44,6 +44,11 @@ nav.navbar {
       color: $pickled-bluewood;
     }
   }
+
+  // Center Dark/Light theme toggle switch on mobile.
+  [class*="styles_label"] {
+    margin: 0;
+  }
 }
 
 .open {
