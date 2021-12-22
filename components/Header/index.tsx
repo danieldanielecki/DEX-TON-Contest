@@ -26,7 +26,7 @@ const Header = () => {
     if (router.pathname !== currenctPath) {
       toggleburgerVisible(false);
     }
-  }, []);
+  });
 
   useEffect(() => {
     if (isDark) {
