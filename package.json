@@ -4,7 +4,7 @@
   "license": "MIT",
   "version": "1.2.0",
   "scripts": {
-    "dev": "node ssr-server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
