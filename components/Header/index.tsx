@@ -18,6 +18,7 @@ const Header = () => {
   };
 
   const onToggleTheme = (checked: boolean) => {
+    // @ts-ignore
     setIsDark(checked);
   };
 
@@ -47,8 +48,10 @@ const Header = () => {
       (isDarkChosen === "false" && prefersDark) ||
       (isDarkChosen === "false" && !prefersDark)
     ) {
+      // @ts-ignore
       setIsDark(false);
     } else {
+      // @ts-ignore
       setIsDark(true);
     }
   }, []);
