@@ -3,12 +3,7 @@ import { useRouter } from "next/router";
 
 const HeadPage = () => {
   const returnTitle = () => {
-    const router = useRouter();
-    const pageTitle = router.pathname.replaceAll("-", " ").substring(1);
-    if (pageTitle.length > 1) {
-      return ` This is the ${pageTitle} page.`;
-    }
-    return "";
+      return "Decentralized Exchange (DEX) of The Open Network (TON)";
   };
 
   return (
