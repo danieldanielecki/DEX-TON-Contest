@@ -2,7 +2,7 @@
   "name": "dex-ton",
   "private": true,
   "license": "MIT",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
