@@ -1,11 +1,13 @@
-
-import { SET_POOLS } from '../actions/poolsActions';
+import { SET_POOLS } from "../actions/poolsActions";
 
 const initialState = {
-  pools: {}
-}
+  pools: {},
+};
 
-const selected = (state = initialState, action: { type: String, value: String }) => {
+const selected = (
+  state = initialState,
+  action: { type: String; value: String }
+) => {
   switch (action.type) {
     case SET_POOLS:
       return { ...state, pools: action.value };
