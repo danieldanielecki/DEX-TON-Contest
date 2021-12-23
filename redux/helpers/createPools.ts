@@ -19,6 +19,7 @@ export default async function createPools() {
       volume: Math.floor(Math.random() * (100 - 1) + 1),
     }))
   );
+  // @ts-ignore
   return allCombinations.map((el: { id: number }, index: number) => {
     el.id = index;
     return el;
