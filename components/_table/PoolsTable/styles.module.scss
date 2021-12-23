@@ -22,25 +22,26 @@
   tbody tr {
     border-bottom: 0.01rem solid $lochmara;
 
-    &.active_row {
-      color: $pickled-bluewood;
+    &.active_row:hover {
+      cursor: pointer;
+      transition: 1s;
 
-      &:hover {
+      &:nth-of-type(odd) {
+        background-color: rgba(0, 136, 204, 0.4);
         cursor: pointer;
-        transition: 1s;
+      }
 
-        &:nth-of-type(odd) {
-          background-color: rgba(0, 136, 204, 0.4);
-        }
-
-        &:nth-of-type(even) {
-          background-color: rgba(206, 206, 206);
-        }
+      &:nth-of-type(even) {
+        background-color: rgba(206, 206, 206);
       }
     }
 
     &:nth-of-type(odd) {
       background-color: rgba(0, 136, 204, 0.2);
+    }
+
+    &:nth-of-type(even) {
+      background-color: rgba(206, 206, 206, 0.2);
     }
   }
 

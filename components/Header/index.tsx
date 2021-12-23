@@ -1,18 +1,25 @@
 import styles from "./styles.module.scss";
+import useLocalStorageState from "../../hooks/useLocalStorageState";
 import Image from "next/image";
 import Link from "next/link";
+import ToggleOnOffSwitch from "../ToggleOnOffSwitch";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const Header = () => {
-  const [burgerVisible, toggleburgerVisible] = useState(false);
   const router = useRouter();
+  const [burgerVisible, toggleburgerVisible] = useState(false);
   const [currenctPath, setCurrentPath] = useState(router.pathname);
+  const [isDark, setIsDark] = useLocalStorageState(false, "isDark");
 
-  function handleMenu(event: { preventDefault: Function }) {
+  const handleMenu = (event: { preventDefault: Function }) => {
     event.preventDefault();
     toggleburgerVisible(!burgerVisible);
-  }
+  };
+
+  const onToggleTheme = (checked: boolean) => {
+    setIsDark(checked);
+  };
 
   useEffect(() => {
     setCurrentPath(router.pathname);
@@ -20,6 +27,31 @@ const Header = () => {
       toggleburgerVisible(false);
     }
   });
+
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDark]);
+
+  useEffect(() => {
+    const isDarkChosen: string | null = localStorage.getItem("isDark");
+    const prefersDark: boolean = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    // TODO: Almost working 100% with choice & system preference, but missing case when localStorage is empty. It just doesn't want to be empty in the isDarkChosen for some reason.
+    if (
+      (isDarkChosen === "false" && prefersDark) ||
+      (isDarkChosen === "false" && !prefersDark)
+    ) {
+      setIsDark(false);
+    } else {
+      setIsDark(true);
+    }
+  }, []);
 
   const routes = [
     {
@@ -47,7 +79,11 @@ const Header = () => {
   return (
     <header>
       <nav
-        className={`${styles.navbar} ${burgerVisible ? styles.open : `${styles.navbar} navbar navbar-expand-lg`}`}
+        className={`${styles.navbar} ${
+          burgerVisible
+            ? styles.open
+            : `${styles.navbar} navbar navbar-expand-lg`
+        }`}
       >
         <button
           className={
@@ -93,6 +129,12 @@ const Header = () => {
                   </a>
                 </Link>
               ))}
+              <ToggleOnOffSwitch
+                checked={!!isDark}
+                id="toggle_theme"
+                onClick={onToggleTheme}
+                optionLabels={["🌙", "🔆"]}
+              />
             </ul>
           </div>
         </div>

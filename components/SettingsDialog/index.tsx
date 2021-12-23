@@ -72,7 +72,7 @@ const SettingsDialog = (props: {
                   <ToggleOnOffSwitch
                     checked={autoRouter}
                     id="auto_router"
-                    onChange={onAutoRouterChange}
+                    onClick={onAutoRouterChange}
                     title="Auto Router"
                   />
                   <BaseTooltip
@@ -87,7 +87,7 @@ const SettingsDialog = (props: {
                   <ToggleOnOffSwitch
                     checked={disableMultihops}
                     id="disable_multihops"
-                    onChange={onDisableMultihopsChange}
+                    onClick={onDisableMultihopsChange}
                     title="Disable Multihops"
                   />
 
@@ -103,7 +103,7 @@ const SettingsDialog = (props: {
                   <ToggleOnOffSwitch
                     checked={expertMode}
                     id="expert_mode"
-                    onChange={onExpertModeChange}
+                    onClick={onExpertModeChange}
                     title="Expert Mode"
                   />
                   <BaseTooltip

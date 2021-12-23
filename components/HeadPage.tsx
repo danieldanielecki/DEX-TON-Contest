@@ -2,9 +2,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 const HeadPage = () => {
-  function returnTitle() {
-    return "Decentralized Exchange (DEX) of The Open Network (TON)";
-  }
+  const returnTitle = () => {
+      return "Decentralized Exchange (DEX) of The Open Network (TON)";
+  };
 
   return (
     <Head>

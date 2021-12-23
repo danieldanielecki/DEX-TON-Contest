@@ -40,8 +40,8 @@
 
     &:after {
       background-color: #cacaca;
-      color: $white;
-      content: attr(data-no);
+      color: white;
+      content: attr(data-light);
       padding-right: 0.5rem;
       text-transform: uppercase;
       text-align: right;
@@ -49,8 +49,8 @@
 
     &:before {
       background-color: $lochmara;
-      color: $white;
-      content: attr(data-yes);
+      color: white;
+      content: attr(data-dark);
       padding-left: 0.5rem;
       text-transform: uppercase;
     }
@@ -59,7 +59,7 @@
   &_switch {
     @include toggle_transition;
 
-    background: $white;
+    background: white;
     border-radius: 2rem;
     bottom: 0;
     margin: 0.25rem;

@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
 
-const ToggleSwitch = (props: {
+const ToggleOnOffSwitch = (props: {
   checked: boolean;
   id: string;
-  onChange: Function;
+  onClick: Function;
   optionLabels?: string[];
-  title: string;
+  title?: string;
 }) => {
-  const { checked, id, onChange, optionLabels, title } = props;
+  const { checked, id, onClick, optionLabels, title } = props;
 
   return (
     <div>
@@ -20,14 +20,15 @@ const ToggleSwitch = (props: {
           className={styles.toggle_switch_checkbox}
           id={id}
           name={title}
-          onChange={(e) => onChange(e.target.checked)}
+          onClick={(e: any) => onClick(e.target.checked)}
+          readOnly
           type="checkbox"
         />
         <label className={styles.toggle_switch_label} htmlFor={id}>
           <span
             className={styles.toggle_switch_inner}
-            data-yes={optionLabels![0]}
-            data-no={optionLabels![1]}
+            data-dark={optionLabels ? optionLabels![0] : ""}
+            data-light={optionLabels ? optionLabels![1] : ""}
           />
           <span className={styles.toggle_switch_switch} />
         </label>
@@ -39,16 +40,12 @@ const ToggleSwitch = (props: {
   );
 };
 
-ToggleSwitch.defaultProps = {
-  optionLabels: ["On", "Off"],
-};
-
-ToggleSwitch.propTypes = {
+ToggleOnOffSwitch.propTypes = {
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   optionLabels: PropTypes.array,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
-export default ToggleSwitch;
+export default ToggleOnOffSwitch;

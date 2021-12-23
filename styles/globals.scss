@@ -11,6 +11,82 @@ html {
   font-family: $mulish;
   padding: 0;
   margin: 0;
+
+  &.dark {
+    background-color: $pickled-bluewood;
+    color: white;
+
+    a[class*="styles_link_to_close"],
+    div[class*="styles_backdrop"] div[class*="styles_dialog"], // SettingsDialog's alert class to avoid white spaces due to margins.
+    nav[class*="styles_navbar"] [class*="styles_nav_link"], // Navbar links.
+    button,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    header,
+    input,
+    input:focus,
+    nav,
+    p,
+    section,
+    span,
+    table {
+      background-color: $pickled-bluewood;
+      color: white;
+    }
+
+    a[class*="styles_link_to_close"] {
+      border-color: white;
+    }
+
+    div[class*="styles_backdrop"] {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    div[class*="styles_button"],
+    div[class*="styles_card"] {
+      border-radius: 0;
+    }
+
+    nav [class*="styles_highlighted"] {
+      color: $lochmara;
+
+      &:hover {
+        color: $lochmara;
+      }
+    }
+
+    nav[class*="styles_navbar"] [class*="styles_nav_link"] {
+      &:hover {
+        color: $lochmara;
+      }
+    }
+
+    table[class*="styles_styled_table"] {
+      thead tr {
+        color: white;
+      }
+
+      tr[class*="active_row"]:hover {
+        &:nth-of-type(odd) {
+          background-color: rgba(0, 136, 204, 0.6);
+        }
+
+        &:nth-of-type(even) {
+          background-color: rgba(126, 126, 126);
+        }
+      }
+    }
+
+    // React-select option input, without this hack on Dark theme the text isn't visible. However, with that focused cursor is on 2/3 length of the option input.
+    .css-6j8wv5-Input {
+      grid-area: 1;
+    }
+  }
 }
 
 a {
