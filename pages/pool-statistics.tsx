@@ -20,6 +20,7 @@ const PoolStatistics: NextPage = (props: {
     const asyncPoolsCreate = async () => {
       const pools = await createPools();
       store.dispatch(setPools(pools));
+      // @ts-ignore
       setItems(pools);
     };
     asyncPoolsCreate();
