@@ -37,13 +37,20 @@ We designed UI for exchanging one token for another token, a UI for creating a p
 
 We used `TypeScript` + `React` + `Redux` stack with some help from `Bootstrap` and `Sass`. `Express` was used to mock up our data.
 
-When considering the design options, we focused on the ton.org site, the UI of standard wallets and bridge, and Responsive Web Design.
+When considering the design options, we focused on the ton.org site, the UI of standard wallets and bridge, and Responsive Web Design (RWD).
 
-This application is rich in animation, uses brand styles, and has a minimalistic design in `Telegram`-like style. The only two external dependencies that we are using are `react-table` and `react-select`. `Bootstraap` was minimally used for spacing, alignment, and position (no pre-defined classes for the blocks of code).
+This application is rich in animation, uses brand styles, and has a minimalistic design in `Telegram`-like style. The only two external dependencies that we are using are `react-table` and `react-select`. `Bootstraap` was minimally used for spacing, alignment, and position (no pre-defined classes for the blocks of code). We've tried to used as much as possible pure `CSS` for many animations. We've used `localStorage` for keeping user's preferred Light/Dark theme.
 
 ## Final Release
 
 Please use the version [`v1.0.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.0.0) for testing & review. Please ignore commits after that tag for contest-purposes. The extra contribution is solely due to our ambition to improve the project.
+
+### Post-submisstions improvements
+
+- [`v1.1.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.1.0) - Animated Search of Pools
+- [`v1.2.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.2.0) - Dark/Light theme toggle, including system preference, and saving user's preferences using `localStorage`
+- [`v1.2.1`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.2.1) - Deployment to https://dex-ton-contest.vercel.app
+- Other minor improvements: `BaseCard` "jumping" fix, Code Quality, console warnings, and RWD.
 
 ## Brand assets
 
