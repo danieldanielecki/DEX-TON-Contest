@@ -52,6 +52,15 @@ Please use the version [`v1.0.0`](https://github.com/danieldanielecki/DEX-TON-Co
 - [`v1.2.1`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.2.1) - Deployment to https://dex-ton-contest.vercel.app
 - Other minor improvements: `BaseCard` "jumping" fix, Code Quality, console warnings, and RWD.
 
+### Possible improvements
+
+- `ToggleBuySellSwitch` - styling on Dark Theme
+- `BaseTooltip` - styling & broken animation on Dark Theme, as well as RWD
+- Liquidity from Pool - settings' icon on Dark Theme
+- Select option items on Dark Theme - hover effect
+- Accessibility plugin, such as [Agastya](https://oswaldlabs.com/platform/agastya/)
+- `GlobalFilter` - center on mobile
+
 ## Brand assets
 
 https://ton.org/brand-assets
