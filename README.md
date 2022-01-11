@@ -49,7 +49,7 @@ Please use the version [`v1.0.0`](https://github.com/danieldanielecki/DEX-TON-Co
 
 - [`v1.1.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.1.0) - Animated Search of Pools
 - [`v1.2.0`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.2.0) - Dark/Light theme toggle, including system preference, and saving user's preferences using `localStorage`
-- [`v1.2.1`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.2.1) - Deployment to https://dex-ton-contest.vercel.app
+- [`v1.2.1`](https://github.com/danieldanielecki/DEX-TON-Contest/releases/tag/v1.2.1) - Deployment to https://dex-ton-contest.vercel.app (in `Node.js` v14)
 - Other minor improvements: `BaseCard` "jumping" fix, Code Quality, console warnings, and RWD.
 
 ### Possible improvements
